@@ -6,10 +6,10 @@ import '/Layouts/Splash_Page.dart';
 import '/Layouts/Welcome_Page.dart';
 import '/Layouts/Home_Page.dart';
 import '/Layouts/ForPass2_Page.dart';
-import '/Layouts/SideBarPage.dart';
 import 'package:projects/Layouts/Profile_Page.dart';
 import '../Layouts/Notifications_Page.dart';
 import '../Layouts/UserDetails_Page.dart';
+import '../Layouts/Choose_Page.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings){
@@ -34,6 +34,8 @@ class AppRouter {
         return NotiPage.route();
       case UserPage.routeName: 
         return UserPage.route();
+      case ChoosePage.routeName: 
+        return ChoosePage.route();
       
       default:
         return _errorRoute();

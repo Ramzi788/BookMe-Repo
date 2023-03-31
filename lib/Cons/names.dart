@@ -1,12 +1,14 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
 
 
-const String email = "Enter your email";
-const String username = "Enter your username";
+const String email = "Enter your email*";
+const String username = "Enter your username*";
 
-const String password = "Enter password";
-const String cPassword = "Confirm Password";
+const String password = "Enter password*";
+const String cPassword = "Confirm Password*";
 const String login = "Login";
 const String Continue = "Continue";
 const String regText = "Register"; 
@@ -15,15 +17,19 @@ const String forPass = "Forgot Password?";
 const String Ortext = "- OR -";
 const String rem = "Remember me";
 const String forgPass = "Forgot password?";
-const String fName = "First Name";
-const String lName = "Last Name";
+const String fName = "First Name*";
+const String lName = "Last Name*";
 String registeredEmail = '';
 String registeredUsername = '';
+String registeredfName = '';
+String registeredlName = '';
 String finalPass = '';
+String profileLabel = '';
+
 
 
 void showAlertDialogLogin(BuildContext context){
-  Widget ok = TextButton(onPressed: (){Navigator.pushNamed(context, '/login');}, child: Text("Ok"));
+  Widget ok = TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Ok"));
   Widget alert = AlertDialog(
     title:  Text("Error!", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),),
     content: Text("Please try again with the correct format",style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),),
@@ -42,7 +48,7 @@ void showAlertDialogLogin(BuildContext context){
   
 }
   void showAlertDialogReg(BuildContext context){
-  Widget ok = TextButton(onPressed: (){Navigator.pushNamed(context, '/register');}, child: Text("Ok"));
+  Widget ok = TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Ok"));
   Widget alert = AlertDialog(
     title:  Text("Error!", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),),
     content: Text("Please try again with the correct format",style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),),
@@ -61,7 +67,7 @@ void showAlertDialogLogin(BuildContext context){
   
 }
 void showAlertDialogForg(BuildContext context){
-  Widget ok = TextButton(onPressed: (){Navigator.pushNamed(context, '/forgotpass');}, child: Text("Ok"));
+  Widget ok = TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Ok"));
   Widget alert = AlertDialog(
     title:  Text("Error!", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),),
     content: Text("Please try again with the correct format",style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),),

@@ -25,7 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          const SizedBox(height: 400),
+          const SizedBox(height: 361),
           Expanded(
             child: Container(
               decoration:  BoxDecoration(
@@ -44,8 +44,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               leading: CircleAvatar(child: Icon(Icons.person_2_outlined, color: Colors.white,),backgroundColor: theme().primaryColorDark,),
                               title: Text(
                               registeredUsername,
-                              style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.white),), 
-                              subtitle: Text("Student", style: TextStyle(color: Colors.white),),
+                              style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),), 
+                              subtitle: Text( registeredfName + " " + registeredlName +", "+profileLabel, style: TextStyle(color: Colors.white),),
                               ),
                         ),
                         ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/');}, child: const Icon(Ionicons.log_out_outline),
@@ -115,16 +115,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ]),
                     ),
                     
-                    const SizedBox(height: 42.4,),
+                    const SizedBox(height: 35,),
                     
                     Stack(
                       children: [
                         Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25),
+                        padding: const EdgeInsets.symmetric( vertical: 0),
                         child: Container(
-                          height: 110,
+                          height: 210,
                           width: double.infinity,
-                          padding: const EdgeInsets.only(top: 20, bottom:1, left: 40, right: 25),
+                          padding: const EdgeInsets.only(top: 20, bottom:10, left: 40, right: 25),
                           decoration: BoxDecoration (
                           color: theme().primaryColorDark,
                           borderRadius: BorderRadius.circular(30.0),
@@ -132,12 +132,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Reserve", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
+                              Row(
+                                children: [
+                                  Icon(Icons.desk_outlined, color: theme().primaryColor),
+                                  const SizedBox(width: 10,),
+                                  Text("Reserve", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
+                                ],
+                              ),
                               Row(
                                 children: [
                               Text("Book a spot in the library now!", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
-                              const SizedBox(width: 30,),
+                              const SizedBox(width: 50,),
                               ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/homepage');}, child: const Icon(Ionicons.arrow_forward_outline),
+                              style:ButtonStyle(
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(58.0),
+                                  )
+                                ),
+                                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                                iconColor: MaterialStatePropertyAll(theme().primaryColor)
+                              ))
+                              ],)
+                            ],
+                          ),
+                        )),
+                        Padding(
+                        padding: const EdgeInsets.only(top: 105, bottom:50),
+                        child: Container(
+                          height: 110,
+                          width: double.infinity,
+                          padding: const EdgeInsets.only(top: 20, bottom:0, left: 40, right: 25),
+                          decoration: BoxDecoration (
+                          color: theme().primaryColor,
+                          borderRadius: BorderRadius.circular(30.0),
+                          ), 
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              
+                              Row(
+                                children: [
+                                  Icon(Icons.notifications_outlined,color: Colors.white,),
+                                  const SizedBox(width: 10,),
+                                  Text("Notifications", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                              Text("Check notifications", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
+                              const SizedBox(width: 123,),
+                              ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/notifications');}, child: const Icon(Ionicons.arrow_forward_outline),
                               style:ButtonStyle(
                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(

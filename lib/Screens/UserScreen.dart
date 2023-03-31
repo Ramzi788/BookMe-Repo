@@ -131,7 +131,7 @@ class _UserScreenState extends State<UserScreen> {
 
 
 
-        
+          const SizedBox(height:70),
           //Continue Button
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -146,8 +146,11 @@ class _UserScreenState extends State<UserScreen> {
               {
                 setState(() {
                   registeredUsername = _uController.text;
-                });
-                Navigator.pushNamed(context, '/homepage');
+                  registeredfName = _firstName.text;
+                  registeredlName = _lastName.text;
+                  
+                  });
+                Navigator.pushNamed(context, '/register');
               },
               child: const Text(Continue, style: TextStyle(color: Colors.white),)
             ),

@@ -1,18 +1,17 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import '../Layouts/Register_Page.dart';
-import '../Layouts/Login_Page.dart';
 import '../Cons/themes.dart';
+import '../Cons/names.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+class ChooseScreen extends StatefulWidget {
+  const ChooseScreen({super.key});
 
   @override
-  State<WelcomeScreen> createState() => _WelcomeScreenState();
+  State<ChooseScreen> createState() => _ChooseScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _ChooseScreenState extends State<ChooseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,34 +29,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 children: [
                   
                   
-                  RichText(
-                    text: TextSpan(
-                      text: "Studying at\nJaffet is",
-                    style: const TextStyle(
-                      fontSize: 40, 
-                      fontWeight: FontWeight.bold, 
-                      wordSpacing: 1.5, 
-                      letterSpacing: 1.5,
-                      color: Colors.white,
-                    ),
-                    children: <TextSpan> [
-                      TextSpan(text: ' easier\n', style: TextStyle(color: theme().primaryColorDark, fontWeight: FontWeight.bold)), 
-                      const TextSpan(text: ' than you think', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
-                    ]
-            
-                    
-                    ), 
-                    textAlign: TextAlign.center,
-                    ),
+                  Text("Select one of the below", textAlign: TextAlign.center,style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white)),
                 
                     
                     
-                    const SizedBox(height: 15.0),
-                     Text(
-                        "Sign in or Create an Account Now",
-                         style: Theme.of(context).textTheme.headline4?.copyWith(color: Colors.white),
-                         textAlign: TextAlign.center,
-                         ),
+                    
                     const SizedBox(height: 45.0),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -68,8 +44,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
                         ),
                         
-                        onPressed: (){Navigator.pushNamed(context, '/login');}, 
-                        child: const Text("Log in", style: TextStyle(color: Colors.white),)
+                        onPressed: (){Navigator.pushNamed(context, '/user');profileLabel = "Student";}, 
+                        child: const Text("Student", style: TextStyle(color: Colors.white),)
                       ),
                     ),
             
@@ -87,8 +63,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
                         ),
                         
-                        onPressed: (){Navigator.pushNamed(context, '/choose');}, 
-                        child: const Text("Create an Account", style: TextStyle(color: Colors.black),)
+                        onPressed: (){Navigator.pushNamed(context, '/user');
+                        profileLabel = "Staff";}, 
+                        child: const Text("Staff", style: TextStyle(color: Colors.black),),
+                        
                       ),
                     ),
                 ] ),

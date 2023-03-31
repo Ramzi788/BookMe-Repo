@@ -6,13 +6,11 @@ Widget menuList (BuildContext context) => Container(
   padding: const EdgeInsets.all(20),
   child: Column(
           children: [
-              Column(
-                children: [
                   ListTile(
                   leading: const Icon(Icons.home_outlined, color: Colors.black),
                   title: const Text("Home", style: TextStyle(color: Colors.black, fontSize: 15)),
                   onTap: (){
-                    Navigator.pushNamed(context, '/homepage');
+                    Navigator.pop(context);
                   },
                 ),
                 ListTile(
@@ -60,7 +58,7 @@ Widget menuList (BuildContext context) => Container(
                    
                   
   
-                    ]),
+                    
                 ],
               ),
 );
