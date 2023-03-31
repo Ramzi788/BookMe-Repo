@@ -18,7 +18,6 @@ class _RegScreenState extends State<RegScreen> {
   bool _isChecked = false;
   bool _isVisibile = true;
   final _eController = TextEditingController();
-  final _uController = TextEditingController();
   final _pController = TextEditingController();
 
   @override
@@ -28,7 +27,7 @@ class _RegScreenState extends State<RegScreen> {
        body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 170), 
+          const SizedBox(height: 240), 
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Column(
@@ -80,31 +79,6 @@ class _RegScreenState extends State<RegScreen> {
               ),
 
 
-          //Username
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40),
-            child: Container(
-              padding: const EdgeInsets.only(left: 2, right: 2, top: 9, bottom: 9),
-              decoration: BoxDecoration (
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5.0),
-              ), 
-              child: SizedBox(
-                height: 40, 
-                child: TextFormField(
-                  controller: _uController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  filled: true,
-                  hintText: username, //Makes text hover on Press
-                  prefixIcon: Icon(Icons.mail, color: theme().primaryColorDark),           
-                  ),),),)),
-              const SizedBox(
-                height: 10.0,
-              ),
-
 
           //Password Input
           Padding(
@@ -154,13 +128,10 @@ class _RegScreenState extends State<RegScreen> {
               ),
               
               onPressed: (){
-                setState(() {
-                  registeredUsername = _uController.text;
-                });
                 FirebaseAuth.instance.createUserWithEmailAndPassword(
                     email: _eController.text, password: _pController.text).then((value) {
                       Navigator.pushNamed(context, '/login');}).onError((error, stackTrace){
-                        print("Error: ${error.toString()}");
+                        showAlertDialogReg(context);
                 });
                 },
               child: const Text(regText, style: TextStyle(color: Colors.white),)

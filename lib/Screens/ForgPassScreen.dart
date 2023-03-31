@@ -88,7 +88,7 @@ class _ForgPassScreenState extends State<ForgPassScreen> {
                                 border: InputBorder.none,
                                 fillColor: Colors.white,
                                 filled: true,
-                                hintText: username, //Makes text hover on Press
+                                hintText: email, //Makes text hover on Press
                                 prefixIcon: Icon(Icons.mail,
                                     color: theme().primaryColorDark),
                               ),
@@ -119,11 +119,29 @@ class _ForgPassScreenState extends State<ForgPassScreen> {
                             FirebaseAuth.instance.sendPasswordResetEmail(
                                 email: registeredUsername).then((value) {
                               Navigator.pushNamed(context, '/login');}).onError((error, stackTrace){
-                              print("Error ${error.toString()}");
+                              showAlertDialogForg(context);
                             });},
                           child: const Text(
-                            "Continue",
+                            Continue,
                             style: TextStyle(color: Colors.white),
+                          )),
+                    ),
+                    const SizedBox(height: 20,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            minimumSize: const Size.fromHeight(45),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0)),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/login');
+                          },
+                          child: const Text(
+                            "Back",
+                            style: TextStyle(color: Colors.black),
                           )),
                     ),
                   ])))

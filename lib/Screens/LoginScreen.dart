@@ -169,9 +169,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 FirebaseAuth.instance.signInWithEmailAndPassword(
                     email: registeredEmail,
                     password: finalPass).then((value) {
-                      Navigator.pushNamed(context, '/homepage');}).onError((error, stackTrace){
-                        print("Error ${error.toString()}");
-                      });},
+                      Navigator.pushNamed(context, '/user');}).onError((error, stackTrace){
+                        showAlertDialogLogin(context);
+                              });
+                            },
+                          
+                        
+                          
+                        
+                       
+                    
               child: const Text(Continue, style: TextStyle(color: Colors.white),)
             ),
           ),
@@ -212,3 +219,4 @@ class _LoginScreenState extends State<LoginScreen> {
         ))]));
 
 }}
+

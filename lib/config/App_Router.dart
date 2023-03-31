@@ -9,6 +9,7 @@ import '/Layouts/ForPass2_Page.dart';
 import '/Layouts/SideBarPage.dart';
 import 'package:projects/Layouts/Profile_Page.dart';
 import '../Layouts/Notifications_Page.dart';
+import '../Layouts/UserDetails_Page.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings){
@@ -31,6 +32,8 @@ class AppRouter {
         return ProfilePage.route();
       case NotiPage.routeName: 
         return NotiPage.route();
+      case UserPage.routeName: 
+        return UserPage.route();
       
       default:
         return _errorRoute();
