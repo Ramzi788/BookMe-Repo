@@ -1,4 +1,5 @@
 // ignore_for_file: deprecated_member_use
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
@@ -27,12 +28,19 @@ String finalPass = '';
 String profileLabel = '';
 
 
+toJson(){
+  return{
+    "First Name" : registeredfName,
+    "Last Name" : registeredlName,
+    "Username" : registeredUsername
+  };
+}
 
 void showAlertDialogLogin(BuildContext context){
   Widget ok = TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Ok"));
   Widget alert = AlertDialog(
     title:  Text("Error!", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),),
-    content: Text("Please try again with the correct format",style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),),
+    content: Text("Wrong username or password",style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),),
     backgroundColor: theme().primaryColor,
     actions: [
       ok,
@@ -51,7 +59,7 @@ void showAlertDialogLogin(BuildContext context){
   Widget ok = TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Ok"));
   Widget alert = AlertDialog(
     title:  Text("Error!", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),),
-    content: Text("Please try again with the correct format",style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),),
+    content: Text("Wrong username or password",style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),),
     backgroundColor: theme().primaryColor,
     actions: [
       ok,
@@ -70,7 +78,7 @@ void showAlertDialogForg(BuildContext context){
   Widget ok = TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Ok"));
   Widget alert = AlertDialog(
     title:  Text("Error!", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),),
-    content: Text("Please try again with the correct format",style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),),
+    content: Text("The username does not exist",style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),),
     backgroundColor: theme().primaryColor,
     actions: [
       ok,

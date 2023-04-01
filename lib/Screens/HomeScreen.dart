@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
 import '../Screens/SideBarScreen.dart';
+import '../Screens/Seats.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -69,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
+         
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
@@ -19,6 +20,7 @@ class _RegScreenState extends State<RegScreen> {
   bool _isVisibile = true;
   final _eController = TextEditingController();
   final _pController = TextEditingController();
+  final _cpController = TextEditingController();
 
   @override
   Widget build(BuildContext Context) {
@@ -27,7 +29,7 @@ class _RegScreenState extends State<RegScreen> {
        body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 240), 
+          const SizedBox(height: 210), 
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Column(
@@ -111,11 +113,44 @@ class _RegScreenState extends State<RegScreen> {
                   child: IconButton(icon: Icon(_isVisibile ? Icons.visibility: Icons.visibility_off,color: theme().primaryColorDark) , onPressed: (){setState(() {
                     _isVisibile = !_isVisibile;
                   });},),),),),),),), 
-
+          const SizedBox(
+                height: 10.0,
+              ),
+          //Confirm Password Input
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            child: Container(
+              padding: const EdgeInsets.only(left: 2, right: 2, top: 9, bottom: 9),
+              decoration: BoxDecoration (
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(5.0),
+              ), 
+              child: SizedBox(
+                height: 40, 
+                child: TextFormField(
+                  controller: _cpController,
+            obscureText: _isVisibile, // To hide password characters.
+            decoration: InputDecoration(
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey.shade100),
+                ),
+                fillColor: Colors.white,
+                filled: true,
+                labelText: cPassword, //Makes text hover on Press
+                prefixIcon: Icon(Icons.lock, color: theme().primaryColorDark), 
+                suffixIcon: Tooltip(
+                  message: "Show Password", 
+                  verticalOffset: -48,
+                  child: IconButton(icon: Icon(_isVisibile ? Icons.visibility: Icons.visibility_off,color: theme().primaryColorDark) , onPressed: (){setState(() {
+                    _isVisibile = !_isVisibile;
+                  });},),),),),),),), 
         
           
 
-          const SizedBox(height: 60,),
+          const SizedBox(height: 30,),
 
           //Register Button
           Padding(
@@ -127,13 +162,15 @@ class _RegScreenState extends State<RegScreen> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
               ),
               
-              onPressed: (){
-                FirebaseAuth.instance.createUserWithEmailAndPassword(
-                    email: _eController.text, password: _pController.text).then((value) {
-                      Navigator.pushNamed(context, '/login');}).onError((error, stackTrace){
-                        showAlertDialogReg(context);
-                });
-                },
+              onPressed: () {
+                if (_cpController.text != _pController.text){
+                  showAlertDialogReg(context);
+                }
+                else{
+                registerUser();
+                Navigator.pushNamed(context, '/login');
+                }
+              },
               child: const Text(regText, style: TextStyle(color: Colors.white),)
             ),
           ),
@@ -172,4 +209,25 @@ class _RegScreenState extends State<RegScreen> {
           
         ))]));
     
-}}
+}
+
+
+Future registerUser()async{
+  FirebaseAuth auth = FirebaseAuth.instance;
+  User ? user = FirebaseAuth.instance.currentUser;
+  await auth.createUserWithEmailAndPassword(
+                    email: _eController.text, password: _pController.text).then((value) {
+                      Navigator.pushNamed(context, '/login');
+                      }).onError((error, stackTrace){
+                        showAlertDialogReg(context);
+                      FirebaseFirestore.instance.collection("Users").doc(user?.uid).set(
+                        {
+                          'Email' : _eController,
+                          'Pass' : _pController,
+                        }
+                      );
+                });
+                
+}
+      
+}

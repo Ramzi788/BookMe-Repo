@@ -15,16 +15,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-//  @override
-//   void initState() {
-//     super.initState();
-//     _navigatetohome();
-//   }
-
-//   _navigatetohome()async{ //Time to wait to enter Welcome page
-//     await Future.delayed(const Duration(milliseconds: 1500), (){});
-//     Navigator.pushNamed(context, '/');
-//   }
 
   @override
   Widget build(BuildContext context) {

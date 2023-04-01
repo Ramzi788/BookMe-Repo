@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 //Login Part
 class UserScreen extends StatefulWidget {
@@ -19,6 +21,7 @@ class _UserScreenState extends State<UserScreen> {
   final _firstName = TextEditingController();
   final _lastName = TextEditingController();
   final _uController =TextEditingController();
+  
 
   @override
   Widget build(BuildContext Context) {
@@ -163,5 +166,8 @@ class _UserScreenState extends State<UserScreen> {
 
         ))]));
 
-}}
+}
+
+
+}
 
