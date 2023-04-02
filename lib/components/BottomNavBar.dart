@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
-import '../Screens/SideBarScreen.dart';
-import '../Screens/Seats.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 
@@ -31,7 +29,7 @@ class Bottomnav extends StatelessWidget {
                     icon: Icons.person, 
                     text: "Profile",
                     onPressed: (){
-                      Navigator.pushNamed(context, '/');
+                      Navigator.pushNamed(context, '/profile');
                     },
                     ),
                   GButton(

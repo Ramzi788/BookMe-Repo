@@ -28,14 +28,6 @@ String finalPass = '';
 String profileLabel = '';
 
 
-toJson(){
-  return{
-    "First Name" : registeredfName,
-    "Last Name" : registeredlName,
-    "Username" : registeredUsername
-  };
-}
-
 void showAlertDialogLogin(BuildContext context){
   Widget ok = TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Ok"));
   Widget alert = AlertDialog(
