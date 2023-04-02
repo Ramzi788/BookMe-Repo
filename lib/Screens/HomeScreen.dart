@@ -5,6 +5,7 @@ import '../Cons/themes.dart';
 import '../Screens/SideBarScreen.dart';
 import '../components/BottomNavBar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:book_my_seat/book_my_seat.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               IconButton(icon: const Icon(Icons.notifications_outlined), onPressed: (){Navigator.pushNamed(context, '/profile');},)
-          
+              
         ])
         ],
       ),

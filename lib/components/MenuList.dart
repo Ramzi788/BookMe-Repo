@@ -4,7 +4,7 @@ import '../Cons/themes.dart';
 import '../Cons/names.dart';
 Widget menuList (BuildContext context) => Container(
   padding: const EdgeInsets.all(20),
-  child: ListView(
+  child: Column(
           children: [
                   ListTile(
                   leading: const Icon(Icons.home_outlined, color: Colors.black),
