@@ -1,11 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:projects/Screens/ProfileScreen.dart';
 import '../Cons/themes.dart';
 import '../Screens/SideBarScreen.dart';
 import '../components/BottomNavBar.dart';
-import '../Screens/Seats.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 
@@ -17,7 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selected = 0;
   @override
   Widget build(BuildContext context) {
  
@@ -35,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           canvasColor: theme().primaryColor,
           textTheme: Theme.of(context).textTheme.copyWith(caption: new TextStyle(color: Colors.yellow))),
         child:  Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Bottomnav(),
         ),
       ),
