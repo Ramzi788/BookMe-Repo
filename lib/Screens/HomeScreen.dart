@@ -1,9 +1,13 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:projects/Screens/ProfileScreen.dart';
 import '../Cons/themes.dart';
 import '../Screens/SideBarScreen.dart';
+import '../components/BottomNavBar.dart';
 import '../Screens/Seats.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,11 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selected = 0;
   @override
   Widget build(BuildContext context) {
-    void _onItemTapped(int index) {
-      setState(() {
-        _selected = index;
-      });
-}
+ 
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: theme().primaryColor ,
@@ -34,38 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
         data: Theme.of(context).copyWith(
           canvasColor: theme().primaryColor,
           textTheme: Theme.of(context).textTheme.copyWith(caption: new TextStyle(color: Colors.yellow))),
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: BottomNavigationBar(
-            elevation: 0,
-            type: BottomNavigationBarType.fixed,
-            items:  [
-              BottomNavigationBarItem(
-                icon: IconButton(icon: Icon(Icons.person), onPressed: (){Navigator.pushNamed(context, '/profile');},),
-                label: 'Profile',
-              ),
-              BottomNavigationBarItem(
-                icon: IconButton(icon: Icon(Icons.notifications_outlined), onPressed: (){Navigator.pushNamed(context, '/notifications');},),
-                label: 'Notifications',
-              ),
-              BottomNavigationBarItem(
-              icon: IconButton(icon: Icon(Icons.home_outlined), onPressed: (){Navigator.pushNamed(context, '/homepage');},),
-              label: 'Home',
-              ),
-              BottomNavigationBarItem(
-              icon: IconButton(icon: Icon(Icons.settings), onPressed: (){Navigator.pushNamed(context, '/homepage');},),
-              label: 'Settings',
-              ),
-              BottomNavigationBarItem(
-                icon: IconButton(icon: Icon(Icons.more_horiz_outlined), onPressed: (){Navigator.pushNamed(context, '/profile');},),
-                label: 'More',
-              ),
-          ],
-          currentIndex: _selected,
-          onTap: _onItemTapped,
-          unselectedItemColor: Colors.white,
-          selectedItemColor: theme().primaryColorDark
-          ),
+        child:  Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+          child: Bottomnav(),
         ),
       ),
       body: Column(
@@ -74,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              IconButton(icon: Icon(Icons.notifications_outlined), onPressed: (){Navigator.pushNamed(context, '/profile');},)
+              IconButton(icon: const Icon(Icons.notifications_outlined), onPressed: (){Navigator.pushNamed(context, '/profile');},)
           
         ])
         ],
@@ -84,4 +55,5 @@ class _HomeScreenState extends State<HomeScreen> {
       
     
   }
+  
 }
