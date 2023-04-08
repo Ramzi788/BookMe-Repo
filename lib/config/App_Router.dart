@@ -6,20 +6,21 @@ import '/Layouts/Splash_Page.dart';
 import '/Layouts/Welcome_Page.dart';
 import '/Layouts/Home_Page.dart';
 import '/Layouts/ForPass2_Page.dart';
-import 'package:projects/Layouts/Profile_Page.dart';
+import '/Layouts/Profile_Page.dart';
 import '../Layouts/Notifications_Page.dart';
 import '../Layouts/UserDetails_Page.dart';
 import '../Layouts/Choose_Page.dart';
+import '../Layouts/Settings_Page.dart';
 
 class AppRouter {
-  static Route onGenerateRoute(RouteSettings settings){
+  static Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
         return WelcomePage.route();
-      case SplashPage.routeName: 
-        return SplashPage.route();      
-      case HomePage.routeName: 
-        return HomePage.route(); 
+      case SplashPage.routeName:
+        return SplashPage.route();
+      case HomePage.routeName:
+        return HomePage.route();
       case LoginPage.routeName:
         return LoginPage.route();
       case RegisterPage.routeName:
@@ -28,24 +29,27 @@ class AppRouter {
         return ForgotPassPage.route();
       case ForPass2Page.routeName:
         return ForPass2Page.route();
-      case ProfilePage.routeName: 
+      case ProfilePage.routeName:
         return ProfilePage.route();
-      case NotiPage.routeName: 
+      case NotiPage.routeName:
         return NotiPage.route();
-      case UserPage.routeName: 
+      case UserPage.routeName:
         return UserPage.route();
-      case ChoosePage.routeName: 
+      case ChoosePage.routeName:
         return ChoosePage.route();
-      
+      case SettingsPage.routeName:
+        return SettingsPage.route();
+
       default:
         return _errorRoute();
     }
   }
 
-  static Route _errorRoute(){
+  static Route _errorRoute() {
     return MaterialPageRoute(
-      builder: (_) => Scaffold(appBar: AppBar(title: const Text('error')),), 
-      settings: const RouteSettings(name: '/error'));
+        builder: (_) => Scaffold(
+              appBar: AppBar(title: const Text('error')),
+            ),
+        settings: const RouteSettings(name: '/error'));
   }
-  }
-
+}

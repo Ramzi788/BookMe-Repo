@@ -3,8 +3,7 @@ import 'Layouts/Splash_Page.dart';
 import '/Cons/themes.dart';
 import 'Config/App_Router.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:projects/firebase_options.dart';
-
+import '/firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,10 +16,9 @@ class BookMe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      theme: theme(),
-      onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: SplashPage.routeName
-  );
+    return MaterialApp(
+        theme: theme(),
+        onGenerateRoute: AppRouter.onGenerateRoute,
+        initialRoute: SplashPage.routeName);
   }
 }

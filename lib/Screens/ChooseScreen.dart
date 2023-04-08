@@ -44,7 +44,10 @@ class _ChooseScreenState extends State<ChooseScreen> {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
                         ),
                         
-                        onPressed: (){Navigator.pushNamed(context, '/user');profileLabel = "Student";}, 
+                        onPressed: (){Navigator.pushNamed(context, '/user');
+                          setState(() {
+                            profileLabel = 'Student';
+                          });},
                         child: const Text("Student", style: TextStyle(color: Colors.white),)
                       ),
                     ),
@@ -63,8 +66,12 @@ class _ChooseScreenState extends State<ChooseScreen> {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
                         ),
                         
-                        onPressed: (){Navigator.pushNamed(context, '/user');
-                        profileLabel = "Staff";}, 
+                        onPressed: (){
+                          Navigator.pushNamed(context, '/user');
+                          setState(() {
+                            profileLabel = "Staff";
+                          });
+                          },
                         child: const Text("Staff", style: TextStyle(color: Colors.black),),
                         
                       ),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:projects/Cons/names.dart'; 
+import '/Cons/themes.dart';
 import '../components/ProfileView.dart';
 import '../components/MenuList.dart';
 
 class SideBarScreen extends StatefulWidget {
-
   const SideBarScreen({super.key});
 
   @override
@@ -12,21 +11,15 @@ class SideBarScreen extends StatefulWidget {
 }
 
 class _SideBarScreenState extends State<SideBarScreen> {
-  
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-              profileView(context),
-              menuList(context)
-          ],
-        ),
-      )
-    );
+        backgroundColor: theme().primaryColor,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [profileView(context), menuList(context)],
+          ),
+        ));
   }
 }
-
-

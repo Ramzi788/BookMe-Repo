@@ -164,10 +164,10 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: ()
               {
                 setState(() {
-                  registeredEmail= _eController.text;
                   finalPass = _pController.text;
                 });
-                registerUser();
+                FirebaseAuth.instance.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
+                    .then((value) => Navigator.pushNamed(context, '/homepage')).onError((error, stackTrace){showAlertDialogReg(context);});
               },
               child: const Text(Continue, style: TextStyle(color: Colors.white),)
             ),
@@ -208,25 +208,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
         ))]));
 
-}
-Future registerUser()async{
-  FirebaseAuth auth = await FirebaseAuth.instance;
-  User ? users = FirebaseAuth.instance.currentUser;
-  await auth.signInWithEmailAndPassword(
-                    email: _eController.text, password: _pController.text).then((value) {
-                      Navigator.pushNamed(context, '/homepage');
-                      }).onError((error, stackTrace){
-                        showAlertDialogReg(context);
-                      FirebaseFirestore.instance.collection("Users").doc(users?.uid).set(
-                        {
-                          "Username": registeredUsername, 
-                          "First Name": registeredfName, 
-                          "Last Name": registeredlName,
-                          "Title" : profileLabel,
-                        }
-                      );
-                });
-                
 }
 }
 

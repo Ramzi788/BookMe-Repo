@@ -25,7 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          const SizedBox(height: 361),
+          const SizedBox(height: 400),
           Expanded(
             child: Container(
               decoration:  BoxDecoration(
@@ -48,16 +48,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               subtitle: Text( registeredfName + " " + registeredlName +", "+profileLabel, style: TextStyle(color: Colors.white),),
                               ),
                         ),
-                        ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/');}, child: const Icon(Ionicons.log_out_outline),
-                                style:ButtonStyle(
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(58.0),
-                                    )
-                                  ),
-                                  backgroundColor: MaterialStatePropertyAll(Colors.white),
-                                  iconColor: MaterialStatePropertyAll(theme().primaryColor)
-                                )),
+                        Row(
+                          children: [
+                            IconButton(onPressed: (){Navigator.pushNamed(context, '/settings');}, icon: const Icon(Ionicons.settings_outline), color: Colors.white,),
+                            const SizedBox(width: 10,),
+                            IconButton(onPressed: (){Navigator.pushNamed(context, '/');}, icon: const Icon(Ionicons.log_out_outline), color: Colors.white,),
+                          ],
+                        )
                         
                       ],
                     ),
@@ -158,7 +155,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         )),
                         Padding(
-                        padding: const EdgeInsets.only(top: 105, bottom:50),
+                        padding: const EdgeInsets.only(top: 105, bottom:0),
                         child: Container(
                           height: 110,
                           width: double.infinity,
