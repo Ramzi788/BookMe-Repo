@@ -185,3 +185,41 @@ void showAlertDialogForg(BuildContext context) {
         return alert;
       });
 }
+
+void RegisterAlert(BuildContext context){
+  Widget alert = 
+  SimpleDialog(
+    backgroundColor: theme().primaryColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+    children: [
+          ListTile(
+            title: const Text("Duration", style: TextStyle(color: Colors.white),), 
+            trailing: PopupMenuButton(
+              color: Colors.white,
+              itemBuilder: (context) => [
+                const PopupMenuItem(child: Text("1-2 Hours")),
+                const PopupMenuItem(child: Text("2-3 Hours")),
+                const PopupMenuItem(child: Text("4 Hours")),
+              ],
+            )
+
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top:5, left: 30, right: 30),
+            child: ElevatedButton(
+              onPressed: (){},
+              child: const Text("Reserve Seat")
+            ),
+          )
+        
+    ],
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+    
+}

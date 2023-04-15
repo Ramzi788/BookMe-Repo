@@ -6,30 +6,26 @@ import 'package:projects/Layouts/Home_Page.dart';
 import '../Cons/themes.dart';
 import '../Cons/names.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_theme_provider/flutter_theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
   @override
   State<SettingsScreen> createState() => _SettingsState();
+  
 }
 
+bool _iconBool = false;
+
+
 class _SettingsState extends State<SettingsScreen> {
-  bool valueNotify1 = true;
-  bool valueNotify2 = false;
   bool valueNotify3 = false;
+  
 
-  onChangedFunction1(bool newValue1) {
-    setState(() {
-      valueNotify1 = newValue1;
-    });
-  }
 
-  onChangedFunction2(bool newValue2) {
-    setState(() {
-      valueNotify2 = newValue2;
-    });
-  }
+
 
   onChangedFunction3(bool newValue3) {
     setState(() {
@@ -97,10 +93,7 @@ class _SettingsState extends State<SettingsScreen> {
                 ),
                  Divider(height: 20, thickness: 1, color: Colors.grey.shade100 ),
                 const SizedBox(height: 10),
-                buildNotificationOption(
-                    "Dark Mode", valueNotify1, onChangedFunction1),
-                buildNotificationOption(
-                    "Account Active", valueNotify2, onChangedFunction2),
+                
                 buildNotificationOption(
                     "Notifications", valueNotify3, onChangedFunction3),
                 const SizedBox(height: 50),
