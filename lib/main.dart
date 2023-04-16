@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:projects/Screens/HomeScreen.dart';
+import 'package:projects/Screens/LoginScreen.dart';
 import 'Layouts/Splash_Page.dart';
 import '/Cons/themes.dart';
 import 'Config/App_Router.dart';
@@ -19,6 +22,7 @@ class BookMe extends StatelessWidget {
     return MaterialApp(
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: SplashPage.routeName);
+        initialRoute: SplashPage.routeName,
+    );
   }
 }

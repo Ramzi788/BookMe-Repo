@@ -7,7 +7,6 @@ ThemeData theme() {
     primaryColor: Color.fromARGB(255, 22, 22, 31),
     primaryColorDark: Color.fromARGB(255, 96, 165, 250),
     primaryColorLight: Color.fromARGB(255, 23, 21, 39),
-
     scaffoldBackgroundColor: Colors.white,
     backgroundColor: const Color(0xFFF5F5F5),
     textTheme: const TextTheme(
@@ -25,36 +24,3 @@ ThemeData theme() {
     ),
   );
 }
-
-// ThemeData lightTheme(){
-//   return ThemeData(
-//     primaryColor: Color.fromARGB(255, 255, 255, 255),
-//     primaryColorDark: Color.fromARGB(255, 96, 165, 250),
-//     primaryColorLight: Color.fromARGB(255, 57, 36, 216),
-//   );
-// }
-
-// ThemeData darkMode = ThemeData(
-//   primaryColor: theme().primaryColor,
-//   brightness: Brightness.dark
-// );
-
-
-// class MyThemes{
-//     static final lightMode = ThemeData(
-//       scaffoldBackgroundColor: Colors.white,
-//       primaryColor: lightTheme().primaryColor,
-//       brightness: Brightness.light
-//     );
-//     static final darkMode = ThemeData(
-//       scaffoldBackgroundColor: Colors.black,
-//       primaryColor: theme().primaryColor,
-//       brightness: Brightness.dark
-// );
-// }
-
-// class ThemeProvider extends ChangeNotifier { //Stores the theme of our app
-//     ThemeMode _themeMode = ThemeMode.light;
-
-//     bool get isLightMode => _themeMode == ThemeMode.light;
-// }

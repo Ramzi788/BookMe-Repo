@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../Screens/NotificationScreen.dart';
+import '../Screens/MessagesScreen.dart';
 
 
 class NotiPage extends StatelessWidget {
-  static const String routeName = '/notifications';
+  static const String routeName = '/messages';
 
   static Route route(){
     return MaterialPageRoute(
@@ -17,7 +17,7 @@ class NotiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: NotiScreen(),
+        body: MessagesScreen(),
       );
   }
 }

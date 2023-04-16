@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:projects/Cons/names.dart';
 import '../Cons/themes.dart';
 import '../Screens/SideBarScreen.dart';
-import '../components/BottomNavBar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,10 +20,26 @@ class _HomeScreenState extends State<HomeScreen> {
       extendBodyBehindAppBar: true,
       backgroundColor: theme().primaryColor,
       appBar: AppBar(
+        actions: [
+          Padding(
+      padding: EdgeInsets.only(right: 20.0),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/settings');
+        },
+        child: Icon(
+          Icons.settings,
+          size: 26.0,
+          color: Colors.white
+        ),
+      )
+    ),
+        ],
         elevation: 0,
         backgroundColor: theme().primaryColor,
       ),
       drawer: const SideBarScreen(),
+      
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
             canvasColor: theme().primaryColor,
@@ -33,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 .copyWith(caption: new TextStyle(color: Colors.yellow))),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Bottomnav(),
+          // child: Bottomnav(),
         ),
       ),
       
@@ -185,21 +200,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-// Stack(
-//   children: [ 
-
-//      //manual position using left, top, right, bottom
-//       Positioned(
-//         left:0, 
-//         top:0,
-//         //you can use "right" and "bottom" too
-//         child:Container(
-//           height:100,
-//           width:100,
-//           color: Colors.purple,
-//           child: Text("Box VI"),
-//         )
-//       ),
-//   ]
-// )

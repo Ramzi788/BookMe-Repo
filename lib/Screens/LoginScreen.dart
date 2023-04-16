@@ -5,6 +5,7 @@ import '../Cons/names.dart';
 import '../Cons/themes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //Login Part
 class LoginScreen extends StatefulWidget {
@@ -163,11 +164,29 @@ class _LoginScreenState extends State<LoginScreen> {
               
               onPressed: ()
               {
+                Future<void> fetchData() async{
+                  final user = auth.currentUser;
+                  if(user != null) {
+                    await FirebaseFirestore.instance.collection('Users').doc(user.uid)
+                        .get()
+                        .then((ds) {
+                      registeredUsername = ds['username'];
+                      registeredfName = ds['fname'];
+                      registeredlName = ds['lname'];
+                      registeredEmail = ds['Email'];
+                      profileLabel = ds['ProfileLabel'];
+                    });
+                  }
+                }
+                Future<void> wait() async{
+                  await fetchData();
+                }
                 setState(() {
+                  wait();
                   finalPass = _pController.text;
                 });
-                FirebaseAuth.instance.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
-                    .then((value) => Navigator.pushNamed(context, '/homepage')).onError((error, stackTrace){showAlertDialogReg(context);});
+                auth.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
+                    .then((value) { wait();Navigator.pushNamed(context, '/homepage');}).onError((error, stackTrace){showAlertDialogReg(context);});
               },
               child: const Text(Continue, style: TextStyle(color: Colors.white),)
             ),

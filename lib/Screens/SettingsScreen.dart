@@ -6,8 +6,7 @@ import 'package:projects/Layouts/Home_Page.dart';
 import '../Cons/themes.dart';
 import '../Cons/names.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_theme_provider/flutter_theme_provider.dart';
-import 'package:provider/provider.dart';
+
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -69,15 +68,50 @@ class _SettingsState extends State<SettingsScreen> {
                   ],
                 ),
                 Divider(height: 20, thickness: 1, color: Colors.grey.shade100),
-                const SizedBox(height: 10),
-                buildAccontOption(context, "Change Password"),
-                const SizedBox(height: 10),
-                buildAccontOption(context, "About"),
-                const SizedBox(height: 10),
-                buildAccontOption(context, "Help and Support"),
-                const SizedBox(height: 10),
-                buildAccontOption(context, "Privacy and Security"),
-                const SizedBox(height: 40),
+                
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right:10),
+                  child: Row(
+                    children: [
+                      Text("Change Password", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.grey.shade500, fontSize: 20),), 
+                      const SizedBox(width: 140,),
+                      IconButton(onPressed: (){
+                        Navigator.pushNamed(context, '/forgotpassnum2');
+                      }, icon: Icon(Icons.arrow_forward_ios), color: Colors.white,)
+                    ]
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right:10),
+                  child: Row(
+                    children: [
+                      Text("Edit Profile", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.grey.shade500, fontSize: 20),), 
+                      const SizedBox(width: 205,),
+                      IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios), color: Colors.white,)
+                    ]
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20, right:10),
+                //   child: Row(
+                //     children: [
+                //       Text("Help and Support", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.grey.shade500, fontSize: 20),), 
+                //       const SizedBox(width: 146,),
+                //       IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios), color: Colors.white,)
+                //     ]
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20, right:10),
+                //   child: Row(
+                //     children: [
+                //       Text("Privacy and Security", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.grey.shade500, fontSize: 20),), 
+                //       const SizedBox(width: 120,),
+                //       IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios), color: Colors.white,)
+                //     ]
+                //   ),
+                // ),
+                const SizedBox(height: 10,),
                 Row(
                   children: [
                     Icon(Icons.volume_up_outlined,

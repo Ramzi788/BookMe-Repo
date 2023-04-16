@@ -1,9 +1,12 @@
 // ignore_for_file: use_build_context_synchronously, sort_child_properties_last, deprecated_member_use
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:projects/database.dart';
 import '../Cons/themes.dart';
 import '../Cons/names.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:projects/database.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -13,7 +16,9 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
+
 class _ProfileScreenState extends State<ProfileScreen> {
+
   int counter = 0;
   @override
   Widget build(BuildContext Context) {
@@ -29,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Expanded(
             child: Container(
               decoration:  BoxDecoration(
-                color: theme().primaryColor, 
+                color: theme().primaryColor,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50), )
               ),
               child: Column(
@@ -44,8 +49,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               leading: CircleAvatar(child: Icon(Icons.person_2_outlined, color: Colors.white,),backgroundColor: theme().primaryColorDark,),
                               title: Text(
                               registeredUsername,
-                              style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),), 
-                              subtitle: Text( registeredfName + " " + registeredlName +", "+profileLabel, style: TextStyle(color: Colors.white),),
+                              style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),),
+                              subtitle: Text( "$registeredfName $registeredlName, $profileLabel", style: TextStyle(color: Colors.white),),
                               ),
                         ),
                         Row(
@@ -55,20 +60,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             IconButton(onPressed: (){Navigator.pushNamed(context, '/');}, icon: const Icon(Ionicons.log_out_outline), color: Colors.white,),
                           ],
                         )
-                        
+
                       ],
                     ),
                   ),
-                  
-                  const SizedBox(height: 50,), 
+
+                  const SizedBox(height: 50,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal:10 ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        
+
                         Column(
-                          children:  [ 
+                          children:  [
                             Text(
                             "50",
                             style: TextStyle(color:Colors.white),
@@ -77,12 +82,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             "Reserved Seats",
                             style: Theme.of(context).textTheme.bodyText1?.copyWith(color: theme().primaryColorDark),
                           ),
-                          
+
                           ]
-                        ), 
+                        ),
                         const SizedBox(width: 30,),
                         Column(
-                          children:  [ 
+                          children:  [
                             Text(
                             "2",
                             style: TextStyle(color:Colors.white),
@@ -91,12 +96,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             "Lost Seat",
                             style: Theme.of(context).textTheme.bodyText1?.copyWith(color: theme().primaryColorDark),
                           ),
-                          
+
                           ]
                         ),
                         const SizedBox(width: 30,),
                         Column(
-                          children: [ 
+                          children: [
                             Text(
                             "10",
                             style: TextStyle(color:Colors.white),
@@ -105,15 +110,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             "Hours Spent",
                             style: Theme.of(context).textTheme.bodyText1?.copyWith(color: theme().primaryColorDark),
                           ),
-                          
+
                           ]
                         ),
-                        
+
                       ]),
                     ),
-                    
+
                     const SizedBox(height: 35,),
-                    
+
                     Stack(
                       children: [
                         Padding(
@@ -125,7 +130,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration (
                           color: theme().primaryColorDark,
                           borderRadius: BorderRadius.circular(30.0),
-                          ), 
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -139,7 +144,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Row(
                                 children: [
                               Text("Book a spot in the library now!", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
-                              const SizedBox(width: 50,),
+                              const SizedBox(width: 73,),
                               ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/homepage');}, child: const Icon(Ionicons.arrow_forward_outline),
                               style:ButtonStyle(
                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -163,23 +168,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration (
                           color: theme().primaryColor,
                           borderRadius: BorderRadius.circular(30.0),
-                          ), 
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              
+
                               Row(
                                 children: [
-                                  Icon(Icons.notifications_outlined,color: Colors.white,),
+                                  Icon(Icons.inbox,color: Colors.white,),
                                   const SizedBox(width: 10,),
-                                  Text("Notifications", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
+                                  Text("Messages", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                               Row(
                                 children: [
-                              Text("Check notifications", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
-                              const SizedBox(width: 123,),
-                              ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/notifications');}, child: const Icon(Ionicons.arrow_forward_outline),
+                              Text("Check inbox for new messages", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
+                              const SizedBox(width: 65,),
+                              ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/messages');}, child: const Icon(Ionicons.arrow_forward_outline),
                               style:ButtonStyle(
                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -193,15 +198,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                         )),
-                      
-                                
-                            
+
+
+
         ])]),
                     ),
 
-                    
+
        )]));
-                  
-          
+
+
 
 }}

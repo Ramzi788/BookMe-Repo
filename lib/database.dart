@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService{
@@ -8,4 +9,5 @@ class DatabaseService{
       return await UsersColletion.doc(uid).set({'Email': email, 'password': password,
                                               'fname': fname, 'lname': lname, 'username': username, 'ProfileLabel': profileLabel});
   }
+
 }

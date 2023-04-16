@@ -294,10 +294,8 @@ class _RegScreenState extends State<RegScreen> {
   }
 
   Future registerUser() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    await auth
-        .createUserWithEmailAndPassword(
-            email: _eController.text, password: _pController.text)
+    auth.createUserWithEmailAndPassword(
+        email: _eController.text, password: _pController.text)
         .then((value) {})
         .onError((error, stackTrace) {
       showAlertDialogReg(context);

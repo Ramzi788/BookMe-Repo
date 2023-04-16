@@ -1,12 +1,12 @@
 // ignore_for_file: deprecated_member_use
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
 
 const String email = "Enter your email*";
 const String username = "Enter your username*";
-
 const String password = "Enter password*";
 const String cPassword = "Confirm Password*";
 const String login = "Login";
@@ -19,13 +19,13 @@ const String rem = "Remember me";
 const String forgPass = "Forgot password?";
 const String fName = "First Name*";
 const String lName = "Last Name*";
-String registeredEmail = '';
-String registeredUsername = '';
-String registeredfName = '';
-String registeredlName = '';
-String finalPass = '';
-String profileLabel = '';
-
+late String registeredEmail = '';
+late String registeredUsername = '';
+late String registeredfName = '';
+late String registeredlName = '';
+late String finalPass = '';
+late String profileLabel = '';
+FirebaseAuth auth = FirebaseAuth.instance;
 void showAlertDialogLogin(BuildContext context) {
   Widget ok = TextButton(
       onPressed: () {
@@ -185,7 +185,6 @@ void showAlertDialogForg(BuildContext context) {
         return alert;
       });
 }
-
 void RegisterAlert(BuildContext context){
   Widget alert = 
   SimpleDialog(
