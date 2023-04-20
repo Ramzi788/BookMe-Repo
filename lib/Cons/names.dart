@@ -185,7 +185,7 @@ void showAlertDialogForg(BuildContext context) {
         return alert;
       });
 }
-void RegisterAlert(BuildContext context){
+void showRegisterAlert(BuildContext context){
   Widget alert = 
   SimpleDialog(
     backgroundColor: theme().primaryColor,
@@ -222,3 +222,8 @@ void RegisterAlert(BuildContext context){
       });
     
 }
+
+
+
+
+

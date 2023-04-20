@@ -28,7 +28,7 @@ class _ForgPass2ScreenState extends State<ForgPass2Screen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Recover", style: Theme.of(context).textTheme.headline1?.copyWith(color: theme().primaryColorDark)),
+                Text("Update", style: Theme.of(context).textTheme.headline1?.copyWith(color: theme().primaryColorDark)),
                 const SizedBox(height: 5,),
                 Text("Account", style: Theme.of(context).textTheme.headline1?.copyWith(color: theme().primaryColorDark)),
                 const SizedBox(height: 15,),

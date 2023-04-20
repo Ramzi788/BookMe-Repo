@@ -144,7 +144,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Row(
                                 children: [
                               Text("Book a spot in the library now!", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
-                              const SizedBox(width: 73,),
+                              const SizedBox(width: 57,),
                               ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/homepage');}, child: const Icon(Ionicons.arrow_forward_outline),
                               style:ButtonStyle(
                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -175,14 +175,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               Row(
                                 children: [
-                                  Icon(Icons.inbox,color: Colors.white,),
+                                  Icon(Icons.notifications,color: Colors.white,),
                                   const SizedBox(width: 10,),
-                                  Text("Messages", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
+                                  Text("Notifications", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                               Row(
                                 children: [
-                              Text("Check inbox for new messages", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
+                              Text("Check your new notifications", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
                               const SizedBox(width: 65,),
                               ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/messages');}, child: const Icon(Ionicons.arrow_forward_outline),
                               style:ButtonStyle(
