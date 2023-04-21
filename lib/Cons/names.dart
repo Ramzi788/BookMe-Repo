@@ -4,6 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
+import '../Screens/HomeScreen.dart';
+
+
+bool pressed = false;
 
 const String email = "Enter your email*";
 const String username = "Enter your username*";
@@ -185,6 +189,10 @@ void showAlertDialogForg(BuildContext context) {
         return alert;
       });
 }
+
+
+List<String> list = ["1 hour", "2 hours"];
+String _selected = list[0];
 void showRegisterAlert(BuildContext context){
   Widget alert = 
   SimpleDialog(
@@ -195,20 +203,26 @@ void showRegisterAlert(BuildContext context){
     children: [
           ListTile(
             title: const Text("Duration", style: TextStyle(color: Colors.white),), 
-            trailing: PopupMenuButton(
-              color: Colors.white,
-              itemBuilder: (context) => [
-                const PopupMenuItem(child: Text("1-2 Hours")),
-                const PopupMenuItem(child: Text("2-3 Hours")),
-                const PopupMenuItem(child: Text("4 Hours")),
-              ],
+            trailing: DropdownButton(
+              dropdownColor: theme().primaryColor,
+              style: TextStyle(color: Colors.white),
+              value: _selected,
+              onChanged: (val) {
+                setState(){
+                  _selected = val as String;
+                }
+              },
+
+              items: list.map((e) => DropdownMenuItem(child: Text(e), value: e, )).toList(),
             )
 
           ),
           Padding(
             padding: const EdgeInsets.only(top:5, left: 30, right: 30),
             child: ElevatedButton(
-              onPressed: (){},
+              onPressed: (){
+                pressed = false;
+              },
               child: const Text("Reserve Seat")
             ),
           )
@@ -222,8 +236,3 @@ void showRegisterAlert(BuildContext context){
       });
     
 }
-
-
-
-
-

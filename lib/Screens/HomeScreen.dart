@@ -7,6 +7,8 @@ import '../Screens/SideBarScreen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import '../components/table.dart';
+import '../components/table2.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,7 +17,12 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+bool isVisible2 = true;
+bool isVisible3 = false;
+int counter = 1;
 class _HomeScreenState extends State<HomeScreen> {
+  final tableWidget =  table(isVisibile: isVisible2 ,);
+  final tableWidget2 =  Secondtable(isVisible: isVisible3 ,);
   static DateTime current_date = DateTime.now();
   static final DateFormat _date = DateFormat('mm-dd');
   final String formatted = _date.format(current_date);
@@ -36,9 +43,48 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(fontSize: 30, color: Colors.white),
                 ),
               ),
-              
               Padding(
-                padding: const EdgeInsets.only(left: 20, top: 20, bottom: 5),
+                padding: const EdgeInsets.only(bottom: 1, left : 20, top: 20),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      
+                      alignment: Alignment.center,  
+                      
+                      child: IconButton(onPressed: (){
+                        setState(() {
+                          isVisible2 = true;
+                          isVisible3 = false;
+                          counter=1;
+                          tableWidget.isVisibile = isVisible2;
+                          tableWidget2.isVisible = isVisible3;
+                        });
+                      }, icon: Icon(Icons.arrow_back_ios, color: theme().primaryColorDark, size: 20)),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      
+                      child: IconButton(onPressed: (){
+                        setState(() {
+                          isVisible2 = false;
+                          isVisible3 = true;
+                          counter =2;
+                          tableWidget.isVisibile = isVisible2;
+                          tableWidget2.isVisible = isVisible3;
+                        });
+                      }, icon: Icon(Icons.arrow_forward_ios, color: theme().primaryColorDark, size: 20,)),
+                    ),
+                    Text ("Page $counter", style: TextStyle(color: Colors.white),),
+                  ],
+                ),
+              ),
+              
+              Flexible(child: (isVisible2 == true)? 
+              table(isVisibile: isVisible2,): Secondtable(isVisible: isVisible3)),
+
+              Padding(
+                padding: const EdgeInsets.only(left: 20, top: 2, bottom: 20),
                 child: Row(children: [
                   Container(color: Colors.blue, height: 20, width: 20), 
                   const SizedBox(width: 10,), 
@@ -53,7 +99,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   const Text("Unavailable", style: TextStyle(color: Colors.white)), 
                 ]),
               ),
-              const Flexible(child:table()),
             ],
           ),
        

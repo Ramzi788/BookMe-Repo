@@ -17,7 +17,7 @@ Widget menuList(BuildContext context) => Container(
           ),
           
           ListTile(
-            leading: const Icon(Icons.notification_add_outlined,
+            leading: const Icon(Icons.notifications_outlined,
                 color: Colors.white),
             title: const Text("Notifications",
                 style: TextStyle(color: Colors.white, fontSize: 15)),
@@ -38,11 +38,29 @@ Widget menuList(BuildContext context) => Container(
             onTap: () {},
           ),
           const Divider(color: Colors.white),
-          ListTile(
+          ExpansionTile(
+            childrenPadding: const EdgeInsets.only(left:20),
+            collapsedIconColor: Colors.white,
+            iconColor: Colors.white,
             leading: const Icon(Icons.link, color: Colors.white),
             title: const Text("Links",
                 style: TextStyle(color: Colors.white, fontSize: 15)),
-            onTap: () {},
+            children: [
+                  ListTile(
+                leading:
+                    const Icon(Icons.help_outline_rounded, color: Colors.white),
+                title: const Text("Moodle",
+                    style: TextStyle(color: Colors.white, fontSize: 15)),
+                onTap: () {},
+              ),
+              ListTile(
+                leading:
+                    const Icon(Icons.help_outline_rounded, color: Colors.white),
+                title: const Text("AUB SIS",
+                    style: TextStyle(color: Colors.white, fontSize: 15)),
+                onTap: () {},
+              ),
+            ],
           ),
           ListTile(
             leading: const Icon(Icons.settings, color: Colors.white),

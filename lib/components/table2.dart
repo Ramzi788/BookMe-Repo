@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
-class table extends StatelessWidget {
-  bool isVisibile = true;
-  table({super.key, required this.isVisibile});
+
+class Secondtable extends StatelessWidget {
+  bool isVisible = false;
+  Secondtable({super.key, required this.isVisible});
 
   @override
   Widget build(BuildContext context) {
     return  Visibility(
-      visible: isVisibile ,
+      visible: isVisible, 
       child: ListView(
+                      
                       scrollDirection: Axis.horizontal,
                       children: [
                         Padding(
@@ -41,7 +43,7 @@ class table extends StatelessWidget {
                               
                               cells:  [
                                 
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 1", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 11", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
@@ -60,7 +62,7 @@ class table extends StatelessWidget {
                             ),
                             DataRow(
                               cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 2", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 12", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
@@ -78,7 +80,7 @@ class table extends StatelessWidget {
                             ),
                             DataRow(
                               cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 3", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 13", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
@@ -96,7 +98,7 @@ class table extends StatelessWidget {
                             ),
                             DataRow(
                               cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 4", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 14", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
@@ -114,7 +116,7 @@ class table extends StatelessWidget {
                             ),
                             DataRow(
                               cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 5", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 15", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
@@ -133,7 +135,7 @@ class table extends StatelessWidget {
                           DataRow(
                               
                               cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 6", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 16", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
@@ -152,7 +154,7 @@ class table extends StatelessWidget {
                             ),
                             DataRow(
                               cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 7", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 17", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
@@ -170,7 +172,7 @@ class table extends StatelessWidget {
                             ),
                             DataRow(
                               cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 8", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 18", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
@@ -188,7 +190,7 @@ class table extends StatelessWidget {
                             ),
                             DataRow(
                               cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 9", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 19", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
@@ -206,7 +208,7 @@ class table extends StatelessWidget {
                             ),
                             DataRow(
                               cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 10", style: TextStyle(color:Colors.white)),]) ),
+                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 20", style: TextStyle(color:Colors.white)),]) ),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
                                 DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
@@ -225,9 +227,12 @@ class table extends StatelessWidget {
                           ],
                         )
                       ),
-             
+                      
                 ]),
     );
+              
+    
+            
   }
 }
 
