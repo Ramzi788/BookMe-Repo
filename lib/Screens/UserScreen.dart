@@ -24,7 +24,7 @@ class _UserScreenState extends State<UserScreen> {
     return Scaffold(
         extendBodyBehindAppBar: true,
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        body: ListView(scrollDirection: Axis.vertical, children: [
           const SizedBox(height: 170),
           Padding(
             padding: const EdgeInsets.only(left: 10),
@@ -167,7 +167,7 @@ class _UserScreenState extends State<UserScreen> {
                     const SizedBox(height: 70),
                     //Continue Button
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      padding: const EdgeInsets.only(left: 40, right: 40, bottom: 40),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: theme().primaryColorDark,

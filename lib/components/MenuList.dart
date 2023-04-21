@@ -1,7 +1,12 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
 import '../Cons/names.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+
 
 Widget menuList(BuildContext context) => Container(
       padding: const EdgeInsets.all(20),
@@ -39,7 +44,7 @@ Widget menuList(BuildContext context) => Container(
           ),
           const Divider(color: Colors.white),
           ExpansionTile(
-            childrenPadding: const EdgeInsets.only(left:20),
+            childrenPadding: const EdgeInsets.only(left:5),
             collapsedIconColor: Colors.white,
             iconColor: Colors.white,
             leading: const Icon(Icons.link, color: Colors.white),
@@ -47,18 +52,30 @@ Widget menuList(BuildContext context) => Container(
                 style: TextStyle(color: Colors.white, fontSize: 15)),
             children: [
                   ListTile(
-                leading:
-                    const Icon(Icons.help_outline_rounded, color: Colors.white),
+                leading: 
+                    CircleAvatar(child: Image.asset('assets/images/moodle.png', height: 40), radius: 20, backgroundColor:theme().primaryColor),
                 title: const Text("Moodle",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
-                onTap: () {},
+                onTap: ()async {
+                  final Url = 'https://twitter.com';
+                  if (await canLaunch(Url)){
+                    await launch(
+                      Url, 
+                      forceSafariVC: false,
+                      
+                    );
+                  }
+                }, 
               ),
               ListTile(
                 leading:
-                    const Icon(Icons.help_outline_rounded, color: Colors.white),
+                    CircleAvatar(child: Image.asset('assets/images/AUBSIS.png', height: 40), radius: 20, backgroundColor:theme().primaryColor),
                 title: const Text("AUB SIS",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
-                onTap: () {},
+                onTap: (){
+
+                }
+                  
               ),
             ],
           ),

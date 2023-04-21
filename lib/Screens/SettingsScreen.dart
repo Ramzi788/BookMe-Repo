@@ -87,7 +87,7 @@ class _SettingsState extends State<SettingsScreen> {
                     children: [
                       Text("Edit Profile", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.grey.shade500, fontSize: 20),), 
                       const SizedBox(width: 205,),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios), color: Colors.white,)
+                      IconButton(onPressed: (){Navigator.pushNamed(context, '/edit');}, icon: Icon(Icons.arrow_forward_ios), color: Colors.white,)
                     ]
                   ),
                 ),

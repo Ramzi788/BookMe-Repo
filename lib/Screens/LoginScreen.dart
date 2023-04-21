@@ -26,8 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
        extendBodyBehindAppBar: true,
        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+       body: ListView(
+        scrollDirection: Axis.vertical,
         children: [
           const SizedBox(height: 170), 
           Padding(
@@ -155,43 +155,45 @@ class _LoginScreenState extends State<LoginScreen> {
           //Continue Button
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme().primaryColorDark,
-                minimumSize: const Size.fromHeight(45),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-              ),
-              
-              onPressed: ()
-              {
-                Future<void> fetchData() async{
-                  final user = auth.currentUser;
-                  if(user != null) {
-                    await FirebaseFirestore.instance.collection('Users').doc(user.uid)
-                        .get()
-                        .then((ds) {
-                      registeredUsername = ds['username'];
-                      registeredfName = ds['fname'];
-                      registeredlName = ds['lname'];
-                      registeredEmail = ds['Email'];
-                      profileLabel = ds['ProfileLabel'];
-                    });
+            child: GestureDetector(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: theme().primaryColorDark,
+                  minimumSize: const Size.fromHeight(45),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                ),
+                
+                onPressed: ()
+                {
+                  Future<void> fetchData() async{
+                    final user = auth.currentUser;
+                    if(user != null) {
+                      await FirebaseFirestore.instance.collection('Users').doc(user.uid)
+                          .get()
+                          .then((ds) {
+                        registeredUsername = ds['username'];
+                        registeredfName = ds['fname'];
+                        registeredlName = ds['lname'];
+                        registeredEmail = ds['Email'];
+                        profileLabel = ds['ProfileLabel'];
+                      });
+                    }
                   }
-                }
-                Future<void> wait() async{
-                  await fetchData();
-                }
-                setState(() {
-                  wait();
-                  finalPass = _pController.text;
-                });
-                auth.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
-                    .then((value) { wait();Navigator.pushNamed(context, '/homepage');}).onError((error, stackTrace){showAlertDialogReg(context);});
-              },
-              child: const Text(Continue, style: TextStyle(color: Colors.white),)
+                  Future<void> wait() async{
+                    await fetchData();
+                  }
+                  setState(() {
+                    wait();
+                    finalPass = _pController.text;
+                  });
+                  auth.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
+                      .then((value) { wait();Navigator.pushNamed(context, '/homepage');}).onError((error, stackTrace){if (_eController.text == '' || _pController.text == ''){showAlertDialogUserEmpty(context);} else showAlertDialogReg(context);});
+                },
+                child: const Text(Continue, style: TextStyle(color: Colors.white),)
+              ),
             ),
           ),
-
+          
 
           const SizedBox(height: 10.0),
           Row(children: const [
@@ -210,7 +212,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           const SizedBox(height: 10.0),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40,),
+            padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20,),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 255, 255, 255),

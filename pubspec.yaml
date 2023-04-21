@@ -51,6 +51,7 @@ dependencies:
   shared_preferences: ^2.1.0
   flutter_secure_storage: ^8.0.0
   liquid_pull_to_refresh: ^3.0.1
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
@@ -75,8 +76,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets: 
-  #     - lib/assets/
+  assets: 
+      - assets/images/moodle.png
+      - assets/images/AUBSIS.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

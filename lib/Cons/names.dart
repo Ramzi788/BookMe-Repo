@@ -158,6 +158,37 @@ void showAlertDialogReg(BuildContext context) {
       });
 }
 
+void showPassDontMatch(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Error!",
+      style:
+          Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "The passwords that you have entered don't match",
+      style:
+          Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColor,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+}
 void showAlertDialogForg(BuildContext context) {
   Widget ok = TextButton(
       onPressed: () {
@@ -171,7 +202,7 @@ void showAlertDialogForg(BuildContext context) {
           Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
     ),
     content: Text(
-      "The username does not exist",
+      "The inputted email does not exist. \n\nPlease try again",
       style:
           Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),

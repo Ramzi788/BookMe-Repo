@@ -11,6 +11,7 @@ import '../Layouts/Notifications_Page.dart';
 import '../Layouts/UserDetails_Page.dart';
 import '../Layouts/Choose_Page.dart';
 import '../Layouts/Settings_Page.dart';
+import '../Layouts/EditProfile_Page.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -39,6 +40,8 @@ class AppRouter {
         return ChoosePage.route();
       case SettingsPage.routeName:
         return SettingsPage.route();
+      case EditProfilePage.routeName:
+        return EditProfilePage.route();
 
       default:
         return _errorRoute();

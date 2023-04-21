@@ -124,7 +124,7 @@ class _ForgPass2ScreenState extends State<ForgPass2Screen> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
               ),
               
-              onPressed: (){Navigator.pushNamed(context, '/login');}, 
+              onPressed: (){Navigator.pop(context);}, 
               child: const Text("Done", style: TextStyle(color: Colors.white),)
             ),
           ),

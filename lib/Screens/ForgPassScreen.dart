@@ -119,7 +119,10 @@ class _ForgPassScreenState extends State<ForgPassScreen> {
                             FirebaseAuth.instance.sendPasswordResetEmail(
                                 email: registeredUsername).then((value) {
                               Navigator.pushNamed(context, '/login');}).onError((error, stackTrace){
-                              showAlertDialogForg(context);
+                              if (_eController.text ==''){
+                                showAlertDialogUserEmpty(context);
+                              }
+                              else showAlertDialogForg(context);
                             });},
                           child: const Text(
                             Continue,

@@ -26,8 +26,8 @@ class _RegScreenState extends State<RegScreen> {
   Widget build(BuildContext Context) {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 0, 0, 0),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          const SizedBox(height: 210),
+        body: ListView(scrollDirection: Axis.vertical, children: [
+          const SizedBox(height: 180),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Column(
@@ -227,7 +227,7 @@ class _RegScreenState extends State<RegScreen> {
                           ),
                           onPressed: () {
                             if (_cpController.text != _pController.text) {
-                              showAlertDialogReg(context);
+                              showPassDontMatch(context);
                             } else {
                               setState(() {
                                 registeredEmail = _eController.text;
@@ -270,8 +270,10 @@ class _RegScreenState extends State<RegScreen> {
                     ),
                     const SizedBox(height: 10.0),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 40,
+                      padding: const EdgeInsets.only(
+                        left: 40,
+                        right: 40,
+                        bottom: 40
                       ),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
