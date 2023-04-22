@@ -128,21 +128,8 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Container(
               margin: const EdgeInsets.only(top: 1, bottom: 5), 
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Checkbox(value: _isChecked, onChanged: (bool? newValue){
-                          setState(() {_isChecked = newValue!;});
-                        },
-                         activeColor: Colors.white,
-                         checkColor: theme().primaryColorDark,
-                         ),
-                      const Text(rem, style: TextStyle(color: Colors.white)) ,
-                    ],
-                  ),
-                  
                   TextButton(style: TextButton.styleFrom(
                     textStyle: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold)
                   ),
@@ -193,7 +180,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     finalPass = _pController.text;
                   });
                   auth.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
-                      .then((value) { wait();Navigator.pushNamed(context, '/homepage');}).onError((error, stackTrace){if (_eController.text == '' || _pController.text == ''){showAlertDialogUserEmpty(context);} else showAlertDialogReg(context);});
+                      .then((value) { wait();showCheck(context);
+                              Future.delayed(Duration(seconds: 2), (){
+                                Navigator.pushNamed(context, '/homepage');
+                              });}).onError((error, stackTrace){if (_eController.text == '' || _pController.text == ''){showAlertDialogUserEmpty(context);} else showAlertDialogReg(context);});
                 },
                 child: const Text(Continue, style: TextStyle(color: Colors.white),)
               ),

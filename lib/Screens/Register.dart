@@ -239,7 +239,10 @@ class _RegScreenState extends State<RegScreen> {
                                 registeredEmail = _eController.text;
                               });
                               registerUser();
-                              Navigator.pushNamed(context, '/login');
+                              
+                      
+                                Navigator.pushNamed(context, '/login');
+                              
                             }
                           },
                           child: const Text(

@@ -196,17 +196,13 @@ class _UserScreenState extends State<UserScreen> {
                             }
                             //Check if username already exists
                             else {
-                              
-                              
-                              
-                              
                               setState(() {
                                 registeredfName = _firstName.text;
                                 registeredlName = _lastName.text;
                                 registeredUsername = _uController.text;
                               });
+                                Navigator.pushNamed(context, '/register');
                               
-                              Navigator.pushNamed(context, '/register');
                             }
                           },
                           child: const Text(

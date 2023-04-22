@@ -28,6 +28,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    const SizedBox(height: 10,),
                     RichText(
                       text: TextSpan(
                           text: "Studying at\nJaffet is",

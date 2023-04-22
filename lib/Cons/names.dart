@@ -1,10 +1,12 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
 import '../Screens/HomeScreen.dart';
-
+import 'package:lottie/lottie.dart';
 
 bool pressed = false;
 
@@ -63,6 +65,21 @@ void showAlertDialogLogin(BuildContext context) {
       });
 }
 
+void showCheck(BuildContext context){
+  showDialog(context: context, 
+  builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: Lottie.network('https://assets3.lottiefiles.com/packages/lf20_EHCkebp4JN.json', repeat: false),
+        );
+      },
+  );
+  Future.delayed(Duration(seconds: 2),(){
+    Navigator.of(context).pop();
+  });
+}
+
+
 void showAlertDialogUserEmpty(BuildContext context) {
   Widget ok = TextButton(
       onPressed: () {
@@ -75,10 +92,16 @@ void showAlertDialogUserEmpty(BuildContext context) {
       style:
           Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
     ),
-    content: Text(
-      "Please fill in the required fields",
-      style:
-          Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    content: Stack(
+      children: [
+        Text(
+          "Please fill in the required fields",
+          style:
+              Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+        ),
+        SizedBox(height: 100,),
+        Lottie.network('https://assets6.lottiefiles.com/packages/lf20_bhw1ul4g.json')
+      ],
     ),
     backgroundColor: theme().primaryColor,
     actions: [
