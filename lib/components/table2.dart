@@ -21,7 +21,7 @@ class Secondtable extends StatelessWidget {
                            headingRowHeight: 80,
                            columnSpacing: 4,
                            horizontalMargin: 4,
-                           
+
                           columns: [
                             DataColumn(label: Row(children: [SizedBox(width: 3), Text("Table Number", style: TextStyle(color:Colors.white)),SizedBox(width: 3),]) ),
                             DataColumn(label: Expanded(child: Text("8:00 AM", style: TextStyle(color:Colors.white),textAlign: TextAlign.center,))),
@@ -40,189 +40,189 @@ class Secondtable extends StatelessWidget {
                           ],
                           rows: [
                             DataRow(
-                              
-                              cells:  [
-                                
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 11", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-      
-                              ]
+
+                                cells:  [
+
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 11", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table11';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+
+                                ]
                             ),
                             DataRow(
-                              cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 12", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                              ]
+                                cells:  [
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 12", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table12';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                ]
                             ),
                             DataRow(
-                              cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 13", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                              ]
+                                cells:  [
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 13", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table13';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                ]
                             ),
                             DataRow(
-                              cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 14", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                              ]
+                                cells:  [
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 14", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table14';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                ]
                             ),
                             DataRow(
-                              cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 15", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                              ]
-                            ),
-                          DataRow(
-                              
-                              cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 16", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-      
-                              ]
+                                cells:  [
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 15", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table15';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                ]
                             ),
                             DataRow(
-                              cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 17", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                              ]
+
+                                cells:  [
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 16", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table16';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+
+                                ]
                             ),
                             DataRow(
-                              cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 18", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                              ]
+                                cells:  [
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 17", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table17';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                ]
                             ),
                             DataRow(
-                              cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 19", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                              ]
+                                cells:  [
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 18", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table18';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                ]
                             ),
                             DataRow(
-                              cells:  [
-                                DataCell(Row(children: [SizedBox(width: 23), Text("Table 20", style: TextStyle(color:Colors.white)),]) ),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
-                                DataCell(GestureDetector(onTap: (){showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
-                              ]
+                                cells:  [
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 19", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table19';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                ]
+                            ),
+                            DataRow(
+                                cells:  [
+                                  DataCell(Row(children: [SizedBox(width: 23), Text("Table 20", style: TextStyle(color:Colors.white)),]) ),
+                                  DataCell(GestureDetector(onTap: (){regTime = '8:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container( color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '9:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '10:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '11:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '12:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '13:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '14:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '15:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '16:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '17:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '18:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue,width: 80 ))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '19:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                  DataCell(GestureDetector(onTap: (){regTime = '20:00'; regTable = 'Table20';showRegisterAlert(context);}, child: Container(color: Colors.blue, width: 80))),
+                                ]
                             ),
                           ],
                         )
@@ -230,9 +230,5 @@ class Secondtable extends StatelessWidget {
                       
                 ]),
     );
-              
-    
-            
   }
 }
-

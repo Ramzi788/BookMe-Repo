@@ -12,6 +12,7 @@ import '../Layouts/UserDetails_Page.dart';
 import '../Layouts/Choose_Page.dart';
 import '../Layouts/Settings_Page.dart';
 import '../Layouts/EditProfile_Page.dart';
+import '../Layouts/AboutUsPage.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -42,6 +43,8 @@ class AppRouter {
         return SettingsPage.route();
       case EditProfilePage.routeName:
         return EditProfilePage.route();
+      case AboutPage.routeName:
+        return AboutPage.route();
 
       default:
         return _errorRoute();

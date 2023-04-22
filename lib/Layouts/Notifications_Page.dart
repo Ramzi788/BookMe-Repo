@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Screens/MessagesScreen.dart';
+import '../Screens/NotificationsScreen.dart';
 
 
 class NotiPage extends StatelessWidget {
@@ -17,7 +17,7 @@ class NotiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: MessagesScreen(),
+        body: NotificationsScreen(),
       );
   }
 }

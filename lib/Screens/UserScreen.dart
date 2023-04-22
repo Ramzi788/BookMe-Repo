@@ -1,11 +1,11 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
-
+import 'package:lottie/lottie.dart';
+import 'dart:io';
 //Login Part
 class UserScreen extends StatefulWidget {
   const UserScreen({super.key});
@@ -14,10 +14,23 @@ class UserScreen extends StatefulWidget {
   State<UserScreen> createState() => _UserScreenState();
 }
 
+
 class _UserScreenState extends State<UserScreen> {
   final _firstName = TextEditingController();
   final _lastName = TextEditingController();
   final _uController = TextEditingController();
+  bool isVisible = true;
+
+  Widget bottomPopUp(){
+  return Visibility(
+    visible: isVisible,
+    child: Container( 
+      color: Colors.black,
+      child: Lottie.network('https://assets9.lottiefiles.com/packages/lf20_2mm5zqab.json', repeat: false)
+    ),
+  );
+}
+
 
   @override
   Widget build(BuildContext Context) {
@@ -62,7 +75,7 @@ class _UserScreenState extends State<UserScreen> {
           Expanded(
               child: Container(
                   decoration: BoxDecoration(
-                      color: theme().primaryColor,
+                      color: Colors.black,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
@@ -175,7 +188,7 @@ class _UserScreenState extends State<UserScreen> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0)),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             if (_firstName.text == '' ||
                                 _lastName.text == '' ||
                                 _uController.text == '') {
@@ -183,11 +196,16 @@ class _UserScreenState extends State<UserScreen> {
                             }
                             //Check if username already exists
                             else {
+                              
+                              
+                              
+                              
                               setState(() {
                                 registeredfName = _firstName.text;
                                 registeredlName = _lastName.text;
                                 registeredUsername = _uController.text;
                               });
+                              
                               Navigator.pushNamed(context, '/register');
                             }
                           },

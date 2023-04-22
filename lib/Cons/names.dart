@@ -1,4 +1,3 @@
-// ignore_for_file: deprecated_member_use
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -29,6 +28,8 @@ late String registeredfName = '';
 late String registeredlName = '';
 late String finalPass = '';
 late String profileLabel = '';
+late String regTime = ' ';
+late String regTable = ' ';
 FirebaseAuth auth = FirebaseAuth.instance;
 void showAlertDialogLogin(BuildContext context) {
   Widget ok = TextButton(
@@ -252,7 +253,10 @@ void showRegisterAlert(BuildContext context){
             padding: const EdgeInsets.only(top:5, left: 30, right: 30),
             child: ElevatedButton(
               onPressed: (){
-                pressed = false;
+                FirebaseFirestore db = FirebaseFirestore.instance;
+                db.collection('Tables').doc(regTable).update(
+                    {regTime: true});
+                Navigator.pop(context);
               },
               child: const Text("Reserve Seat")
             ),
@@ -266,4 +270,66 @@ void showRegisterAlert(BuildContext context){
         return alert;
       });
     
+}
+void showReservedForm(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Error!",
+      style:
+      Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "The selected table is already reserved at the selected time. \n\nPlease choose another time or table",
+      style:
+      Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColor,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+}
+void showInvalidEmailForm(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Error!",
+      style:
+      Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "The inputted email is not formatted properly. \n\nPlease try again",
+      style:
+      Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColor,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
 }

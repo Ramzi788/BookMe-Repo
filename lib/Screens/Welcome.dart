@@ -5,6 +5,7 @@ import '../Layouts/Register_Page.dart';
 import '../Layouts/Login_Page.dart';
 import '../Cons/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -52,7 +53,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ]),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 15.0),
+          
+                    Lottie.network('https://assets5.lottiefiles.com/datafiles/6WfDdm3ooQTEs1L/data.json'),
+                    const SizedBox(height: 50),
                     Text(
                       "Sign in or Create an Account Now",
                       style: Theme.of(context)
@@ -61,7 +64,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ?.copyWith(color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 45.0),
+                    const SizedBox(height: 15.0),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: ElevatedButton(

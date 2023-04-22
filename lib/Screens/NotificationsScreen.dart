@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
 import '../Cons/names.dart';
 
-class MessagesScreen extends StatefulWidget {
-  const MessagesScreen({super.key});
+class NotificationsScreen extends StatefulWidget {
+  const NotificationsScreen({super.key});
 
   @override
-  State<MessagesScreen> createState() => _MessagesScreenState();
+  State<NotificationsScreen> createState() => _NotificationsScreenState();
 }
 
-class _MessagesScreenState extends State<MessagesScreen> {
+class _NotificationsScreenState extends State<NotificationsScreen> {
   int counter = 0;
   @override
   Widget build(BuildContext Context) {
@@ -26,12 +26,12 @@ class _MessagesScreenState extends State<MessagesScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 1, vertical: 10),
                 child: ListTile(
-                  leading: Icon(
-                    Icons.inbox,
+                  leading: const Icon(
+                    Icons.notifications_outlined,
                     color: Colors.white,
                     size: 30,
                   ),
-                  title: Text("Messages",
+                  title: Text("Notifications",
                       style: Theme.of(context)
                           .textTheme
                           .headline6

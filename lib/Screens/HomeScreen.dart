@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const Padding(
                 padding: const EdgeInsets.only(left: 20, top: 10),
                 child: Text(
-                  "Book Your Seat and Time",
+                  "Book Your Table and Time",
                   style: TextStyle(fontSize: 30, color: Colors.white),
                 ),
               ),

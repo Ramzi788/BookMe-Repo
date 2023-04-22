@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '/database.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
+import 'package:lottie/lottie.dart';
 
 //Login Part
 class RegScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _RegScreenState extends State<RegScreen> {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 0, 0, 0),
         body: ListView(scrollDirection: Axis.vertical, children: [
-          const SizedBox(height: 180),
+          
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Column(
@@ -59,12 +60,17 @@ class _RegScreenState extends State<RegScreen> {
               ],
             ),
           ),
+
+          Lottie.network(
+            'https://assets6.lottiefiles.com/packages/lf20_u8o7BL.json',
+            height: 260
+            ),
           //Upload Logo HERE
-          const SizedBox(height: 50),
+          
           Expanded(
               child: Container(
                   decoration: BoxDecoration(
-                      color: theme().primaryColor,
+                      color: Colors.black,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),

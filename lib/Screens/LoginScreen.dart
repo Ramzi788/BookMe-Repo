@@ -6,6 +6,8 @@ import '../Cons/themes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lottie/lottie.dart';
+
 
 //Login Part
 class LoginScreen extends StatefulWidget {
@@ -29,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
        body: ListView(
         scrollDirection: Axis.vertical,
         children: [
-          const SizedBox(height: 170), 
+          SizedBox(height:10),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Column(
@@ -39,17 +41,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 5,),
                 Text("Back", style: Theme.of(context).textTheme.headline1?.copyWith(color: theme().primaryColorDark)),
                 const SizedBox(height: 15,),
-                Text("Please sign in to continue", style: Theme.of(context).textTheme.headline4?.copyWith(color: theme().primaryColorDark), ),
+               
               ],
             ),
           ),
-          //Upload Logo HERE
-          const SizedBox(height: 100),
+          
+          Lottie.network(
+            'https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json',
+            height: 260
+            ),
+          
           Expanded(
             
             child: Container(
               decoration:  BoxDecoration(
-                color: theme().primaryColor, 
+                color: Colors.black, 
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50), )
               ),
               child: Column(

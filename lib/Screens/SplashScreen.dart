@@ -6,6 +6,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import '../Screens/Welcome.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
