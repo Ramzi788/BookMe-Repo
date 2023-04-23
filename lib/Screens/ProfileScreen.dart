@@ -24,13 +24,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext Context) {
     return Scaffold(
        extendBodyBehindAppBar: true,
-       backgroundColor: theme().primaryColorLight,
-       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+       backgroundColor: theme().primaryColor,
+       body: ListView(
+        scrollDirection: Axis.vertical,
         children: [
 
-          const SizedBox(height: 400),
+          const SizedBox(height: 300),
           Expanded(
             child: Container(
               decoration:  BoxDecoration(

@@ -8,6 +8,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import '../components/table.dart';
 import '../components/table2.dart';
+import '../components/InfoCard.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -33,74 +34,77 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: theme().primaryColor,
       body: Center(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: const EdgeInsets.only(left: 20, top: 10),
-                child: Text(
-                  "Book Your Table and Time",
-                  style: TextStyle(fontSize: 30, color: Colors.white),
+        child: SingleChildScrollView(
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                     child: Padding(
+                        padding: const EdgeInsets.only(left: 20, top: 10),
+                        child: InfoCard(),
+                      ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 1, left : 20, top: 20),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      
-                      alignment: Alignment.center,  
-                      
-                      child: IconButton(onPressed: (){
-                        setState(() {
-                          isVisible2 = true;
-                          isVisible3 = false;
-                          counter=1;
-                          tableWidget.isVisibile = isVisible2;
-                          tableWidget2.isVisible = isVisible3;
-                        });
-                      }, icon: Icon(Icons.arrow_back_ios, color: theme().primaryColorDark, size: 20)),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(right: 10),
-                      
-                      child: IconButton(onPressed: (){
-                        setState(() {
-                          isVisible2 = false;
-                          isVisible3 = true;
-                          counter =2;
-                          tableWidget.isVisibile = isVisible2;
-                          tableWidget2.isVisible = isVisible3;
-                        });
-                      }, icon: Icon(Icons.arrow_forward_ios, color: theme().primaryColorDark, size: 20,)),
-                    ),
-                    Text ("Page $counter", style: TextStyle(color: Colors.white),),
-                  ],
+        
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 1, left : 20, top: 20),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        
+                        alignment: Alignment.center,  
+                        
+                        child: IconButton(onPressed: (){
+                          setState(() {
+                            isVisible2 = true;
+                            isVisible3 = false;
+                            counter=1;
+                            tableWidget.isVisibile = isVisible2;
+                            tableWidget2.isVisible = isVisible3;
+                          });
+                        }, icon: Icon(Icons.arrow_back_ios, color: theme().primaryColorDark, size: 20)),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        
+                        child: IconButton(onPressed: (){
+                          setState(() {
+                            isVisible2 = false;
+                            isVisible3 = true;
+                            counter =2;
+                            tableWidget.isVisibile = isVisible2;
+                            tableWidget2.isVisible = isVisible3;
+                          });
+                        }, icon: Icon(Icons.arrow_forward_ios, color: theme().primaryColorDark, size: 20,)),
+                      ),
+                      Text ("Page $counter", style: TextStyle(color: Colors.white),),
+                    ],
+                  ),
                 ),
-              ),
-              
-              Flexible(child: (isVisible2 == true)? 
-              table(isVisibile: isVisible2,): Secondtable(isVisible: isVisible3)),
-
-              Padding(
-                padding: const EdgeInsets.only(left: 20, top: 2, bottom: 20),
-                child: Row(children: [
-                  Container(color: Colors.blue, height: 20, width: 20), 
-                  const SizedBox(width: 10,), 
-                  const Text("Available", style: TextStyle(color: Colors.white)), 
-                  const SizedBox(width: 30,), 
-                  Container(color: Colors.orange, height: 20, width: 20), 
-                  const SizedBox(width: 10,), 
-                  const Text("Your Booking", style: TextStyle(color: Colors.white)), 
-                  const SizedBox(width: 30,), 
-                  Container(color: Colors.red, height: 20, width: 20), 
-                  const SizedBox(width: 10,), 
-                  const Text("Unavailable", style: TextStyle(color: Colors.white)), 
-                ]),
-              ),
-            ],
-          ),
+                
+                Container(child: (isVisible2 == true)? 
+                table(isVisibile: isVisible2,): Secondtable(isVisible: isVisible3)),
+        
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Container(color: theme().primaryColorLight, height: 20, width: 20), 
+                    const SizedBox(width: 10,), 
+                    const Text("Available", style: TextStyle(color: Colors.white)), 
+                    const SizedBox(width: 30,), 
+                    
+                    Container(color: Colors.red, height: 20, width: 20), 
+                    const SizedBox(width: 10,), 
+                    const Text("Unavailable", style: TextStyle(color: Colors.white)), 
+                  ]),
+                ),
+              ],
+            ),
+        ),
        
       ),
       appBar: AppBar(

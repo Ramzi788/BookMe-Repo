@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 ThemeData theme() {
   return ThemeData(
-    primaryColor: Color.fromARGB(255, 22, 22, 31),
+    primaryColor: Colors.black,
     primaryColorDark: Color.fromARGB(255, 96, 165, 250),
-    primaryColorLight: Color.fromARGB(255, 23, 21, 39),
+    primaryColorLight: Color.fromARGB(255, 27, 31, 77),
     scaffoldBackgroundColor: Colors.white,
     backgroundColor: const Color(0xFFF5F5F5),
     textTheme: const TextTheme(

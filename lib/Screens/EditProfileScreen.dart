@@ -194,6 +194,30 @@ Future <void>  takePhoto(ImageSource source) async {
                   ),
                 
               )),
+              Padding(
+              padding: const EdgeInsets.only(left:25, top:20,),
+              child: Text("Major", style: TextStyle(fontSize: 15, color: Colors.white),),
+            ),
+              Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: SizedBox(
+                  height: 30,
+                  child: TextFormField(
+                    // initialValue: registeredUsername,
+                    
+                    textInputAction: TextInputAction.next,
+                    
+                    decoration: InputDecoration(
+                      enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200)),
+                      fillColor: theme().primaryColor,
+                      filled: true,
+                       //Makes text hover on Press
+                      
+                    ),
+                  ),
+                
+              )),
 
               Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 20, bottom: 5, right: 20),
@@ -252,30 +276,7 @@ Future <void>  takePhoto(ImageSource source) async {
                   ),
                 
               )),
-            //   Padding(
-            //   padding: const EdgeInsets.only(left:25, top:20),
-            //   child: Text("Password", style: TextStyle(fontSize: 15),),
-            // ),
-            //   Padding(
-            // padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
-            // child: SizedBox(
-            //       height: 30,
-            //       child: TextFormField(
-                    
-            //         controller: _pController,
-            //         textInputAction: TextInputAction.next,
-            //         keyboardType: TextInputType.emailAddress,
-            //         decoration: InputDecoration(
-            //           border: UnderlineInputBorder(),
-            //           focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200)),
-            //           fillColor: Colors.white,
-            //           filled: true,
-            //            //Makes text hover on Press
-                      
-            //         ),
-            //       ),
-                
-            //   )),
+              
 
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 50, top:40),

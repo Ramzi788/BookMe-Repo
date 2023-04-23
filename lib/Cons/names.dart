@@ -276,6 +276,7 @@ void showRegisterAlert(BuildContext context){
             padding: const EdgeInsets.only(top:5, left: 30, right: 30),
             child: ElevatedButton(
               onPressed: (){
+                
                 FirebaseFirestore db = FirebaseFirestore.instance;
                 db.collection('Tables').doc(regTable).update(
                     {regTime: true});

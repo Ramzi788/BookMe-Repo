@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import '/Cons/themes.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import '../Screens/GetStartedScreen.dart';
 import '../Screens/Welcome.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
       backgroundColor: Colors.black,
-      nextScreen: const WelcomeScreen(),
+      nextScreen: StartScreen(),
       splashIconSize: 550,
       splashTransition: SplashTransition.fadeTransition,
       duration: 4000,
