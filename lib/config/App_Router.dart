@@ -15,6 +15,8 @@ import '../Layouts/EditProfile_Page.dart';
 import '../Layouts/AboutUsPage.dart';
 import '../Layouts/GetStartedPage.dart';
 import '../Layouts/ToDoListPage.dart';
+import '../Layouts/TermsPage.dart';
+
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -50,7 +52,8 @@ class AppRouter {
         return ToDoListPage.route();
       case GetStartedPage.routeName:
         return GetStartedPage.route();
-
+      case TermsPage.routeName:
+        return TermsPage.route();
       default:
         return _errorRoute();
     }

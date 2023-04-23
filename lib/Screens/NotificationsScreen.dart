@@ -6,6 +6,7 @@ import '../Cons/names.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
+  
 
   @override
   State<NotificationsScreen> createState() => _NotificationsScreenState();
@@ -15,6 +16,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   int counter = 0;
   @override
   Widget build(BuildContext Context) {
+   
     return Scaffold(
       backgroundColor: theme().primaryColor,
       body: Container(
@@ -41,98 +43,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               thickness: 3,
               color: Colors.grey.shade100,
             ),
-            // Padding(
-            //     padding:
-            //         const EdgeInsets.symmetric(horizontal: 1, vertical: 10),
-            //     child: Container(
-            //       height: 70,
-            //       width: double.infinity,
-            //       padding: const EdgeInsets.only(
-            //           top: 20, bottom: 1, left: 40, right: 25),
-            //       decoration: BoxDecoration(
-            //         color: theme().primaryColorDark,
-            //         borderRadius: BorderRadius.circular(10.0),
-            //       ),
-            //       child: Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         children: [
-            //           Text(
-            //             "Reserve",
-            //             style: Theme.of(context).textTheme.headline2?.copyWith(
-            //                 color: Colors.white, fontWeight: FontWeight.bold),
-            //           ),
-            //         ],
-            //       ),
-            //     )),
-            // Padding(
-            //     padding:
-            //         const EdgeInsets.symmetric(horizontal: 1, vertical: 10),
-            //     child: Container(
-            //       height: 70,
-            //       width: double.infinity,
-            //       padding: const EdgeInsets.only(
-            //           top: 20, bottom: 1, left: 40, right: 25),
-            //       decoration: BoxDecoration(
-            //         color: theme().primaryColorDark,
-            //         borderRadius: BorderRadius.circular(10.0),
-            //       ),
-            //       child: Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         children: [
-            //           Text(
-            //             "Reserve",
-            //             style: Theme.of(context).textTheme.headline2?.copyWith(
-            //                 color: Colors.white, fontWeight: FontWeight.bold),
-            //           ),
-            //         ],
-            //       ),
-            //     )),
-            // Padding(
-            //     padding:
-            //         const EdgeInsets.symmetric(horizontal: 1, vertical: 10),
-            //     child: Container(
-            //       height: 70,
-            //       width: double.infinity,
-            //       padding: const EdgeInsets.only(
-            //           top: 20, bottom: 1, left: 40, right: 25),
-            //       decoration: BoxDecoration(
-            //         color: theme().primaryColorDark,
-            //         borderRadius: BorderRadius.circular(10.0),
-            //       ),
-            //       child: Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         children: [
-            //           Text(
-            //             "Reserve",
-            //             style: Theme.of(context).textTheme.headline2?.copyWith(
-            //                 color: Colors.white, fontWeight: FontWeight.bold),
-            //           ),
-            //         ],
-            //       ),
-            //     )),
-            // Padding(
-            //     padding:
-            //         const EdgeInsets.symmetric(horizontal: 1, vertical: 10),
-            //     child: Container(
-            //       height: 70,
-            //       width: double.infinity,
-            //       padding: const EdgeInsets.only(
-            //           top: 20, bottom: 1, left: 40, right: 25),
-            //       decoration: BoxDecoration(
-            //         color: theme().primaryColorDark,
-            //         borderRadius: BorderRadius.circular(10.0),
-            //       ),
-            //       child: Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         children: [
-            //           Text(
-            //             "Reserve",
-            //             style: Theme.of(context).textTheme.headline2?.copyWith(
-            //                 color: Colors.white, fontWeight: FontWeight.bold),
-            //           ),
-            //         ],
-            //       ),
-            //     )),
+            ElevatedButton(onPressed: (){}, child: Text("hI"))
+            
           ],
         ),
       ),

@@ -45,7 +45,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Expanded(
                           child: ListTile(
-                              leading: CircleAvatar(child: Icon(Icons.person_2_outlined, color: Colors.white,),backgroundColor: theme().primaryColorDark,),
+                              leading:  CircleAvatar(
+                                  backgroundColor: theme().primaryColorDark,
+                                  backgroundImage: defaultImage.image,
+                                ),
+                              
                               title: Text(
                               registeredUsername,
                               style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),),

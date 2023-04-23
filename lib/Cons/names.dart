@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import '../Cons/themes.dart';
 import '../Screens/HomeScreen.dart';
 import 'package:lottie/lottie.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 bool pressed = false;
 
@@ -32,6 +34,15 @@ late String finalPass = '';
 late String profileLabel = '';
 late String regTime = ' ';
 late String regTable = ' ';
+
+PickedFile? _imageFile;
+
+DecorationImage defaultImage = DecorationImage(
+                          image: AssetImage('assets/images/moodle.png'),
+                          fit: BoxFit.cover,
+                          );
+
+
 FirebaseAuth auth = FirebaseAuth.instance;
 void showAlertDialogLogin(BuildContext context) {
   Widget ok = TextButton(
@@ -356,4 +367,52 @@ void showInvalidEmailForm(BuildContext context) {
       builder: (BuildContext context) {
         return alert;
       });
+}
+
+
+class CreateTask extends StatelessWidget {
+  final taskController; 
+   VoidCallback onSave;
+  VoidCallback onCancel;
+   CreateTask({
+    super.key, required this.taskController,
+    required this.onSave,
+    required this.onCancel,
+    });
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      content: Container(
+      height: 120,
+      color: Color.fromARGB(255, 36, 35, 35),
+      child: Column(
+        children: [
+          TextField(
+            controller: taskController,
+            style: TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(borderSide: BorderSide.none),
+              hintText: "Add new task", 
+              hintStyle: TextStyle(color:Colors.white)
+            ),
+          ), 
+          const SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+            
+            ElevatedButton(onPressed: onSave, child: Text("Confirm"),style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight, ),), 
+            const SizedBox(width: 10,),
+            ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), 
+          ],)
+        ],
+      ),
+    ),
+    backgroundColor:Color.fromARGB(255, 36, 35, 35),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+    );
+  }
 }

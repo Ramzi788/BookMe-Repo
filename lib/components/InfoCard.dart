@@ -13,7 +13,7 @@ class InfoCard extends StatelessWidget {
           padding: const EdgeInsets.only(left: 15),
           child: GestureDetector(
             onTap: (){
-              
+              Navigator.pushNamed(context, '/todo');
             },
             child: Container(
                 height: 100, 

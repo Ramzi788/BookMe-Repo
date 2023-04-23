@@ -14,21 +14,14 @@ Widget profileView(BuildContext context) => Container(
         child: Column(
           children: [
             const SizedBox(height: 20),
-            CircleAvatar(
-              radius: 45,
-              backgroundColor: theme().primaryColorDark,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.person),
-                    color: Colors.white,
-                    iconSize: 50,
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/profile');
-                    },
-                  )
-                ],
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, '/profile');
+              },
+              child: CircleAvatar(
+                radius: 45,
+                backgroundColor: theme().primaryColorDark,
+                backgroundImage: defaultImage.image,
               ),
             ),
             const SizedBox(height: 25),

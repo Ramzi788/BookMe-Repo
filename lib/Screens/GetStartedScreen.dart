@@ -26,9 +26,10 @@ Widget build(BuildContext context) {
   final _controller = PageController();
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: ListView(
+        
         children: [
+          SizedBox(height:30),
           // page view
           SizedBox(
             height: 500,
@@ -42,21 +43,34 @@ Widget build(BuildContext context) {
               ],
             ),
           ),
-
+          const SizedBox(height: 150,),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: ElevatedButton(onPressed: (){
+                  Navigator.pushNamed(context, '/');
+                }, child: Padding(
+                  padding: const EdgeInsets.only(left: 80, right: 80, top: 10, bottom: 10),
+                  child: Text("Get Started"),
+                )),
+          ),
+          const SizedBox(height: 50,),
           // dot indicators
-          SmoothPageIndicator(
-            controller: _controller,
-            count: 3,
-            effect: JumpingDotEffect(
-              activeDotColor: theme().primaryColorDark,
-              dotColor: Colors.blue.shade800,
-              dotHeight: 15,
-              dotWidth: 15,
-              spacing: 16,
-              //verticalOffset: 50,
-              jumpScale: 3,
+          Center(
+            child: SmoothPageIndicator(
+              controller: _controller,
+              count: 3,
+              effect: JumpingDotEffect(
+                activeDotColor: theme().primaryColorDark,
+                dotColor: Colors.blue.shade800,
+                dotHeight: 15,
+                dotWidth: 15,
+                spacing: 16,
+                //verticalOffset: 50,
+                jumpScale: 3,
+              ),
             ),
           ),
+
         ],
       ),
     );

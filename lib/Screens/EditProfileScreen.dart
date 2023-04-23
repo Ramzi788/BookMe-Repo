@@ -19,6 +19,7 @@ class EditProfileScreen extends StatefulWidget {
 class _EditProfileScreenState extends State<EditProfileScreen> {
   PickedFile? _imageFile;
   ImagePicker picker = ImagePicker();
+  DecorationImage? setImage; 
   TextEditingController _eController = TextEditingController();
   TextEditingController _pController = TextEditingController();
   final _firstName = TextEditingController();
@@ -60,6 +61,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   );
 }
 
+
 Future <void>  takePhoto(ImageSource source) async {
   final picked = await picker.getImage(source: source, imageQuality: 100);
   
@@ -86,19 +88,19 @@ Future <void>  takePhoto(ImageSource source) async {
               child: Stack(
                 children: [
                   Container(
-                    width: 150,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 4, color: theme().primaryColor),
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        fit: BoxFit.cover, 
-                        image:  NetworkImage('https://cdn.pixabay.com/photo/2022/11/22/22/06/bird-7610726_960_720.jpg')
-                        
-                      )
-                    ),
-                    
+                  width: 150,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 4, color: theme().primaryColor),
+                    shape: BoxShape.circle,
+                    image: _imageFile == null
+                        ? defaultImage
+                        : DecorationImage(
+                            image: FileImage(File(_imageFile!.path)),
+                            fit: BoxFit.cover,
+                          ),
                   ),
+                ),
                   Positioned(
                     bottom: 2,
                     right: 10,

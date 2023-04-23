@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projects/Layouts/Home_Page.dart';
 import 'Layouts/Splash_Page.dart';
 import '/Cons/themes.dart';
 import 'Config/App_Router.dart';
@@ -19,7 +20,7 @@ class BookMe extends StatelessWidget {
     return MaterialApp(
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: SplashPage.routeName,
+        initialRoute: HomePage.routeName,
     );
   }
 }
