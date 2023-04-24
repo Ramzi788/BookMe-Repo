@@ -239,9 +239,7 @@ class _RegScreenState extends State<RegScreen> {
                                 registeredEmail = _eController.text;
                               });
                               registerUser();
-                              
-                      
-                                Navigator.pushNamed(context, '/login');
+                              Navigator.pushNamed(context, '/login');
                               
                             }
                           },
@@ -305,19 +303,14 @@ class _RegScreenState extends State<RegScreen> {
   }
 
   Future registerUser() async {
-    auth.createUserWithEmailAndPassword(
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _eController.text, password: _pController.text)
         .then((value) {})
         .onError((error, stackTrace) {
       showAlertDialogReg(context);
     });
-    User? user = auth.currentUser;
-    await DatabaseService(uid: user!.uid).updateUserData(
-        registeredEmail,
-        _pController.text,
-        registeredfName,
-        registeredlName,
-        registeredUsername,
-        profileLabel);
+    User? user = FirebaseAuth.instance.currentUser;
+    DatabaseService(uid: user!.uid).updateUserData(registeredEmail, finalPass,
+    registeredfName, registeredlName, registeredUsername, profileLabel);
   }
 }

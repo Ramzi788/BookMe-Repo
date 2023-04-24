@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lottie/lottie.dart';
 
 
-
 //Login Part
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -159,29 +158,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 
                 onPressed: ()
                 {
-                  Future<void> fetchData() async{
-                    final user = auth.currentUser;
-                    if(user != null) {
-                      await FirebaseFirestore.instance.collection('Users').doc(user.uid)
-                          .get()
-                          .then((ds) {
-                        registeredUsername = ds['username'];
-                        registeredfName = ds['fname'];
-                        registeredlName = ds['lname'];
-                        registeredEmail = ds['Email'];
-                        profileLabel = ds['ProfileLabel'];
-                      });
-                    }
-                  }
-                  Future<void> wait() async{
-                    await fetchData();
-                  }
                   setState(() {
-                    wait();
                     finalPass = _pController.text;
                   });
-                  auth.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
-                      .then((value) { wait();showCheck(context);
+                  FirebaseAuth.instance.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
+                      .then((value) {showCheck(context);
                               Future.delayed(Duration(seconds: 2), (){
                                 Navigator.pushNamed(context, '/homepage');
                               });}).onError((error, stackTrace){if (_eController.text == '' || _pController.text == ''){showAlertDialogUserEmpty(context);} else showAlertDialogReg(context);});
@@ -228,4 +209,3 @@ class _LoginScreenState extends State<LoginScreen> {
 
 }
 }
-

@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously, sort_child_properties_last, deprecated_member_use
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projects/database.dart';
 import '../Cons/themes.dart';
@@ -60,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             IconButton(onPressed: (){Navigator.pushNamed(context, '/settings');}, icon: const Icon(Ionicons.settings_outline), color: Colors.white,),
                             const SizedBox(width: 10,),
-                            IconButton(onPressed: (){Navigator.pushNamed(context, '/');}, icon: const Icon(Ionicons.log_out_outline), color: Colors.white,),
+                            IconButton(onPressed: () async { await FirebaseAuth.instance.signOut(); Navigator.pushNamed(context, '/start');}, icon: const Icon(Ionicons.log_out_outline), color: Colors.white,),
                           ],
                         )
 

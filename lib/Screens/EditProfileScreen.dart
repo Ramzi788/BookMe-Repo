@@ -290,10 +290,10 @@ Future <void>  takePhoto(ImageSource source) async {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
                 ),
                 
-                onPressed: ()
+                 onPressed: ()
                 {
                   Future<void> fetchData() async{
-                    final user = auth.currentUser;
+                    final user = FirebaseAuth.instance.currentUser;
                     if(user != null) {
                       await FirebaseFirestore.instance.collection('Users').doc(user.uid)
                           .get()
@@ -313,7 +313,7 @@ Future <void>  takePhoto(ImageSource source) async {
                     wait();
                     finalPass = _pController.text;
                   });
-                  auth.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
+                  FirebaseAuth.instance.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
                       .then((value) { wait();Navigator.pop(context);}).onError((error, stackTrace){
                         if (_eController.text == '' || _pController.text == '' ||
                          _uController.text == '' || _firstName.text == '' || _lastName.text == '') {

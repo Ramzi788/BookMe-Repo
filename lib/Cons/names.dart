@@ -4,14 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
-import '../Cons/themes.dart';
-import '../Screens/HomeScreen.dart';
-import 'package:lottie/lottie.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
+import '../Cons/themes.dart';
+import 'package:lottie/lottie.dart';
 
 bool pressed = false;
-
 const String email = "Enter your email*";
 const String username = "Enter your username*";
 const String password = "Enter password*";
@@ -35,15 +32,47 @@ late String profileLabel = '';
 late String regTime = ' ';
 late String regTable = ' ';
 
-PickedFile? _imageFile;
+PickedFile? _imageFile; DecorationImage defaultImage = DecorationImage( image: AssetImage('assets/images/moodle.png'), fit: BoxFit.cover, ); class CreateTask extends StatelessWidget { final taskController; VoidCallback onSave; VoidCallback onCancel; CreateTask({ super.key, required this.taskController, required this.onSave, required this.onCancel, }); @override Widget build(BuildContext context) { return AlertDialog( content: Container( height: 120, color: Color.fromARGB(255, 36, 35, 35), child: Column( children: [ TextField( controller: taskController, style: TextStyle(color: Colors.white), decoration: InputDecoration( border: OutlineInputBorder(borderSide: BorderSide.none), hintText: "Add new task", hintStyle: TextStyle(color:Colors.white) ), ), const SizedBox(height: 10,), Row( mainAxisAlignment: MainAxisAlignment.end, children: [ ElevatedButton(onPressed: onSave, child: Text("Confirm"),style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight, ),), const SizedBox(width: 10,), ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), ],) ], ), ), backgroundColor:Color.fromARGB(255, 36, 35, 35), shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20), ), ); } }
 
-DecorationImage defaultImage = DecorationImage(
-                          image: AssetImage('assets/images/moodle.png'),
-                          fit: BoxFit.cover,
-                          );
-
-
-FirebaseAuth auth = FirebaseAuth.instance;
+List<bool> registered = List.filled(260, false);
+List<Color> colors = List.filled(260, theme().primaryColorLight);
+Map<String, int> tableMap = {
+  'Table1': 0,
+  'Table2': 13,
+  'Table3': 26,
+  'Table4': 39,
+  'Table5': 52,
+  'Table6': 65,
+  'Table7': 78,
+  'Table8': 91,
+  'Table9': 104,
+  'Table10': 117,
+  'Table11': 130,
+  'Table12': 143,
+  'Table13': 156,
+  'Table14': 169,
+  'Table15': 182,
+  'Table16': 195,
+  'Table17': 208,
+  'Table18': 221,
+  'Table19': 234,
+  'Table20': 247
+};
+Map<String, int> timeMap = {
+  '8:00': 0,
+  '9:00': 1,
+  '10:00': 2,
+  '11:00': 3,
+  '12:00': 4,
+  '13:00': 5,
+  '14:00': 6,
+  '15:00': 7,
+  '16:00': 8,
+  '17:00': 9,
+  '18:00': 10,
+  '19:00': 11,
+  '20:00': 12
+};
 void showAlertDialogLogin(BuildContext context) {
   Widget ok = TextButton(
       onPressed: () {
@@ -224,6 +253,7 @@ void showPassDontMatch(BuildContext context) {
         return alert;
       });
 }
+
 void showAlertDialogForg(BuildContext context) {
   Widget ok = TextButton(
       onPressed: () {
@@ -256,56 +286,6 @@ void showAlertDialogForg(BuildContext context) {
       });
 }
 
-
-List<String> list = ["1 hour", "2 hours"];
-String _selected = list[0];
-void showRegisterAlert(BuildContext context){
-  Widget alert = 
-  SimpleDialog(
-    backgroundColor: theme().primaryColor,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
-    ),
-    children: [
-          ListTile(
-            title: const Text("Duration", style: TextStyle(color: Colors.white),), 
-            trailing: DropdownButton(
-              dropdownColor: theme().primaryColor,
-              style: TextStyle(color: Colors.white),
-              value: _selected,
-              onChanged: (val) {
-                setState(){
-                  _selected = val as String;
-                }
-              },
-
-              items: list.map((e) => DropdownMenuItem(child: Text(e), value: e, )).toList(),
-            )
-
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top:5, left: 30, right: 30),
-            child: ElevatedButton(
-              onPressed: (){
-                
-                FirebaseFirestore db = FirebaseFirestore.instance;
-                db.collection('Tables').doc(regTable).update(
-                    {regTime: true});
-                Navigator.pop(context);
-              },
-              child: const Text("Reserve Seat")
-            ),
-          )
-        
-    ],
-  );
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      });
-    
-}
 void showReservedForm(BuildContext context) {
   Widget ok = TextButton(
       onPressed: () {
@@ -337,6 +317,7 @@ void showReservedForm(BuildContext context) {
         return alert;
       });
 }
+
 void showInvalidEmailForm(BuildContext context) {
   Widget ok = TextButton(
       onPressed: () {
@@ -368,51 +349,37 @@ void showInvalidEmailForm(BuildContext context) {
         return alert;
       });
 }
-
-
-class CreateTask extends StatelessWidget {
-  final taskController; 
-   VoidCallback onSave;
-  VoidCallback onCancel;
-   CreateTask({
-    super.key, required this.taskController,
-    required this.onSave,
-    required this.onCancel,
+Future<void> GetDocsInfo() async {
+  final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance.collection('Tables').get();
+  for(final DocumentSnapshot doc in snapshot.docs){
+    String regTable = doc.id;
+    int index = tableMap[regTable]!;
+    registered[index + 0] =  doc['8:00'];
+    registered[index + 1]=  doc['9:00'];
+    registered[index + 2] =  doc['10:00'];
+    registered[index + 3] =  doc['11:00'];
+    registered[index + 4] = doc['12:00'];
+    registered[index + 5] = doc['13:00'];
+    registered[index + 6] = doc['14:00'];
+    registered[index + 7] = doc['15:00'];
+    registered[index + 8] = doc['16:00'];
+    registered[index + 9] = doc['17:00'];
+    registered[index + 10] = doc['18:00'];
+    registered[index + 11] = doc['19:00'];
+    registered[index + 12] = doc['20:00'];
+  }
+}
+void fetchUserData() async{
+  final user = FirebaseAuth.instance.currentUser;
+  if(user != null) {
+    await FirebaseFirestore.instance.collection('Users').doc(user.uid)
+        .get()
+        .then((ds) {
+      registeredUsername = ds['username'];
+      registeredfName = ds['fname'];
+      registeredlName = ds['lname'];
+      registeredEmail = ds['Email'];
+      profileLabel = ds['ProfileLabel'];
     });
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      content: Container(
-      height: 120,
-      color: Color.fromARGB(255, 36, 35, 35),
-      child: Column(
-        children: [
-          TextField(
-            controller: taskController,
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              hintText: "Add new task", 
-              hintStyle: TextStyle(color:Colors.white)
-            ),
-          ), 
-          const SizedBox(height: 10,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-            
-            ElevatedButton(onPressed: onSave, child: Text("Confirm"),style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight, ),), 
-            const SizedBox(width: 10,),
-            ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), 
-          ],)
-        ],
-      ),
-    ),
-    backgroundColor:Color.fromARGB(255, 36, 35, 35),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
-    ),
-    );
   }
 }
