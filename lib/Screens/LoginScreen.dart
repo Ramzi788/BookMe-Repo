@@ -159,6 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: ()
                 async {
                   setState((){
+                    registeredEmail = _eController.text;
                     finalPass = _pController.text;
                   });
                   await auth.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
