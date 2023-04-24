@@ -24,6 +24,15 @@ _launchURL2() async {
   }
 }
 
+_launchURL3() async {
+  const url = 'https://resis.org/#';
+  if (await launch(url)) {
+    await canLaunch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
 Widget menuList(BuildContext context) => Container(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -84,6 +93,19 @@ Widget menuList(BuildContext context) => Container(
                     style: TextStyle(color: Colors.white, fontSize: 15)),
                 onTap: (){
                   _launchURL2();
+                }
+                  
+              ),
+              ListTile(
+                leading:
+                    Padding(
+                      padding: const EdgeInsets.only(left: 9),
+                      child: CircleAvatar(radius: 12, backgroundColor: Colors.red),
+                    ),
+                title: const Text("Resis",
+                    style: TextStyle(color: Colors.white, fontSize: 15)),
+                onTap: (){
+                  _launchURL3();
                 }
                   
               ),
