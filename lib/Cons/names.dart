@@ -417,6 +417,7 @@ void notify() async {
         channelKey: 'channelKey',
         title: 'Seat Reservation',
         body: '10 minutes remaining',
+        wakeUpScreen: true
       ),
       schedule: NotificationInterval(
           interval: 3000, timeZone: timezom, repeats: false));
