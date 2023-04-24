@@ -26,25 +26,25 @@ class _PageThreeState extends State<PageThree> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Container(
-            height: 1000,
-            color: Colors.black,
-            child: Center(
-              child: Column(
-              
-                children: [
-                  Lottie.network(
-              'https://assets2.lottiefiles.com/packages/lf20_jjub6wfu.json',
-              height: 320
-              ),
-              
-              Text("Set Reminders for yourself", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontWeight:FontWeight.bold, fontSize: 30 ),),
-              
-              
-                ]
-              ),
-            )
+              height: 1000,
+              color: Colors.black,
+              child: Center(
+                child: Column(
+
+                    children: [
+                      Lottie.network(
+                          'https://assets2.lottiefiles.com/packages/lf20_jjub6wfu.json',
+                          height: 330
+                      ),
+
+                      Text("Set Reminders for yourself", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontWeight:FontWeight.bold, fontSize: 30 ),),
+
+
+                    ]
+                ),
+              )
           ),
         ),
       ),
     );
-}}
+  }}

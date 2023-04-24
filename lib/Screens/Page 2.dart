@@ -10,7 +10,7 @@ import 'package:projects/database.dart';
 import 'package:lottie/lottie.dart';
 
 class PageTwo extends StatefulWidget {
-   const PageTwo({super.key});
+  const PageTwo({super.key});
 
   @override
   State<PageTwo> createState() => _PageTwoState();
@@ -26,25 +26,25 @@ class _PageTwoState extends State<PageTwo> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Container(
-            height:1000,
-            color: Colors.black,
-            child: Center(
-              child: Column(
-              
-                children: [
-                  Lottie.network(
-              'https://assets10.lottiefiles.com/packages/lf20_SuD7G5.json',
-              height: 330, 
-              
-              ),
-              
-              Text("Create your own \nTo-Do List for the day", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontWeight:FontWeight.bold, fontSize: 30 ),),
-              
-                ]
-              ),
-            )
+              height:1000,
+              color: Colors.black,
+              child: Center(
+                child: Column(
+
+                    children: [
+                      Lottie.network(
+                        'https://assets10.lottiefiles.com/packages/lf20_SuD7G5.json',
+                        height: 330,
+
+                      ),
+
+                      Text("Create your own \nTo-Do List for the day", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontWeight:FontWeight.bold, fontSize: 30 ),),
+
+                    ]
+                ),
+              )
           ),
         ),
       ),
     );
-}}
+  }}

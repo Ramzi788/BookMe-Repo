@@ -22,12 +22,13 @@ class StartScreen extends StatefulWidget {
 class _StartScreenState extends State<StartScreen> {
   final _controller = PageController();
 
-Widget build(BuildContext context) {
-  final _controller = PageController();
+
+  Widget build(BuildContext context) {
+    final _controller = PageController();
     return Scaffold(
       backgroundColor: Colors.black,
       body: ListView(
-        
+
         children: [
           SizedBox(height:30),
           // page view
@@ -39,19 +40,28 @@ Widget build(BuildContext context) {
                 PageOne(),
                 PageTwo(),
                 PageThree(),
-                
+
               ],
             ),
           ),
           const SizedBox(height: 150,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
-            child: ElevatedButton(onPressed: (){
-                  Navigator.pushNamed(context, '/');
-                }, child: Padding(
-                  padding: const EdgeInsets.only(left: 80, right: 80, top: 10, bottom: 10),
+            child: ElevatedButton(
+              onPressed: (){
+
+                Navigator.pushNamed(context, '/');
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 80, right: 80, top: 10, bottom: 10),
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
                   child: Text("Get Started"),
-                )),
+                ),
+              ),
+              style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),
+
+            ),
           ),
           const SizedBox(height: 50,),
           // dot indicators
