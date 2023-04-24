@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
@@ -11,6 +14,29 @@ class table extends StatefulWidget {
 }
 
 class _tableState extends State<table> {
+  int timeLeft = 3600; 
+  void notify() async {
+    String timezom = await AwesomeNotifications().getLocalTimeZoneIdentifier();
+    await AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: 1,
+          channelKey: 'channelKey',
+          title: 'Seat Reservation',
+          body: '10 minutes remaining',
+        ),
+        schedule: NotificationInterval(
+            interval: 5, timeZone: timezom, repeats: false));
+  }
+  void beginCountDown(){
+    Timer.periodic(Duration(seconds:1), (timer){
+      setState(() {
+        timeLeft-= 1;
+      });
+      
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     List<String> list = ["1 hour", "2 hours"];
@@ -50,13 +76,16 @@ class _tableState extends State<table> {
             padding: const EdgeInsets.only(top:5, left: 30, right: 30),
             child: ElevatedButton(
                 onPressed: (){
+
                   FirebaseFirestore db = FirebaseFirestore.instance;
                   db.collection('Tables').doc(regTable).update(
                       {regTime: true});
                   setState((){
                     update();
                     changeColor();
+                    beginCountDown();
                   });
+                  notify();
                   Navigator.pop(context);
                 },
                 child: const Text("Reserve Seat")

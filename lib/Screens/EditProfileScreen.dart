@@ -157,8 +157,7 @@ Future <void>  takePhoto(ImageSource source) async {
               child: SizedBox(
                   height: 30,
                   child: TextFormField(
-                    // initialValue: registeredfName,
-                    controller: _firstName,
+                    controller: TextEditingController(text: registeredfName,),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -166,9 +165,9 @@ Future <void>  takePhoto(ImageSource source) async {
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78), )),
                       fillColor: theme().primaryColor,
                       filled: true,
-                       //Makes text hover on Press
-                      
+                      contentPadding: EdgeInsets.only(bottom: 5, left: 2)
                     ),
+                    style: TextStyle(color:Colors.grey.shade300, fontSize: 13),
                   ),
                 
               )),
@@ -181,8 +180,7 @@ Future <void>  takePhoto(ImageSource source) async {
               child: SizedBox(
                   height: 30,
                   child: TextFormField(
-                    // initialValue: registeredlName,
-                    controller: _lastName,
+                    controller: TextEditingController(text: registeredlName,),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -190,9 +188,9 @@ Future <void>  takePhoto(ImageSource source) async {
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       fillColor: theme().primaryColor,
                       filled: true,
-                       //Makes text hover on Press
-                      
+                      contentPadding: EdgeInsets.only(bottom: 5, left: 2)
                     ),
+                    style: TextStyle(color:Colors.grey.shade300, fontSize: 13),
                   ),
                 
               )),
@@ -205,18 +203,17 @@ Future <void>  takePhoto(ImageSource source) async {
               child: SizedBox(
                   height: 30,
                   child: TextFormField(
-                    // initialValue: registeredUsername,
-                    
+                    controller: TextEditingController(text: registeredfName,),
                     textInputAction: TextInputAction.next,
-                    
                     decoration: InputDecoration(
                       enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       fillColor: theme().primaryColor,
                       filled: true,
-                       //Makes text hover on Press
+                      contentPadding: EdgeInsets.only(bottom: 5, left: 2)
                       
                     ),
+                   style: TextStyle(color:Colors.grey.shade300, fontSize: 13),
                   ),
                 
               )),
@@ -239,8 +236,7 @@ Future <void>  takePhoto(ImageSource source) async {
               child: SizedBox(
                   height: 30,
                   child: TextFormField(
-                    // initialValue: registeredEmail,
-                    controller: _eController,
+                    controller: TextEditingController(text: registeredEmail,),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -248,9 +244,10 @@ Future <void>  takePhoto(ImageSource source) async {
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       fillColor: theme().primaryColor,
                       filled: true,
-                       //Makes text hover on Press
+                      contentPadding: EdgeInsets.only(bottom: 5, left: 2)
                       
                     ),
+                    style: TextStyle(color:Colors.grey.shade300, fontSize: 13),
                   ),
                 
               )),
@@ -263,18 +260,19 @@ Future <void>  takePhoto(ImageSource source) async {
               child: SizedBox(
                   height: 30,
                   child: TextFormField(
-                    // initialValue: registeredUsername,
-                    controller: _uController,
+                    
+                    controller: TextEditingController(text: registeredUsername,),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
+                    
                     decoration: InputDecoration(
                       enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       fillColor: theme().primaryColor,
                       filled: true,
-                       //Makes text hover on Press
-                      
+                      contentPadding: EdgeInsets.only(bottom: 5, left: 2)
                     ),
+                  style: TextStyle(color:Colors.grey.shade300, fontSize: 13),
                   ),
                 
               )),
@@ -313,11 +311,7 @@ Future <void>  takePhoto(ImageSource source) async {
                     wait();
                     finalPass = _pController.text;
                   });
-                  FirebaseAuth.instance.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
-                      .then((value) { wait();Navigator.pop(context);}).onError((error, stackTrace){
-                        if (_eController.text == '' || _pController.text == '' ||
-                         _uController.text == '' || _firstName.text == '' || _lastName.text == '') {
-                          showAlertDialogUserEmpty(context);} else showAlertDialogReg(context);});
+                 Navigator.pop(context);
                 },
                 child: const Text("Confirm Changes", style: TextStyle(color: Colors.white),)
               ),
