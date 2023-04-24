@@ -112,11 +112,11 @@ class _ForgPassScreenState extends State<ForgPassScreen> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0)),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             setState(() {
                               registeredUsername = _eController.text.trim();
                             });
-                            FirebaseAuth.instance.sendPasswordResetEmail(
+                            await auth.sendPasswordResetEmail(
                                 email: registeredUsername).then((value) {
                               Navigator.pushNamed(context, '/login');}).onError((error, stackTrace){
                               if (_eController.text ==''){

@@ -236,6 +236,7 @@ Future <void>  takePhoto(ImageSource source) async {
               child: SizedBox(
                   height: 30,
                   child: TextFormField(
+                    enabled: false,
                     controller: TextEditingController(text: registeredEmail,),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,

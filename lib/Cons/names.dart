@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -57,8 +58,34 @@ class CreateTask extends StatelessWidget {
               const SizedBox(width: 10,), 
               ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), ],) ], ), ), 
               backgroundColor:Colors.white, 
-              shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20), ), ); } }
+              shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20), ), ); }
+              
+              }
 
+
+
+class CreateReminder extends StatelessWidget { 
+  final reminderController; VoidCallback onSave; 
+  VoidCallback onCancel; 
+  CreateReminder({ super.key, required this.reminderController, required this.onSave, required this.onCancel, }); @override 
+  Widget build(BuildContext context) { 
+    return AlertDialog( 
+      content: 
+      Container( height: 120, color: Colors.white, 
+        child: Column( children: 
+      [ 
+        TextField( controller: reminderController, style: TextStyle(color: Colors.black), 
+        decoration: InputDecoration( border: OutlineInputBorder(borderSide: BorderSide.none), 
+        hintText: "Add new Reminder", 
+        hintStyle: TextStyle(color:Colors.black) ), ), 
+        const SizedBox(height: 10,), 
+        Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
+            children: [
+              ElevatedButton(onPressed: onSave, child: Text("Confirm"),style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight, ),), 
+              const SizedBox(width: 10,), 
+              ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), ],) ], ), ), 
+              backgroundColor:Colors.white, 
+              shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20), ), ); } }
 List<bool> registered = List.filled(260, false);
 List<Color> colors = List.filled(260, theme().primaryColorLight);
 Map<String, int> tableMap = {
@@ -407,4 +434,17 @@ void fetchUserData() async{
       profileLabel = ds['ProfileLabel'];
     });
   }
+}
+
+void notify() async {
+  String timezom = await AwesomeNotifications().getLocalTimeZoneIdentifier();
+  await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: -1,
+        channelKey: 'channelKey',
+        title: 'Seat Reservation',
+        body: '10 minutes remaining',
+      ),
+      schedule: NotificationInterval(
+          interval: 5, timeZone: timezom, repeats: false));
 }

@@ -36,7 +36,9 @@ class InfoCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 10),
           child: GestureDetector(
-            onTap: (){},
+            onTap: (){
+              Navigator.pushNamed(context, '/reminders');
+            },
             child: Container(
                 height: 100, 
                 width: 200,

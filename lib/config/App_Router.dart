@@ -16,6 +16,7 @@ import '../Layouts/AboutUsPage.dart';
 import '../Layouts/GetStartedPage.dart';
 import '../Layouts/ToDoListPage.dart';
 import '../Layouts/TermsPage.dart';
+import '../Layouts/RemindersPage.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -54,6 +55,8 @@ class AppRouter {
         return GetStartedPage.route();
       case TermsPage.routeName:
         return TermsPage.route();
+      case RemindersPage.routeName:
+        return RemindersPage.route();
       default:
         return _errorRoute();
     }

@@ -44,7 +44,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             TextSpan(
                                 text: ' easier\n',
                                 style: TextStyle(
-                                    color: theme().primaryColorDark,
+                                    color: theme().primaryColorLight,
                                     fontWeight: FontWeight.bold)),
                             const TextSpan(
                                 text: ' than you think',

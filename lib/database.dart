@@ -29,3 +29,21 @@ class ToDoData{
     myBox.put("ToDoList", toDoList);
   }
 }
+
+class remindersData{
+  List reminderList = [];
+  final myBox = Hive.box('myBox2');
+ 
+  //used if the app is opened for the first time ever.
+  void createInitialData(){
+    reminderList = [["Example", "Text", false]];
+  }
+
+  void loadData(){
+    reminderList = myBox.get("REMINDERS");
+  }
+
+  void updateData (){
+    myBox.put("REMINDERS", reminderList);
+  }
+}
