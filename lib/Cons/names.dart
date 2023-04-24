@@ -31,8 +31,33 @@ late String finalPass = '';
 late String profileLabel = '';
 late String regTime = ' ';
 late String regTable = ' ';
+FirebaseAuth auth = FirebaseAuth.instance;
+CollectionReference userData = FirebaseFirestore.instance.collection('Users');
 
-PickedFile? _imageFile; DecorationImage defaultImage = DecorationImage( image: AssetImage('assets/images/moodle.png'), fit: BoxFit.cover, ); class CreateTask extends StatelessWidget { final taskController; VoidCallback onSave; VoidCallback onCancel; CreateTask({ super.key, required this.taskController, required this.onSave, required this.onCancel, }); @override Widget build(BuildContext context) { return AlertDialog( content: Container( height: 120, color: Color.fromARGB(255, 36, 35, 35), child: Column( children: [ TextField( controller: taskController, style: TextStyle(color: Colors.white), decoration: InputDecoration( border: OutlineInputBorder(borderSide: BorderSide.none), hintText: "Add new task", hintStyle: TextStyle(color:Colors.white) ), ), const SizedBox(height: 10,), Row( mainAxisAlignment: MainAxisAlignment.end, children: [ ElevatedButton(onPressed: onSave, child: Text("Confirm"),style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight, ),), const SizedBox(width: 10,), ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), ],) ], ), ), backgroundColor:Color.fromARGB(255, 36, 35, 35), shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20), ), ); } }
+PickedFile? _imageFile; DecorationImage defaultImage = DecorationImage( image: AssetImage('assets/images/moodle.png'), fit: BoxFit.cover, ); 
+
+class CreateTask extends StatelessWidget { 
+  final taskController; VoidCallback onSave; 
+  VoidCallback onCancel; 
+  CreateTask({ super.key, required this.taskController, required this.onSave, required this.onCancel, }); @override 
+  Widget build(BuildContext context) { 
+    return AlertDialog( 
+      content: 
+      Container( height: 120, color: Colors.white, 
+        child: Column( children: 
+      [ 
+        TextField( controller: taskController, style: TextStyle(color: Colors.black), 
+        decoration: InputDecoration( border: OutlineInputBorder(borderSide: BorderSide.none), 
+        hintText: "Add new task", 
+        hintStyle: TextStyle(color:Colors.black) ), ), 
+        const SizedBox(height: 10,), 
+        Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
+            children: [
+              ElevatedButton(onPressed: onSave, child: Text("Confirm"),style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight, ),), 
+              const SizedBox(width: 10,), 
+              ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), ],) ], ), ), 
+              backgroundColor:Colors.white, 
+              shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20), ), ); } }
 
 List<bool> registered = List.filled(260, false);
 List<Color> colors = List.filled(260, theme().primaryColorLight);
@@ -372,7 +397,7 @@ Future<void> GetDocsInfo() async {
 void fetchUserData() async{
   final user = FirebaseAuth.instance.currentUser;
   if(user != null) {
-    await FirebaseFirestore.instance.collection('Users').doc(user.uid)
+    await FirebaseFirestore.instance.collection('Users').doc(registeredEmail)
         .get()
         .then((ds) {
       registeredUsername = ds['username'];

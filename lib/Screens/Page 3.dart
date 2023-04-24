@@ -34,7 +34,7 @@ class _PageThreeState extends State<PageThree> {
                 children: [
                   Lottie.network(
               'https://assets2.lottiefiles.com/packages/lf20_jjub6wfu.json',
-              height: 320
+              height: 330
               ),
               
               Text("Set Reminders for yourself", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontWeight:FontWeight.bold, fontSize: 30 ),),

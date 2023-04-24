@@ -142,10 +142,10 @@ Future <void>  takePhoto(ImageSource source) async {
             Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 20, bottom: 5, right: 20),
               child: Container(
-                padding: const EdgeInsets.all(14),
-                color: theme().primaryColorDark,
+                padding: const EdgeInsets.only(left:5, bottom: 10),
+                color: theme().primaryColor,
                 width: 100,
-                child: const Text("Personal Information", style: TextStyle(color: Colors.white),),
+                child: const Text("Personal Information", style: TextStyle(color: Colors.white, fontSize: 20),),
                 ),
             ), 
             Padding(
@@ -162,8 +162,8 @@ Future <void>  takePhoto(ImageSource source) async {
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200, )),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78), )),
                       fillColor: theme().primaryColor,
                       filled: true,
                        //Makes text hover on Press
@@ -186,8 +186,8 @@ Future <void>  takePhoto(ImageSource source) async {
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200)),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       fillColor: theme().primaryColor,
                       filled: true,
                        //Makes text hover on Press
@@ -210,8 +210,8 @@ Future <void>  takePhoto(ImageSource source) async {
                     textInputAction: TextInputAction.next,
                     
                     decoration: InputDecoration(
-                      enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200)),
+                      enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       fillColor: theme().primaryColor,
                       filled: true,
                        //Makes text hover on Press
@@ -222,12 +222,12 @@ Future <void>  takePhoto(ImageSource source) async {
               )),
 
               Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 20, bottom: 5, right: 20),
+              padding: const EdgeInsets.only(left: 20.0, top: 30, bottom: 5, right: 20),
               child: Container(
-                padding: const EdgeInsets.all(14),
-                color: theme().primaryColorDark,
+                padding: const EdgeInsets.only(left: 5, bottom: 10),
+                color: theme().primaryColor,
                 width: 100,
-                child: Text("Account Information", style: TextStyle(color: Colors.white),),
+                child: Text("Account Information", style: TextStyle(color: Colors.white, fontSize: 20),),
                 ),
             ), 
              Padding(
@@ -244,8 +244,8 @@ Future <void>  takePhoto(ImageSource source) async {
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200)),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       fillColor: theme().primaryColor,
                       filled: true,
                        //Makes text hover on Press
@@ -268,8 +268,8 @@ Future <void>  takePhoto(ImageSource source) async {
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade200)),
+                      enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 80, 78, 78))),
                       fillColor: theme().primaryColor,
                       filled: true,
                        //Makes text hover on Press

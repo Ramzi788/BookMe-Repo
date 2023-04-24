@@ -61,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             IconButton(onPressed: (){Navigator.pushNamed(context, '/settings');}, icon: const Icon(Ionicons.settings_outline), color: Colors.white,),
                             const SizedBox(width: 10,),
-                            IconButton(onPressed: () async { await FirebaseAuth.instance.signOut(); Navigator.pushNamed(context, '/start');}, icon: const Icon(Ionicons.log_out_outline), color: Colors.white,),
+                            IconButton(onPressed: () async { await auth.signOut(); Navigator.pushNamed(context, '/start');}, icon: const Icon(Ionicons.log_out_outline), color: Colors.white,),
                           ],
                         )
 

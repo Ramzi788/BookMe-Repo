@@ -157,12 +157,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 
                 onPressed: ()
-                {
-                  setState(() {
+                async {
+                  setState((){
+                    registeredEmail = _eController.text;
                     finalPass = _pController.text;
                   });
-                  FirebaseAuth.instance.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
-                      .then((value) {showCheck(context);
+                  await auth.signInWithEmailAndPassword(email: _eController.text, password:_pController.text)
+                      .then((value) {
+                        fetchUserData();
+                        showCheck(context);
                               Future.delayed(Duration(seconds: 2), (){
                                 Navigator.pushNamed(context, '/homepage');
                               });}).onError((error, stackTrace){if (_eController.text == '' || _pController.text == ''){showAlertDialogUserEmpty(context);} else showAlertDialogReg(context);});

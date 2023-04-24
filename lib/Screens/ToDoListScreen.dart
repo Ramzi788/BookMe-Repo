@@ -1,12 +1,14 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:projects/database.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
 import '../components/ToDoTiles.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-
+import 'package:hive/hive.dart';
 //Login Part
 class ToDoScreen extends StatefulWidget {
  
@@ -17,22 +19,40 @@ class ToDoScreen extends StatefulWidget {
 }
 
 class _ToDoScreenState extends State<ToDoScreen> {
-
+  final _myBox = Hive.box('myBox');
+  ToDoData toDoDB = ToDoData();
   final taskController = TextEditingController();
-  List toDoList = [];
+  
+  @override
+  void initState() {
+    //After opening app for the first time ever.
+    if(_myBox.get("ToDoList") == null){
+      toDoDB.createInitialData();
+    }
+    else {
+      //Not the first time the user opened the app
+      toDoDB.loadData();
+    }
+
+    super.initState();
+  }
+
   
   void changeCheckBox (bool? value, int index){
     setState(() {
-      toDoList[index][1] = !toDoList[index][1];
+      toDoDB.toDoList[index][1] = !toDoDB.toDoList[index][1];
     });
+    toDoDB.updateData();
   }
 
   void saveTask(){
     setState(() {
-      toDoList.add([taskController.text, false]);
+      toDoDB.toDoList.add([taskController.text, false]);
       taskController.clear();
+     
     });
     Navigator.pop(context);
+    toDoDB.updateData();
   }
 
   void createaTask(){
@@ -45,8 +65,9 @@ class _ToDoScreenState extends State<ToDoScreen> {
   }
   void deleteTask(int index){
     setState(() {
-      toDoList.removeAt(index);
+      toDoDB.toDoList.removeAt(index);
     });
+    toDoDB.updateData();
   }
 
   
@@ -80,7 +101,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                 child: Text("All ToDos", style: TextStyle(fontSize: 35, color: Colors.white, fontWeight: FontWeight.bold),),
               ),
             ),
-            toDoList.length == 0 ?
+            toDoDB.toDoList.length == 0 ?
             Container(
               height: MediaQuery.of(context).size.height / 1.3,
               child: Center(child: Text("No Task(s) Added Yet", style: TextStyle(color: Colors.white, fontSize: 20))))
@@ -88,10 +109,10 @@ class _ToDoScreenState extends State<ToDoScreen> {
             ListView.builder(
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
-            itemCount: toDoList.length,
+            itemCount: toDoDB.toDoList.length,
             itemBuilder: (context, index) => ToDoTile(
-              nameOfTask: toDoList[index][0], 
-              taskStatus: toDoList[index][1], onChanged: (value) => changeCheckBox(value, index), 
+              nameOfTask: toDoDB.toDoList[index][0], 
+              taskStatus: toDoDB.toDoList[index][1], onChanged: (value) => changeCheckBox(value, index), 
               deleteFunction: (context) => deleteTask(index),
               ),
             )  
@@ -102,4 +123,3 @@ class _ToDoScreenState extends State<ToDoScreen> {
   }
 }
 
-  

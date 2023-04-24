@@ -183,7 +183,7 @@ class _SettingsState extends State<SettingsScreen> {
                 leading: const Text("Log Out",
                     style: TextStyle(color: Colors.red, fontSize: 17)),
                 onTap: () async {
-                      await FirebaseAuth.instance
+                      await auth
                       .signOut()
                       .then((value) => Navigator.pushNamed(context, '/start'));
                     },

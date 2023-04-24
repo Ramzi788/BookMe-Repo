@@ -100,7 +100,7 @@ Widget menuList(BuildContext context) => Container(
             title: const Text("Log out",
                 style: TextStyle(color: Colors.white, fontSize: 15)),
             onTap: () async {
-              await FirebaseAuth.instance.signOut().then((value) => Navigator.pushNamed(context, '/start'));
+              await auth.signOut().then((value) => Navigator.pushNamed(context, '/start'));
             },
           ),
         ] 

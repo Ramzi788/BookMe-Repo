@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import '/database.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
@@ -21,6 +22,7 @@ class StartScreen extends StatefulWidget {
 
 class _StartScreenState extends State<StartScreen> {
   final _controller = PageController();
+  
 
 Widget build(BuildContext context) {
   final _controller = PageController();
@@ -46,12 +48,21 @@ Widget build(BuildContext context) {
           const SizedBox(height: 150,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
-            child: ElevatedButton(onPressed: (){
+            child: ElevatedButton(
+              onPressed: (){
+                  
                   Navigator.pushNamed(context, '/');
-                }, child: Padding(
+                }, 
+                child: Padding(
                   padding: const EdgeInsets.only(left: 80, right: 80, top: 10, bottom: 10),
-                  child: Text("Get Started"),
-                )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text("Get Started"),
+                  ),
+                ),
+              style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),
+                
+                ),
           ),
           const SizedBox(height: 50,),
           // dot indicators
