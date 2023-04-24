@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -382,4 +383,15 @@ fetchUserData() async {
       profileLabel = ds['ProfileLabel'];
     });
   }
+}void notify() async {
+  String timezom = await AwesomeNotifications().getLocalTimeZoneIdentifier();
+  await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: -1,
+        channelKey: 'channelKey',
+        title: 'Seat Reservation',
+        body: '10 minutes remaining',
+      ),
+      schedule: NotificationInterval(
+          interval: 3000, timeZone: timezom, repeats: false));
 }

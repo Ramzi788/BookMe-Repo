@@ -51,6 +51,7 @@ class _SecondtableState extends State<Secondtable> {
             padding: const EdgeInsets.only(top:5, left: 30, right: 30),
             child: ElevatedButton(
                 onPressed: (){
+                  notify();
                   FirebaseFirestore db = FirebaseFirestore.instance;
                   db.collection('Tables').doc(regTable).update(
                       {regTime: true});
