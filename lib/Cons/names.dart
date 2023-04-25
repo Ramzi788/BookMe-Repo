@@ -32,6 +32,7 @@ late String finalPass = '';
 late String profileLabel = '';
 late String regTime = ' ';
 late String regTable = ' ';
+bool UserUsed = false;
 FirebaseAuth auth = FirebaseAuth.instance;
 CollectionReference userData = FirebaseFirestore.instance.collection('Users');
 
@@ -463,6 +464,37 @@ void showSamePass(BuildContext context) {
     ),
     content: Text(
       "The entered password must be different than your current password",
+      style:
+      Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColor,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+}
+void showUsernameExists(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Error!",
+      style:
+      Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "This username is already in use, please choose a new one",
       style:
       Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),

@@ -1,6 +1,8 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
@@ -189,12 +191,16 @@ class _UserScreenState extends State<UserScreen> {
                                 borderRadius: BorderRadius.circular(5.0)),
                           ),
                           onPressed: () async {
+                            await checkUser();
                             if (_firstName.text == '' ||
                                 _lastName.text == '' ||
                                 _uController.text == '') {
                               showAlertDialogUserEmpty(context);
                             }
                             //Check if username already exists
+                            else if(UserUsed){
+                              showUsernameExists(context);
+                            }
                             else {
                               setState(() {
                                 registeredfName = _firstName.text;
@@ -212,5 +218,16 @@ class _UserScreenState extends State<UserScreen> {
                     ),
                   ])))
         ]));
+  }
+  Future checkUser() async{
+    await userData.get().then((QuerySnapshot querySnapshot){for (var doc in querySnapshot.docs) {
+      String username = doc['username'];
+      if(username == _uController.text) {
+        setState(() {
+          UserUsed = true;
+        });
+        break;
+      }
+    }});
   }
 }
