@@ -37,31 +37,6 @@ CollectionReference userData = FirebaseFirestore.instance.collection('Users');
 
 PickedFile? _imageFile; DecorationImage defaultImage = DecorationImage( image: AssetImage('assets/images/moodle.png'), fit: BoxFit.cover, ); 
 
-class CreateTask extends StatelessWidget { 
-  final taskController; VoidCallback onSave; 
-  VoidCallback onCancel; 
-  CreateTask({ super.key, required this.taskController, required this.onSave, required this.onCancel, }); @override 
-  Widget build(BuildContext context) { 
-    return AlertDialog( 
-      content: 
-      Container( height: 120, color: Colors.white, 
-        child: Column( children: 
-      [ 
-        TextField( controller: taskController, style: TextStyle(color: Colors.black), 
-        decoration: InputDecoration( border: OutlineInputBorder(borderSide: BorderSide.none), 
-        hintText: "Add new task", 
-        hintStyle: TextStyle(color:Colors.black) ), ), 
-        const SizedBox(height: 10,), 
-        Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
-            children: [
-              ElevatedButton(onPressed: onSave, child: Text("Confirm"),style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight, ),), 
-              const SizedBox(width: 10,), 
-              ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), ],) ], ), ), 
-              backgroundColor:Colors.white, 
-              shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20), ), ); }
-              
-              }
-
 
 
 class CreateReminder extends StatelessWidget { 

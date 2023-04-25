@@ -21,6 +21,7 @@ class ToDoScreen extends StatefulWidget {
 }
 
 class _ToDoScreenState extends State<ToDoScreen> {
+  
   final _myBox = Hive.box('myBox');
   ToDoData toDoDB = ToDoData();
   final taskController = TextEditingController();
@@ -50,6 +51,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
   void saveTask(){
     setState(() {
+     
       toDoDB.toDoList.add([taskController.text, false]);
       taskController.clear();
      
@@ -62,7 +64,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
     showDialog(context: context, 
     builder: (context) => toDoBottomSheet(
       taskController: taskController,
-      detailsController: detailsController,
+      // detailsController: detailsController,
       onSave: saveTask,
       onCancel: ()=> Navigator.pop(context),
       ) );
@@ -109,22 +111,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                           )
                         ),
                         onPressed: (){
-                          showModalBottomSheet(
-                            context: context, 
-                            builder: (builder) => 
-                            Container(
-                              height: 450,
-                              
-                              child: toDoBottomSheet(
-                                taskController: taskController,
-                                detailsController: detailsController,
-                                onSave: saveTask,
-                                onCancel: ()=> Navigator.pop(context),
-                              ),
-                              ),
-                            
-                          
-                            );
+                          createaTask();
                         }, 
                       child: Text("+ Add a new task", style: TextStyle(color: Colors.white, fontSize: 15))),
                     )                  
