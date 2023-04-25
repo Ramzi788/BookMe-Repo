@@ -448,3 +448,34 @@ void notify() async {
       schedule: NotificationInterval(
           interval: 5, timeZone: timezom, repeats: false));
 }
+void showSamePass(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Error!",
+      style:
+      Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "The entered password must be different than your current password",
+      style:
+      Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColor,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+}
