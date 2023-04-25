@@ -313,3 +313,6 @@ class _RegScreenState extends State<RegScreen> {
     registeredfName, registeredlName, registeredUsername, profileLabel);
   }
 }
+  Future checkUser() async{
+
+  }

@@ -424,7 +424,7 @@ Future<void> GetDocsInfo() async {
 void fetchUserData() async{
   final user = FirebaseAuth.instance.currentUser;
   if(user != null) {
-    await FirebaseFirestore.instance.collection('Users').doc(registeredEmail)
+    await userData.doc(registeredEmail)
         .get()
         .then((ds) {
       registeredUsername = ds['username'];
@@ -444,6 +444,7 @@ void notify() async {
         channelKey: 'channelKey',
         title: 'Seat Reservation',
         body: '10 minutes remaining',
+        wakeUpScreen: true
       ),
       schedule: NotificationInterval(
           interval: 5, timeZone: timezom, repeats: false));
