@@ -9,6 +9,8 @@ import '../Cons/themes.dart';
 import '../components/ToDoTiles.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive/hive.dart';
+
+import '../components/toDoListBottomSheet.dart';
 //Login Part
 class ToDoScreen extends StatefulWidget {
  
@@ -22,6 +24,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
   final _myBox = Hive.box('myBox');
   ToDoData toDoDB = ToDoData();
   final taskController = TextEditingController();
+  final detailsController = TextEditingController();
   
   @override
   void initState() {
@@ -57,8 +60,9 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
   void createaTask(){
     showDialog(context: context, 
-    builder: (context) => CreateTask(
+    builder: (context) => toDoBottomSheet(
       taskController: taskController,
+      detailsController: detailsController,
       onSave: saveTask,
       onCancel: ()=> Navigator.pop(context),
       ) );
@@ -78,17 +82,10 @@ class _ToDoScreenState extends State<ToDoScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black, 
-        title: Text("To-Do List", 
-        style: TextStyle(color: Colors.white, fontSize: 20)), 
+        title:Text("To-Do List", style: TextStyle(color: Colors.white, fontSize: 20)),
+ 
         centerTitle: true,
         elevation: 0,
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){
-            createaTask();
-          },
-          child: Icon(Icons.add),
-
         ),
 
         body:  
@@ -98,7 +95,41 @@ class _ToDoScreenState extends State<ToDoScreen> {
             ListTile(
               title: Padding(
                 padding: const EdgeInsets.only(left: 20, bottom: 15, top: 10),
-                child: Text("All ToDos", style: TextStyle(fontSize: 35, color: Colors.white, fontWeight: FontWeight.bold),),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("All ToDos", style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),),
+                    Padding(
+                      padding: const EdgeInsets.only(right:10),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: theme().primaryColorLight,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7),
+                          )
+                        ),
+                        onPressed: (){
+                          showModalBottomSheet(
+                            context: context, 
+                            builder: (builder) => 
+                            Container(
+                              height: 450,
+                              
+                              child: toDoBottomSheet(
+                                taskController: taskController,
+                                detailsController: detailsController,
+                                onSave: saveTask,
+                                onCancel: ()=> Navigator.pop(context),
+                              ),
+                              ),
+                            
+                          
+                            );
+                        }, 
+                      child: Text("+ Add a new task", style: TextStyle(color: Colors.white, fontSize: 15))),
+                    )                  
+                  ],
+                ),
               ),
             ),
             toDoDB.toDoList.length == 0 ?

@@ -8,7 +8,6 @@ import '/firebase_options.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
-
 import 'Layouts/Splash_Page.dart';
 
 
