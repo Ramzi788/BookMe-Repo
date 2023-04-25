@@ -14,6 +14,7 @@ class ForgPass2Screen extends StatefulWidget {
 class _ForgPass2ScreenState extends State<ForgPass2Screen> {
   bool _isChecked = false;
   bool _isVisibile = true;
+  TextEditingController newPass = new TextEditingController();
 
   @override
   Widget build(BuildContext Context) {
@@ -33,7 +34,6 @@ class _ForgPass2ScreenState extends State<ForgPass2Screen> {
                 Text("Account", style: Theme.of(context).textTheme.headline1?.copyWith(color: theme().primaryColorDark)),
                 const SizedBox(height: 15,),
                 Text("Enter your new password", textAlign: TextAlign.center,style: Theme.of(context).textTheme.headline4?.copyWith(color: theme().primaryColorDark)),
-                
               ],
             ),
           ),
@@ -61,6 +61,7 @@ class _ForgPass2ScreenState extends State<ForgPass2Screen> {
               child: SizedBox(
                 height: 40, 
                 child: TextFormField(
+                  controller: newPass,
             obscureText: _isVisibile, // To hide password characters.
             decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
@@ -124,13 +125,10 @@ class _ForgPass2ScreenState extends State<ForgPass2Screen> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
               ),
               
-              onPressed: (){Navigator.pop(context);}, 
+              onPressed: () async { await auth.currentUser!.updatePassword(newPass.text).then((value) => Navigator.pop(context));},
               child: const Text("Done", style: TextStyle(color: Colors.white),)
             ),
           ),
-
-
-          
         ])))]));
     
 }}
