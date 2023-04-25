@@ -245,10 +245,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   .signInWithEmailAndPassword(
                                   email: _eController.text,
                                   password: _pController.text)
-                                  .then((value) {
-                                fetchUserData();
-                                showCheck(context);
-                                Future.delayed(Duration(seconds: 2), () {
+                                  .then((value) async {
+                                    await updateTables();
+                                    fetchUserData();
+                                    showCheck(context);
+                                    Future.delayed(Duration(seconds: 2), () {
                                   Navigator.pushNamed(context, '/homepage');
                                 });
                               }).onError((error, stackTrace) {

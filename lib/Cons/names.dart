@@ -35,7 +35,7 @@ late String regTable = ' ';
 bool UserUsed = false;
 FirebaseAuth auth = FirebaseAuth.instance;
 CollectionReference userData = FirebaseFirestore.instance.collection('Users');
-
+CollectionReference tableData = FirebaseFirestore.instance.collection('Tables');
 PickedFile? _imageFile; DecorationImage defaultImage = DecorationImage( image: AssetImage('assets/images/moodle.png'), fit: BoxFit.cover, ); 
 
 class CreateTask extends StatelessWidget { 
@@ -87,8 +87,8 @@ class CreateReminder extends StatelessWidget {
               ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), ],) ], ), ), 
               backgroundColor:Colors.white, 
               shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20), ), ); } }
-List<bool> registered = List.filled(260, false);
-List<Color> colors = List.filled(260, theme().primaryColorLight);
+late List<bool> registered;
+late List<Color> colors;
 Map<String, int> tableMap = {
   'Table1': 0,
   'Table2': 13,
@@ -402,24 +402,27 @@ void showInvalidEmailForm(BuildContext context) {
         return alert;
       });
 }
-Future<void> GetDocsInfo() async {
-  final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance.collection('Tables').get();
-  for(final DocumentSnapshot doc in snapshot.docs){
-    String regTable = doc.id;
-    int index = tableMap[regTable]!;
-    registered[index + 0] =  doc['8:00'];
-    registered[index + 1]=  doc['9:00'];
-    registered[index + 2] =  doc['10:00'];
-    registered[index + 3] =  doc['11:00'];
-    registered[index + 4] = doc['12:00'];
-    registered[index + 5] = doc['13:00'];
-    registered[index + 6] = doc['14:00'];
-    registered[index + 7] = doc['15:00'];
-    registered[index + 8] = doc['16:00'];
-    registered[index + 9] = doc['17:00'];
-    registered[index + 10] = doc['18:00'];
-    registered[index + 11] = doc['19:00'];
-    registered[index + 12] = doc['20:00'];
+
+Future<void> updateTables() async{
+  registered = List.filled(260, false);
+  colors = List.filled(260, theme().primaryColorLight);
+  await tableData.get().then((QuerySnapshot querySnapshot){for (var table in querySnapshot.docs) {
+    registered[tableMap[table.id]! + 0] = table['8:00'];
+    registered[tableMap[table.id]! + 1] = table['9:00'];
+    registered[tableMap[table.id]! + 2] = table['10:00'];
+    registered[tableMap[table.id]! + 3] = table['11:00'];
+    registered[tableMap[table.id]! + 4] = table['12:00'];
+    registered[tableMap[table.id]! + 5] = table['13:00'];
+    registered[tableMap[table.id]! + 6] = table['14:00'];
+    registered[tableMap[table.id]! + 7] = table['15:00'];
+    registered[tableMap[table.id]! + 8] = table['16:00'];
+    registered[tableMap[table.id]! + 9] = table['17:00'];
+    registered[tableMap[table.id]! + 10] = table['18:00'];
+    registered[tableMap[table.id]! + 11] = table['19:00'];
+    registered[tableMap[table.id]! + 12] = table['20:00'];
+  }});
+  for(int i = 0; i < registered.length; i++){
+    colors[i] = registered[i]? Colors.red:theme().primaryColorLight;
   }
 }
 void fetchUserData() async{
@@ -495,6 +498,37 @@ void showUsernameExists(BuildContext context) {
     ),
     content: Text(
       "This username is already in use, please choose a new one",
+      style:
+      Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColor,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+}
+void showALreadyReserved(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Already Reserved!",
+      style:
+      Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "This table is already reserved, please choose another time or table",
       style:
       Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),
