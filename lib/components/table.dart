@@ -15,9 +15,11 @@ class _tableState extends State<table> {
   Widget build(BuildContext context) {
     List<String> list = ["1 hour", "2 hours"];
     String _selected = list[0];
+    late String reservedTable;
+    late String reservedTime;
     void changeColor(){
       setState(() {
-        colors[timeMap[regTime]! + tableMap[regTable]!] = registered[timeMap[regTime]! + tableMap[regTable]!]? Colors.red:theme().primaryColorLight;
+        colors[timeMap[regTime]! + tableMap[regTable]!] = registered[timeMap[regTime]! + tableMap[regTable]!]? Colors.orange:theme().primaryColorLight;
       });
     }
     void showRegisterAlert(BuildContext context){
@@ -45,11 +47,21 @@ class _tableState extends State<table> {
           Padding(
             padding: const EdgeInsets.only(top:5, left: 30, right: 30),
             child: ElevatedButton(
-                onPressed: (){
+                onPressed: () async{
+                  await userData.doc(registeredEmail).get().then((ds){reservedTable = ds['regTable'];
+                  reservedTime = ds['regTime'];});
                   if(registered[timeMap[regTime]! + tableMap[regTable]!]){
                     showALreadyReserved(context);
                   }
+                  else if(reservedTable != 'none' && reservedTime != 'none'){
+                    showMoreThanOneReserve(context);
+                  }
                   else{
+                    userData.doc(registeredEmail).update(
+                        {'regTable': regTable,
+                          'regTime': regTime
+                        }
+                    );
                   notify();
                   tableData.doc(regTable).update(
                   {regTime: true});
@@ -62,8 +74,7 @@ class _tableState extends State<table> {
                 },
                 child: const Text("Reserve Seat")
             ),
-          )
-
+          ),
         ],
       );
       showDialog(

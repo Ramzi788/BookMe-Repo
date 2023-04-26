@@ -8,7 +8,7 @@ class DatabaseService{
   DatabaseService({required this.uid});
   Future updateUserData(String email, String password, String fname, String lname, String username, String profileLabel)async{
       return await userData.doc(uid).set({'Email': email, 'password': password,
-                                              'fname': fname, 'lname': lname, 'username': username, 'ProfileLabel': profileLabel});
+                                              'fname': fname, 'lname': lname, 'username': username, 'ProfileLabel': profileLabel, 'regTable': 'none', 'regTime': 'none'});
   }
 }
 
