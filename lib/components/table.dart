@@ -33,27 +33,16 @@ class _tableState extends State<table> {
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: ElevatedButton(
             onPressed: () async {
-              await userData.doc(registeredEmail).get().then((ds) {
-                reservedTable = ds['regTable'];
-                reservedTime = ds['regTime'];
-              });
-              if (registered[timeMap[regTime]! + tableMap[regTable]!]) {
-                showALreadyReserved(context);
-              } else if (reservedTable != 'none' && reservedTime != 'none') {
-                showMoreThanOneReserve(context);
-              } else {
-                userData
+                await userData
                     .doc(registeredEmail)
-                    .update({'regTable': regTable, 'regTime': regTime});
-                notify();
-                tableData.doc(regTable).update({regTime: true});
+                    .update({'regTable': 'none', 'regTime': 'none'});
+                tableData.doc(regTable).update({regTime: false});
                 setState(() {
-                  registered[timeMap[regTime]! + tableMap[regTable]!] = true;
+                  registered[timeMap[regTime]! + tableMap[regTable]!] = false;
                   changeColor();
                 });
                 Navigator.pop(context);
-              }
-            },
+              },
             child: const Text("Cancel")),
       );
     }
