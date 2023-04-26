@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../Cons/names.dart';
