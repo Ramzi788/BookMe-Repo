@@ -13,7 +13,7 @@ class RemindersPage extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const ReminderScreen();
+    return const Scaffold(body: ReminderScreen());
   }
 }
 

@@ -282,7 +282,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             child: GestureDetector(
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: theme().primaryColorDark,
+                    backgroundColor: theme().primaryColorLight,
                     minimumSize: const Size.fromHeight(45),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),

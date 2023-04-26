@@ -120,7 +120,7 @@ class _ForgPassScreenState extends State<ForgPassScreen> {
                                 email: registeredUsername).then((value) {
                               Navigator.pushNamed(context, '/login');}).onError((error, stackTrace){
                               if (_eController.text ==''){
-                                showAlertDialogUserEmpty(context);
+                                showAlertDialogEmpty(context);
                               }
                               else showAlertDialogForg(context);
                             });},

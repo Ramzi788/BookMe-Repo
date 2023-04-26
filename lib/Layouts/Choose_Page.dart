@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '/Screens/Welcome.dart';
 import '/Screens/ChooseScreen.dart';
 
 class ChoosePage extends StatelessWidget {

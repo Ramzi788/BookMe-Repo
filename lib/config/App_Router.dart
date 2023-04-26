@@ -7,7 +7,6 @@ import '/Layouts/Welcome_Page.dart';
 import '/Layouts/Home_Page.dart';
 import '/Layouts/ForPass2_Page.dart';
 import '/Layouts/Profile_Page.dart';
-import '../Layouts/Notifications_Page.dart';
 import '../Layouts/UserDetails_Page.dart';
 import '../Layouts/Choose_Page.dart';
 import '../Layouts/Settings_Page.dart';
@@ -37,8 +36,7 @@ class AppRouter {
         return ForPass2Page.route();
       case ProfilePage.routeName:
         return ProfilePage.route();
-      case NotiPage.routeName:
-        return NotiPage.route();
+      
       case UserPage.routeName:
         return UserPage.route();
       case ChoosePage.routeName:

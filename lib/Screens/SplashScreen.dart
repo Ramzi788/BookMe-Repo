@@ -1,10 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:projects/Cons/names.dart';
+import 'package:projects/Screens/HomeScreen.dart';
 import '/Cons/themes.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import '../Screens/GetStartedScreen.dart';
-import '../Screens/Welcome.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,6 +17,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  // User? user;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   user = FirebaseAuth.instance.currentUser;
+  //   updateTables();
+  // }
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
@@ -29,7 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
       backgroundColor: Colors.black,
-      nextScreen: StartScreen(),
+      nextScreen: StartScreen() ,
+      // user != null ? const HomeScreen() : 
       splashIconSize: 550,
       splashTransition: SplashTransition.fadeTransition,
       duration: 4000,

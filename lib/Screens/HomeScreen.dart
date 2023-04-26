@@ -83,14 +83,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                
-                Container(child: (isVisible2 == true)? 
-                table(isVisibile: isVisible2,): Secondtable(isVisible: isVisible3)),
-        
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
+                  padding: const EdgeInsets.only(top: 10, left: 28),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                     Container(color: theme().primaryColorLight, height: 20, width: 20), 
                     const SizedBox(width: 10,), 
@@ -102,6 +98,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Text("Unavailable", style: TextStyle(color: Colors.white)), 
                   ]),
                 ),
+                Container(child: (isVisible2 == true)? 
+                table(isVisibile: isVisible2,): Secondtable(isVisible: isVisible3)),
+        
+                
               ],
             ),
         ),

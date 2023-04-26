@@ -44,7 +44,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             TextSpan(
                                 text: ' easier\n',
                                 style: TextStyle(
-                                    color: theme().primaryColorLight,
+                                    color: theme().primaryColorDark,
                                     fontWeight: FontWeight.bold)),
                             const TextSpan(
                                 text: ' than you think',
@@ -70,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: theme().primaryColorDark,
+                            backgroundColor: theme().primaryColorLight,
                             minimumSize: const Size.fromHeight(45),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0)),

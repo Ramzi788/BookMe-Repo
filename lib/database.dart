@@ -1,5 +1,3 @@
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:projects/Cons/names.dart';
 
@@ -8,14 +6,14 @@ class DatabaseService{
   DatabaseService({required this.uid});
   Future updateUserData(String email, String password, String fname, String lname, String username, String profileLabel)async{
       return await userData.doc(uid).set({'Email': email, 'password': password,
-                                              'fname': fname, 'lname': lname, 'username': username, 'ProfileLabel': profileLabel});
+                                              'fname': fname, 'lname': lname, 'username': username, 'ProfileLabel': profileLabel, 'regTable': 'none', 'regTime': 'none'});
   }
 }
 
 class ToDoData{
   List toDoList = [];
   final myBox = Hive.box('myBox');
- 
+  
   //used if the app is opened for the first time ever.
   void createInitialData(){
     toDoList = [["Example", false]];
@@ -36,7 +34,7 @@ class remindersData{
  
   //used if the app is opened for the first time ever.
   void createInitialData(){
-    reminderList = [["Example", "Text", false]];
+    reminderList = [["Example", false]];
   }
 
   void loadData(){

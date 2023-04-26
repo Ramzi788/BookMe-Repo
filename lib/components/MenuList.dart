@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unused_import
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -46,13 +46,7 @@ Widget menuList(BuildContext context) => Container(
           },
         ),
 
-        ListTile(
-          leading: const Icon(Icons.notifications_outlined,
-              color: Colors.white),
-          title: const Text("Notifications",
-              style: TextStyle(color: Colors.white, fontSize: 15)),
-          onTap: () {},
-        ),
+        
         ListTile(
           leading:
           const Icon(Icons.info_outline_rounded, color: Colors.white),
@@ -62,13 +56,7 @@ Widget menuList(BuildContext context) => Container(
             Navigator.pushNamed(context, '/about');
           },
         ),
-        ListTile(
-          leading:
-          const Icon(Icons.help_outline_rounded, color: Colors.white),
-          title: const Text("Help",
-              style: TextStyle(color: Colors.white, fontSize: 15)),
-          onTap: () {},
-        ),
+        
         const Divider(color: Colors.white),
         ExpansionTile(
           childrenPadding: const EdgeInsets.only(left:5),
@@ -80,7 +68,7 @@ Widget menuList(BuildContext context) => Container(
           children: [
             ListTile(
                 leading:
-                CircleAvatar(child: Image.asset('assets/images/moodle.png', height: 40), radius: 20, backgroundColor:theme().primaryColor),
+                CircleAvatar(radius: 20, backgroundColor:theme().primaryColor, child: Image.asset('assets/images/moodle.png', height: 40), ),
                 title: const Text("Moodle",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
                 onTap: () {
@@ -88,7 +76,7 @@ Widget menuList(BuildContext context) => Container(
                 }),
             ListTile(
                 leading:
-                CircleAvatar(child: Image.asset('assets/images/AUBSIS.png', height: 40), radius: 20, backgroundColor:theme().primaryColor),
+                CircleAvatar( radius: 20, backgroundColor:theme().primaryColor, child: Image.asset('assets/images/AUBSIS.png', height: 40),),
                 title: const Text("AUB SIS",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
                 onTap: (){
@@ -98,8 +86,8 @@ Widget menuList(BuildContext context) => Container(
             ),
             ListTile(
                 leading:
-                Padding(
-                  padding: const EdgeInsets.only(left: 9),
+                const Padding(
+                  padding: EdgeInsets.only(left: 9),
                   child: CircleAvatar(radius: 12, backgroundColor: Colors.red),
                 ),
                 title: const Text("Resis",

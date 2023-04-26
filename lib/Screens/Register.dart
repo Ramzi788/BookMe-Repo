@@ -77,7 +77,7 @@ class _RegScreenState extends State<RegScreen> {
                       )),
                   child: Column(children: [
                     const SizedBox(
-                      height: 50,
+                      height: 30,
                     ),
 
                     //Email
@@ -226,7 +226,7 @@ class _RegScreenState extends State<RegScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: theme().primaryColorDark,
+                            backgroundColor: theme().primaryColorLight,
                             minimumSize: const Size.fromHeight(45),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0)),

@@ -1,209 +1,300 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-
-import '../Cons/names.dart';
 import '../Cons/themes.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../database.dart';
 
-class ReminderBottomSheet extends StatefulWidget {
- 
-  ReminderBottomSheet({super.key,});
-
-  @override
-  State<ReminderBottomSheet> createState() => _ReminderBottomSheetState();
-}
-
-class _ReminderBottomSheetState extends State<ReminderBottomSheet> {
-
-  void showDate(){
-    showDatePicker(
+class ReminderBottomSheet extends StatelessWidget {
+  late final myPanelController;
+  late final reminderController; 
+  late final detailsController;
+  late final dateController;
+  late final startTimeController;
+  late final endTimeController; 
+  VoidCallback onSave;
+  VoidCallback onCancel;
+  ReminderBottomSheet(
+      {super.key,
+      required this.reminderController,
+      required this.detailsController,
+      required this.dateController, 
+      required this.startTimeController, 
+      required this.endTimeController,
+      required this.onSave,
+      required this.onCancel,
+      required this.myPanelController
       
-      context: context, 
-      initialDate: DateTime.now(), 
-      firstDate: DateTime(2000), 
-      lastDate: DateTime(2030), 
-      
-    );
-  }
+      });
 
-
-  final reminderController = TextEditingController();
-  final reminderDetailController = TextEditingController();
-  final _myBox = Hive.box('myBox2');
-  remindersData remDB = remindersData();
-  
-  @override
-  void initState() {
-    //After opening app for the first time ever.
-    if(_myBox.get("REMINDERS") == null){
-      remDB.createInitialData();
-    }
-    else {
-      //Not the first time the user opened the app
-      remDB.loadData();
-    }
-
-    super.initState();
-  }
-
-  
-  void changeCheckBox (bool? value, int index){
-    setState(() {
-      remDB.reminderList[index][2] = !remDB.reminderList[index][2];
-    });
-    remDB.updateData();
-  }
-
-  void saveReminder(){
-    setState(() {
-      remDB.reminderList.add([reminderController.text, reminderDetailController.text, false]);
-      reminderController.clear();
-     
-    });
-    Navigator.pop(context);
-    remDB.updateData();
-  }
-
-  void createReminder(){
-    showDialog(context: context, 
-    builder: (context) => CreateReminder(
-      reminderController: reminderController,
-      onSave: saveReminder,
-      onCancel: ()=> Navigator.pop(context),
-      ) );
-  }
-  void deleteReminder(int index){
-    setState(() {
-      remDB.reminderList.removeAt(index);
-    });
-    remDB.updateData();
-  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:  Container(
-        height: 400,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            color: Color.fromARGB(255, 29, 29, 29),
-            ),
-          
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+    return Container(
+      height: 800,
+      decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+          color: Colors.white),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30, bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Cancel", style: TextStyle(color: Color.fromARGB(255, 13, 23, 109), fontSize: 15),),),
+                    padding: const EdgeInsets.only(left: 15),
+                    child: Text("Add Reminder",
+                        style: TextStyle(
+                            color: theme().primaryColor,
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold)),
                   ),
-                  Text("Details", style: TextStyle(color: Colors.white, fontSize: 20)),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: TextButton(onPressed: (){Navigator.pop(context);}, child: Text("Done", style: TextStyle(color: Color.fromARGB(255, 13, 23, 109), fontSize: 15),),),
-                  ),
-                ],),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  height: 140,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 46, 45, 45)
-                  ),
-                  
-                  child: ListView(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top:10, left: 10, right: 10),
-                        child: Container(
-                          decoration: BoxDecoration(
-                             
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: TextFormField(
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(borderSide: BorderSide.none),
-                                fillColor: Color.fromARGB(255, 46, 45, 45),
-                                filled: true,
-                                hintText: "Reminder",
-                                hintStyle: TextStyle(color: Color.fromARGB(255, 73, 74, 75))
-                              ),
-                              controller: reminderController,
-                              style: const TextStyle(color: Colors.white),
-                              
-                            ),
-                            
-                          
-                          
-                        ),
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(left: 25, bottom: 10),
+                      child: Text(
+                        "Reminder",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
                       ),
-                       Padding(
-                         padding: const EdgeInsets.only(left: 20),
-                         child: const Divider(height: 1, thickness: 1, color: Color.fromARGB(255, 87, 86, 86)),
-                       ),
-                          
-                       Padding(
-                         padding: const EdgeInsets.only(top:5, left: 10, right: 10),
-                         child: Container(
-                          decoration: BoxDecoration(
-                            
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: TextFormField(
-                              decoration: const InputDecoration(
-                                fillColor: Color.fromARGB(255, 46, 45, 45),
-                                border: OutlineInputBorder(borderSide: BorderSide.none),
-                                filled: true,
-                                hintText: "Details",
-                                hintStyle: TextStyle(color: Color.fromARGB(255, 73, 74, 75))
-                              ),
-                              controller: reminderController,
-                              style: const TextStyle(color: Colors.white),
-                              
-                            ),
-                            
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 128, 125, 125),
+                            width: 1.5)),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
                           ),
-                       ),
-                        
-                      
-                    ],
+                          hintText: "Enter title here.",
+                          hintStyle: TextStyle(
+                              color: Color.fromARGB(255, 73, 74, 75))),
+                      controller: reminderController,
+                      style: const TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                         padding: const EdgeInsets.only(top:5, left: 10, right: 10),
-                         child: Container(
-                          width: 375,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Color.fromARGB(255, 46, 45, 45)
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 25, bottom: 10, top: 10),
+                      child: Text(
+                        "Description",
+                        style: TextStyle(
+                            color: theme().primaryColor,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 128, 125, 125),
+                            width: 1.5)),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none),
+                          hintText: "Enter note here.",
+                          hintStyle: TextStyle(
+                              color: Color.fromARGB(255, 73, 74, 75))),
+                      controller: detailsController,
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 25, bottom: 10, top: 10),
+                      child: Text(
+                        "Date",
+                        style: TextStyle(
+                            color: theme().primaryColor,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                            color:const Color.fromARGB(255, 128, 125, 125),
+                            width: 1.5)),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none),
+                          hintText: "dd/mm/yyyy",
+                          hintStyle: TextStyle(
+                              color: Color.fromARGB(255, 73, 74, 75))),
+                      controller: dateController,
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 80, bottom: 10, top: 10),
+                              child: Text(
+                                "Start Time",
+                                style: TextStyle(
+                                    color: theme().primaryColor,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                            child: ListTile(
-                              onTap: (){showDate();},
-                              leading: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30), 
-                                  color: Colors.red
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Icon(Icons.calendar_month, color: Colors.white,),
-                                )),
-                              title: Text("Pick a Date", style: TextStyle(color: Colors.white, fontSize: 18),),
-                            )
-                            
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25, bottom: 30),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 2 - 25,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                    color:const  Color.fromARGB(255, 128, 125, 125),
+                                    width: 1.5)),
+                            child: TextFormField(
+                              decoration: const InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide.none),
+                                  hintText: "Enter note here.",
+                                  hintStyle: TextStyle(
+                                      color: Color.fromARGB(255, 73, 74, 75))),
+                              controller: startTimeController,
+                              style: const TextStyle(color: Colors.black),
+                            ),
                           ),
-                       ),
-            ],
-          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 110, bottom: 10, top: 10),
+                              child: Text(
+                                "End Time",
+                                style: TextStyle(
+                                    color: theme().primaryColor,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 25, bottom: 30),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 2 - 35,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                    color: const Color.fromARGB(255, 128, 125, 125),
+                                    width: 1.5)),
+                            child: TextFormField(
+                              decoration: const InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide.none),
+                                  hintText: "Enter note here.",
+                                  hintStyle: TextStyle(
+                                      color: Color.fromARGB(255, 73, 74, 75))),
+                              controller: endTimeController,
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child:ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                          backgroundColor: theme().primaryColorLight,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                      onPressed: onCancel,
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text("Cancel"),
+                      ),
+                      
+                    ),
+                  ),
+                
+                Padding(
+                  padding: const EdgeInsets.only(right: 25),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: theme().primaryColorLight,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    onPressed: onSave,
+                    child: const Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text("Confirm"),
+                    ),
+                  
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
-      
+      ),
     );
   }
 }

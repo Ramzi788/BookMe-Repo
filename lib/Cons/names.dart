@@ -3,7 +3,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../Cons/themes.dart';
@@ -24,45 +23,24 @@ const String rem = "Remember me";
 const String forgPass = "Forgot password?";
 const String fName = "First Name*";
 const String lName = "Last Name*";
-late String registeredEmail = '';
-late String registeredUsername = '';
-late String registeredfName = '';
-late String registeredlName = '';
-late String finalPass = '';
-late String profileLabel = '';
-late String regTime = ' ';
-late String regTable = ' ';
+String registeredEmail = '';
+String registeredUsername = '';
+String registeredfName = '';
+String registeredlName = '';
+String finalPass = '';
+String profileLabel = '';
+String regTime = ' ';
+String regTable = ' ';
+bool UserUsed = false;
+int notificationId = 1;
 FirebaseAuth auth = FirebaseAuth.instance;
 CollectionReference userData = FirebaseFirestore.instance.collection('Users');
+CollectionReference tableData = FirebaseFirestore.instance.collection('Tables');
+PickedFile? _imageFile; DecorationImage defaultImage = const DecorationImage( image: AssetImage('assets/images/moodle.png'), fit: BoxFit.cover, ); 
 
-PickedFile? _imageFile; DecorationImage defaultImage = DecorationImage( image: AssetImage('assets/images/moodle.png'), fit: BoxFit.cover, ); 
+late List<bool> registered;
+late List<Color> colors;
 
-
-
-class CreateReminder extends StatelessWidget { 
-  final reminderController; VoidCallback onSave; 
-  VoidCallback onCancel; 
-  CreateReminder({ super.key, required this.reminderController, required this.onSave, required this.onCancel, }); @override 
-  Widget build(BuildContext context) { 
-    return AlertDialog( 
-      content: 
-      Container( height: 120, color: Colors.white, 
-        child: Column( children: 
-      [ 
-        TextField( controller: reminderController, style: TextStyle(color: Colors.black), 
-        decoration: InputDecoration( border: OutlineInputBorder(borderSide: BorderSide.none), 
-        hintText: "Add new Reminder", 
-        hintStyle: TextStyle(color:Colors.black) ), ), 
-        const SizedBox(height: 10,), 
-        Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
-            children: [
-              ElevatedButton(onPressed: onSave, child: Text("Confirm"),style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight, ),), 
-              const SizedBox(width: 10,), 
-              ElevatedButton(onPressed: onCancel, child: Text("Cancel"), style: ElevatedButton.styleFrom(backgroundColor: theme().primaryColorLight),), ],) ], ), ), 
-              backgroundColor:Colors.white, 
-              shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20), ), ); } }
-List<bool> registered = List.filled(260, false);
-List<Color> colors = List.filled(260, theme().primaryColorLight);
 Map<String, int> tableMap = {
   'Table1': 0,
   'Table2': 13,
@@ -105,7 +83,7 @@ void showAlertDialogLogin(BuildContext context) {
       onPressed: () {
         Navigator.pop(context);
       },
-      child: Text("Ok"));
+      child: const Text("Ok"));
   Widget alert = AlertDialog(
     title: Text(
       "Error!",
@@ -117,7 +95,7 @@ void showAlertDialogLogin(BuildContext context) {
       style:
           Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),
-    backgroundColor: theme().primaryColor,
+    backgroundColor: theme().primaryColorLight,
     actions: [
       ok,
     ],
@@ -141,36 +119,33 @@ void showCheck(BuildContext context){
         );
       },
   );
-  Future.delayed(Duration(seconds: 2),(){
+  Future.delayed(const Duration(seconds: 2),(){
     Navigator.of(context).pop();
   });
 }
 
 
-void showAlertDialogUserEmpty(BuildContext context) {
+void showAlertDialogEmpty(BuildContext context) {
   Widget ok = TextButton(
       onPressed: () {
         Navigator.pop(context);
       },
-      child: Text("Ok"));
+      child: const Text("Ok"));
   Widget alert = AlertDialog(
     title: Text(
       "Error!",
       style:
           Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
     ),
-    content: Stack(
-      children: [
-        Text(
+    content:Text(
           "Please fill in the required fields",
           style:
               Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
         ),
-        SizedBox(height: 100,),
-        Lottie.network('https://assets6.lottiefiles.com/packages/lf20_bhw1ul4g.json')
-      ],
-    ),
-    backgroundColor: theme().primaryColor,
+        
+        
+      
+    backgroundColor: theme().primaryColorLight,
     actions: [
       ok,
     ],
@@ -190,7 +165,7 @@ void showAlertDialogUsername(BuildContext context) {
       onPressed: () {
         Navigator.pop(context);
       },
-      child: Text("Ok"));
+      child: const Text("Ok"));
   Widget alert = AlertDialog(
     title: Text(
       "Error!",
@@ -202,7 +177,7 @@ void showAlertDialogUsername(BuildContext context) {
       style:
           Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),
-    backgroundColor: theme().primaryColor,
+    backgroundColor: theme().primaryColorLight,
     actions: [
       ok,
     ],
@@ -222,7 +197,7 @@ void showAlertDialogReg(BuildContext context) {
       onPressed: () {
         Navigator.pop(context);
       },
-      child: Text("Ok"));
+      child: const Text("Ok"));
   Widget alert = AlertDialog(
     title: Text(
       "Error!",
@@ -234,7 +209,7 @@ void showAlertDialogReg(BuildContext context) {
       style:
           Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),
-    backgroundColor: theme().primaryColor,
+    backgroundColor: theme().primaryColorLight,
     actions: [
       ok,
     ],
@@ -254,7 +229,7 @@ void showPassDontMatch(BuildContext context) {
       onPressed: () {
         Navigator.pop(context);
       },
-      child: Text("Ok"));
+      child: const Text("Ok"));
   Widget alert = AlertDialog(
     title: Text(
       "Error!",
@@ -266,7 +241,7 @@ void showPassDontMatch(BuildContext context) {
       style:
           Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),
-    backgroundColor: theme().primaryColor,
+    backgroundColor: theme().primaryColorLight,
     actions: [
       ok,
     ],
@@ -286,7 +261,7 @@ void showAlertDialogForg(BuildContext context) {
       onPressed: () {
         Navigator.pop(context);
       },
-      child: Text("Ok"));
+      child: const Text("Ok"));
   Widget alert = AlertDialog(
     title: Text(
       "Error!",
@@ -298,7 +273,7 @@ void showAlertDialogForg(BuildContext context) {
       style:
           Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),
-    backgroundColor: theme().primaryColor,
+    backgroundColor: theme().primaryColorLight,
     actions: [
       ok,
     ],
@@ -318,7 +293,7 @@ void showReservedForm(BuildContext context) {
       onPressed: () {
         Navigator.pop(context);
       },
-      child: Text("Ok"));
+      child: const Text("Ok"));
   Widget alert = AlertDialog(
     title: Text(
       "Error!",
@@ -330,7 +305,7 @@ void showReservedForm(BuildContext context) {
       style:
       Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),
-    backgroundColor: theme().primaryColor,
+    backgroundColor: theme().primaryColorLight,
     actions: [
       ok,
     ],
@@ -350,7 +325,7 @@ void showInvalidEmailForm(BuildContext context) {
       onPressed: () {
         Navigator.pop(context);
       },
-      child: Text("Ok"));
+      child: const Text("Ok"));
   Widget alert = AlertDialog(
     title: Text(
       "Error!",
@@ -362,7 +337,7 @@ void showInvalidEmailForm(BuildContext context) {
       style:
       Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
     ),
-    backgroundColor: theme().primaryColor,
+    backgroundColor: theme().primaryColorLight,
     actions: [
       ok,
     ],
@@ -376,30 +351,40 @@ void showInvalidEmailForm(BuildContext context) {
         return alert;
       });
 }
-Future<void> GetDocsInfo() async {
-  final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance.collection('Tables').get();
-  for(final DocumentSnapshot doc in snapshot.docs){
-    String regTable = doc.id;
-    int index = tableMap[regTable]!;
-    registered[index + 0] =  doc['8:00'];
-    registered[index + 1]=  doc['9:00'];
-    registered[index + 2] =  doc['10:00'];
-    registered[index + 3] =  doc['11:00'];
-    registered[index + 4] = doc['12:00'];
-    registered[index + 5] = doc['13:00'];
-    registered[index + 6] = doc['14:00'];
-    registered[index + 7] = doc['15:00'];
-    registered[index + 8] = doc['16:00'];
-    registered[index + 9] = doc['17:00'];
-    registered[index + 10] = doc['18:00'];
-    registered[index + 11] = doc['19:00'];
-    registered[index + 12] = doc['20:00'];
+
+Future<void> updateTables() async{
+  registered = List.filled(260, false);
+  colors = List.filled(260, theme().primaryColorLight);
+  await tableData.get().then((QuerySnapshot querySnapshot){for (var table in querySnapshot.docs) {
+    registered[tableMap[table.id]! + 0] = table['8:00'];
+    registered[tableMap[table.id]! + 1] = table['9:00'];
+    registered[tableMap[table.id]! + 2] = table['10:00'];
+    registered[tableMap[table.id]! + 3] = table['11:00'];
+    registered[tableMap[table.id]! + 4] = table['12:00'];
+    registered[tableMap[table.id]! + 5] = table['13:00'];
+    registered[tableMap[table.id]! + 6] = table['14:00'];
+    registered[tableMap[table.id]! + 7] = table['15:00'];
+    registered[tableMap[table.id]! + 8] = table['16:00'];
+    registered[tableMap[table.id]! + 9] = table['17:00'];
+    registered[tableMap[table.id]! + 10] = table['18:00'];
+    registered[tableMap[table.id]! + 11] = table['19:00'];
+    registered[tableMap[table.id]! + 12] = table['20:00'];
+  }});
+  for(int i = 0; i < registered.length; i++){
+    colors[i] = registered[i]? Colors.red:theme().primaryColorLight;
   }
+  await userData.doc(registeredEmail).get().then((ds) {
+    String rTable = ds['regTable'];
+    String rTime = ds['regTime'];
+    if(rTable != 'none' && rTime != 'none') {
+      colors[tableMap[rTable]! + timeMap[rTime]!] = Colors.orange;
+    }
+  });
 }
 void fetchUserData() async{
   final user = FirebaseAuth.instance.currentUser;
   if(user != null) {
-    await FirebaseFirestore.instance.collection('Users').doc(registeredEmail)
+    await userData.doc(registeredEmail)
         .get()
         .then((ds) {
       registeredUsername = ds['username'];
@@ -419,7 +404,149 @@ void notify() async {
         channelKey: 'channelKey',
         title: 'Seat Reservation',
         body: '10 minutes remaining',
+        wakeUpScreen: true
       ),
       schedule: NotificationInterval(
           interval: 5, timeZone: timezom, repeats: false));
 }
+
+void cancelNotifiactionMessage() async {
+  String timezom = await AwesomeNotifications().getLocalTimeZoneIdentifier();
+  
+  await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: notificationId,
+        channelKey: 'channelKey',
+        title: 'Reservation Cancelled',
+        body: '',
+        wakeUpScreen: true,
+      ),
+      schedule:
+          NotificationInterval(interval: 5, timeZone: timezom, repeats: false));
+  notificationId++;
+}
+void showSamePass(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: const Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Error!",
+      style:
+      Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "The entered password must be different than your current password",
+      style:
+      Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColorLight,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+}
+void showUsernameExists(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: const Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Error!",
+      style:
+      Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "This username is already in use, please choose a new one",
+      style:
+      Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColorLight,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+}
+void showALreadyReserved(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: const Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Already Reserved!",
+      style:
+      Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "This table is already reserved, please choose another time or table",
+      style:
+      Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColorLight,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+}
+void showMoreThanOneReserve(BuildContext context) {
+  Widget ok = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      child: const Text("Ok"));
+  Widget alert = AlertDialog(
+    title: Text(
+      "Already Reserved!",
+      style:
+      Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),
+    ),
+    content: Text(
+      "You have already reserved, please cancel or wait until after your registration to reserve again.",
+      style:
+      Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+    ),
+    backgroundColor: theme().primaryColorLight,
+    actions: [
+      ok,
+    ],
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      });
+}
+

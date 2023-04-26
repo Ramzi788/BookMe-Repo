@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '/Screens/ForgPassScreen.dart';
-import '../Layouts/Register_Page.dart';
 class ForgotPassPage extends StatelessWidget {
   static const String routeName = '/forgotpass';
 

@@ -140,7 +140,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.desk_outlined, color: theme().primaryColor),
+                                  Icon(Icons.schedule, color: Colors.white),
                                   const SizedBox(width: 10,),
                                   Text("Reserve", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
                                 ],
@@ -179,16 +179,55 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                               Row(
                                 children: [
-                                  Icon(Icons.notifications,color: Colors.white,),
+                                  const Icon(Icons.check,color: Colors.white,),
                                   const SizedBox(width: 10,),
-                                  Text("Notifications", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
+                                  Text("To Do List", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                               Row(
                                 children: [
-                              Text("Check your new notifications", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
-                              const SizedBox(width: 65,),
-                              ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/messages');}, child: const Icon(Ionicons.arrow_forward_outline),
+                              Text("Create new tasks now!", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
+                              const SizedBox(width: 110,),
+                              ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/todo');}, child: const Icon(Ionicons.arrow_forward_outline),
+                              style:ButtonStyle(
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(58.0),
+                                  )
+                                ),
+                                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                                iconColor: MaterialStatePropertyAll(theme().primaryColor)
+                              ))
+                              ],)
+                            ],
+                          ),
+                        )),
+                        Padding(
+                        padding: const EdgeInsets.only(top: 215, bottom:0),
+                        child: Container(
+                          height: 110,
+                          width: double.infinity,
+                          padding: const EdgeInsets.only(top: 20, bottom:0, left: 40, right: 25),
+                          decoration: BoxDecoration (
+                          color: Colors.orange,
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+                              Row(
+                                children: [
+                                  const Icon(Icons.calendar_month_outlined,color: Colors.white,),
+                                  const SizedBox(width: 10,),
+                                  Text("Reminders", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                              Text("Set new reminders for yourself", style: Theme.of(context).textTheme.bodyText1?.copyWith(color:Colors.white, fontWeight: FontWeight.normal),),
+                              const SizedBox(width: 60,),
+                              ElevatedButton(onPressed: (){Navigator.pushNamed(context, '/reminders');}, child: const Icon(Ionicons.arrow_forward_outline),
                               style:ButtonStyle(
                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(

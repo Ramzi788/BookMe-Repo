@@ -10,22 +10,30 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
-// _launchURL() async {
-//   const url = 'https://adfs.aub.edu.lb/adfs/ls/?SAMLRequest=jZLbTgIxEIZfZdP7PVBFtAESlBhJUAmgF96Y2XZWmnTbtdN6eHuXRSOYaLxrZ%2Bab%2BedvhwS1acQkho1d4nNECslbbSyJLjFi0VvhgDQJCzWSCFKsJtdzwbNCNN4FJ51he8jfBBChD9pZlsymI%2FYoj%2BBY9gZQDORJidAv%2B4MzkLIHiBVXCrGASgFXpxVL7tFTS45Y26jFiSLOLAWwoQ0V%2FCgtjlPO18VA8DPR5w8smbbbaAuhozYhNCTyHFRFGcQyQxUzU3b33FDOksmXuAtnKdboV%2BhftMS75fwbN%2FUh3RqXb%2FfmOTW7QwqSsmbT%2FChlyeLTrnNtlbZPfztV7opIXK3Xi3Rxu1qz8XDbX3Sb%2B%2FG%2FBNUYQEGArZ5hvo8Pdw9%2F0w6eTRfOaPmeXDpfQ%2FhdVy%2FrdRGt0qorFdFSg1JXGlXrnzHu9cIjBByx4COyfLwbevjBxh8%3D&RelayState=https%3A%2F%2Flms.aub.edu.lb%2F&SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&Signature=C7E7fmHVJUNlF096TCjwtIKZCfZkKf64NdtvnRFvN3XsZPV5vdqz%2F3owDaX7JGsZojuJghACydnoLfENDEHGQr3A9QJ1e0d4%2BnPFdQlw7stEtqtVdqa83tpe1jA%2BMgG5zWYESUpq8qJPqY8EPtwpOxAgRedukXU5ZcLRaX2eFVSll9S0CCMTfuX2H6mc%2BI4wmWSgMNJLOErRkJ%2F7JsaKVRMT1AFjwSNB71Kxp7aUgY5aOpEPWC9y2OiNQ1CnH%2FVbuG9SYoxFhB4CtFtSRgoHEuawyDSSoooXRh1P50N%2BevyayHsfNooKWPCZo13H5Dmh%2Fkv%2BTM4JLq1ljDWplLvgxw%3D%3D';
-//   if (await launch(url)) {
-//     await canLaunch(url);
-//   } else {
-//     throw 'Could not launch $url';
-//   }
-// }
-// _launchURL2() async {
-//   const url = 'https://www.aub.edu.lb/Pages/AUBSIS.aspx';
-//   if (await launch(url)) {
-//     await canLaunch(url);
-//   } else {
-//     throw 'Could not launch $url';
-//   }
-// }
+_launchInstaURL() async {
+  const url = 'https://www.tiktok.com/@bookmeaub';
+  if (await launch(url)) {
+    await canLaunch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+_launchTiktokURL() async {
+  const url = 'https://www.tiktok.com/@bookmeaub';
+  if (await launch(url)) {
+    await canLaunch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+_launchTwitterUrl() async {
+  const url = 'https://twitter.com/BookMeAUB';
+  if (await launch(url)) {
+    await canLaunch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -88,10 +96,6 @@ class _SettingsState extends State<SettingsScreen> {
                   ),
                 ),
                 const SizedBox(height: 15,),
-                 
-                
-                
-                
                 ListTile(
                   onTap: (){Navigator.pushNamed(context, '/forgotpassnum2');},
                   leading: Text("Change Password", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontSize: 18),),
@@ -125,7 +129,7 @@ class _SettingsState extends State<SettingsScreen> {
                 title: const Text("Follow Us on Instagram",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
                 onTap: (){
-                  
+                  _launchInstaURL();
                 }
                   
               ),
@@ -134,14 +138,18 @@ class _SettingsState extends State<SettingsScreen> {
                     CircleAvatar(child: Image.asset('assets/images/twitter.png', height: 50), radius: 16, backgroundColor:Colors.white),
                 title: const Text("Follow Us on Twitter",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
-                onTap: (){}
+                onTap: (){
+                  _launchTwitterUrl();
+                }
               ),
               ListTile(
                 leading:
                     CircleAvatar(child: Image.asset('assets/images/tiktok.png', height: 35), radius: 15, backgroundColor:Colors.white),
                 title: const Text("Follow Us on TikTok",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
-                onTap: (){}
+                onTap: (){
+                  _launchTiktokURL();
+                }
               ),
               
               Padding(
@@ -168,11 +176,7 @@ class _SettingsState extends State<SettingsScreen> {
                   leading: Text("Terms & Conditions", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontSize: 18),),
                   trailing:  Icon(Icons.arrow_forward_ios, color: Colors.white,),
                   ), 
-                ListTile(
-                  onTap: (){Navigator.pushNamed(context, '/t');},
-                  leading: Text("Privacy Policy", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontSize: 18),),
-                  trailing:  Icon(Icons.arrow_forward_ios, color: Colors.white,),
-                  ),
+              
                    Padding(
                   padding: const EdgeInsets.only(left: 10, right:10, bottom: 10),
                   child: Divider(height: 20, thickness: 1, color: Color.fromARGB(255, 80, 78, 78)),
