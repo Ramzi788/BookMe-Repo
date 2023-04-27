@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:projects/Cons/themes.dart';
 
 class InfoCard extends StatelessWidget {
   const InfoCard({super.key});
@@ -23,10 +22,10 @@ class InfoCard extends StatelessWidget {
                   height: 160,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.transparent),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(20),
                         bottomLeft: Radius.circular(20)),
-                    color: Color.fromARGB(255, 248, 132, 123),
+                    color: const Color.fromARGB(255, 248, 132, 123),
                   ),
                   child: Center(
                       child: Padding(
@@ -86,12 +85,12 @@ class InfoCard extends StatelessWidget {
                         borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(20),
                             bottomRight: Radius.circular(20)),
-                        color: Color.fromARGB(255, 248, 132, 123),
+                        color: const Color.fromARGB(255, 248, 132, 123),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Lottie.network(
@@ -107,7 +106,7 @@ class InfoCard extends StatelessWidget {
             ],
           ),
         ),
-        Container(
+        SizedBox(
           height: 155,
           child: InkWell(
             onTap: () => Navigator.pushNamed(context, '/reminders'),
@@ -120,7 +119,7 @@ class InfoCard extends StatelessWidget {
                     height: 160,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.transparent),
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(20),
                           bottomLeft: Radius.circular(20)),
                       color: Colors.orange,
@@ -178,7 +177,7 @@ class InfoCard extends StatelessWidget {
                       width: 140,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.transparent),
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(20),
                             bottomRight: Radius.circular(20)),
                         color: Colors.orange,
@@ -186,7 +185,7 @@ class InfoCard extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Lottie.network(

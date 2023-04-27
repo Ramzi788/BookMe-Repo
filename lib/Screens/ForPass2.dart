@@ -12,10 +12,9 @@ class ForgPass2Screen extends StatefulWidget {
 }
 
 class _ForgPass2ScreenState extends State<ForgPass2Screen> {
-  bool _isChecked = false;
   bool _isVisibile = true;
-  TextEditingController newPass1 = new TextEditingController();
-  TextEditingController newPass2 = new TextEditingController();
+  TextEditingController newPass1 = TextEditingController();
+  TextEditingController newPass2 = TextEditingController();
 
   @override
   Widget build(BuildContext Context) {

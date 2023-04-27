@@ -17,8 +17,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   PickedFile? _imageFile;
   ImagePicker picker = ImagePicker();
   DecorationImage? setImage;
-  TextEditingController _eController = TextEditingController();
-  TextEditingController _pController = TextEditingController();
+  final TextEditingController _pController = TextEditingController();
   late TextEditingController _firstName;
   late TextEditingController _lastName;
   late TextEditingController _userName;

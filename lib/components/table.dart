@@ -14,7 +14,6 @@ class table extends StatefulWidget {
 class _tableState extends State<table> {
   @override
   Widget build(BuildContext context) {
-    String _selected = '1 Hour';
     late String reservedTable;
     late String reservedTime;
     void changeColor() {

@@ -31,6 +31,7 @@ class ReminderBottomSheet extends StatefulWidget {
 class _ReminderBottomSheetState extends State<ReminderBottomSheet> {
   TextEditingController controller = TextEditingController();
   DateTime dateTime = DateTime.now();
+  TimeOfDay timeOfDay = TimeOfDay.now();
   void _showDatePicker(){
     showDatePicker(
         context: context,
@@ -40,6 +41,11 @@ class _ReminderBottomSheetState extends State<ReminderBottomSheet> {
     ).then((value){setState(() {
       dateTime = value!;
     });});
+  }
+  void _showTimePicker(){
+    showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now()).then((value) => timeOfDay = value!);
   }
   @override
   Widget build(BuildContext context) {
@@ -218,14 +224,18 @@ class _ReminderBottomSheetState extends State<ReminderBottomSheet> {
                                     color:const  Color.fromARGB(255, 128, 125, 125),
                                     width: 1.5)),
                             child: TextFormField(
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  hintText: "Enter note here.",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 73, 74, 75))),
                               controller: widget.startTimeController,
-                              style: const TextStyle(color: Colors.black),
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.only(left: 10, top: 14),
+                                hintText: timeOfDay.format(context),
+                                suffixIcon: GestureDetector(
+                                  onTap: () {
+                                    _showTimePicker();
+                                    widget.startTimeController.text = timeOfDay.format(context);
+                                  },
+                                  child: const Icon(Icons.access_time),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -260,14 +270,18 @@ class _ReminderBottomSheetState extends State<ReminderBottomSheet> {
                                     color: const Color.fromARGB(255, 128, 125, 125),
                                     width: 1.5)),
                             child: TextFormField(
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  hintText: "Enter note here.",
-                                  hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 73, 74, 75))),
                               controller: widget.endTimeController,
-                              style: const TextStyle(color: Colors.black),
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.only(left: 10, top: 14),
+                                hintText: timeOfDay.format(context),
+                                suffixIcon: GestureDetector(
+                                  onTap: () {
+                                    _showTimePicker();
+                                    widget.endTimeController.text = timeOfDay.format(context);
+                                  },
+                                  child: const Icon(Icons.access_time),
+                                ),
+                              ),
                             ),
                           ),
                         ),

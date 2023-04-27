@@ -8,7 +8,6 @@ import '/Layouts/Home_Page.dart';
 import '/Layouts/ForPass2_Page.dart';
 import '/Layouts/Profile_Page.dart';
 import '../Layouts/UserDetails_Page.dart';
-import '../Layouts/Choose_Page.dart';
 import '../Layouts/Settings_Page.dart';
 import '../Layouts/EditProfile_Page.dart';
 import '../Layouts/AboutUsPage.dart';
@@ -39,8 +38,6 @@ class AppRouter {
       
       case UserPage.routeName:
         return UserPage.route();
-      case ChoosePage.routeName:
-        return ChoosePage.route();
       case SettingsPage.routeName:
         return SettingsPage.route();
       case EditProfilePage.routeName:

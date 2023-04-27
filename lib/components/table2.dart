@@ -1,5 +1,4 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
@@ -65,15 +64,11 @@ class _SecondtableState extends State<Secondtable> {
                 dropdownColor: theme().primaryColor,
                 style: const TextStyle(color: Colors.white),
                 value: _selected,
-                onChanged: (val) {
-                  setState() {
-                    _selected = val as String;
-                  }
-                },
+                onChanged: (val) {},
                 items: list
                     .map((e) => DropdownMenuItem(
-                          child: Text(e),
                           value: e,
+                          child: Text(e),
                         ))
                     .toList(),
               )),

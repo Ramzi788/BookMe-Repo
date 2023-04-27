@@ -2,13 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:projects/Cons/names.dart';
 import 'package:projects/components/TableView.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../Cons/themes.dart';
 import '../Screens/SideBarScreen.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 import '../components/table.dart';
 import '../components/table2.dart';
 import '../components/InfoCard.dart';

@@ -2,12 +2,10 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
 import 'package:lottie/lottie.dart';
-import 'dart:io';
 //Login Part
 class UserScreen extends StatefulWidget {
   const UserScreen({super.key});
@@ -76,7 +74,7 @@ class _UserScreenState extends State<UserScreen> {
           const SizedBox(height: 100),
           Expanded(
               child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),

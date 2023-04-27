@@ -159,7 +159,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                         ),
                       ),
                       remDB.reminderList.isEmpty
-                          ? Container(
+                          ? SizedBox(
                               height: MediaQuery.of(context).size.height / 1.3,
                               child: const Center(
                                   child: Text("No Task(s) Added Yet",

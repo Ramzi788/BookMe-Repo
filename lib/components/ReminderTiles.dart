@@ -90,7 +90,7 @@ class ReminderTile extends StatelessWidget {
                       child: Icon(Icons.access_time, color: Colors.white),
                     ),
                     const SizedBox(width: 10,), 
-                    Text((startTime + " - " + endTime), style: const TextStyle(color: Colors.white),)
+                    Text(("$startTime - $endTime"), style: const TextStyle(color: Colors.white),)
                   ],), 
                   Padding(
                     padding: const EdgeInsets.only(top: 10, left: 8, bottom: 10, right: 8),

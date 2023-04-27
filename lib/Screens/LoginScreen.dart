@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lottie/lottie.dart';
 
 //Login Part
@@ -18,8 +15,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _isChecked = false;
   bool _isVisibile = true;
-  TextEditingController _eController = TextEditingController();
-  TextEditingController _pController = TextEditingController();
+  final TextEditingController _eController = TextEditingController();
+  final TextEditingController _pController = TextEditingController();
   late Box box1;
   @override
   void initState() {
@@ -52,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         extendBodyBehindAppBar: true,
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         body: ListView(scrollDirection: Axis.vertical, children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Column(
@@ -61,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text("Welcome",
                     style: Theme.of(context)
                         .textTheme
-                        .headline1
+                        .displayLarge
                         ?.copyWith(color: theme().primaryColorDark)),
                 const SizedBox(
                   height: 5,
@@ -69,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text("Back",
                     style: Theme.of(context)
                         .textTheme
-                        .headline1
+                        .displayLarge
                         ?.copyWith(color: theme().primaryColorDark)),
                 const SizedBox(
                   height: 15,
@@ -82,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 260),
           Expanded(
               child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
@@ -247,15 +244,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                     await updateTables();
                                     fetchUserData();
                                     showCheck(context);
-                                    Future.delayed(Duration(seconds: 2), () {
+                                    Future.delayed(const Duration(seconds: 2), () {
                                   Navigator.pushNamed(context, '/homepage');
                                 });
                               }).onError((error, stackTrace) {
                                 if (_eController.text == '' ||
                                     _pController.text == '') {
                                   showAlertDialogEmpty(context);
-                                } else
+                                } else {
                                   showAlertDialogReg(context);
+                                }
                               });
                             },
                             child: const Text(
@@ -300,7 +298,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                             minimumSize: const Size.fromHeight(45),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0)),

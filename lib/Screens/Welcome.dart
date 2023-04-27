@@ -1,8 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import '../Layouts/Register_Page.dart';
-import '../Layouts/Login_Page.dart';
 import '../Cons/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -103,7 +101,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 borderRadius: BorderRadius.circular(5.0)),
                           ),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/choose');
+                            Navigator.pushNamed(context, '/user');
                           },
                           child: const Text(
                             "Create an Account",

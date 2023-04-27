@@ -1,13 +1,9 @@
 // ignore_for_file: use_build_context_synchronously, sort_child_properties_last, deprecated_member_use
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:projects/database.dart';
 import '../Cons/themes.dart';
 import '../Cons/names.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:projects/database.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -35,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Container(
               decoration:  BoxDecoration(
                 color: theme().primaryColor,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50), )
+                borderRadius: const BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50), )
               ),
               child: Column(
                 children: [
@@ -54,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               title: Text(
                               registeredUsername,
                               style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),),
-                              subtitle: Text( "$registeredfName $registeredlName, $profileLabel", style: TextStyle(color: Colors.white),),
+                              subtitle: Text( "$registeredfName $registeredlName, $profileLabel", style: const TextStyle(color: Colors.white),),
                               ),
                         ),
                         Row(
@@ -78,7 +74,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                         Column(
                           children:  [
-                            Text(
+                            const Text(
                             "50",
                             style: TextStyle(color:Colors.white),
                           ),
@@ -92,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(width: 30,),
                         Column(
                           children:  [
-                            Text(
+                            const Text(
                             "2",
                             style: TextStyle(color:Colors.white),
                           ),
@@ -106,7 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(width: 30,),
                         Column(
                           children: [
-                            Text(
+                            const Text(
                             "10",
                             style: TextStyle(color:Colors.white),
                             ),
@@ -140,7 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.schedule, color: Colors.white),
+                                  const Icon(Icons.schedule, color: Colors.white),
                                   const SizedBox(width: 10,),
                                   Text("Reserve", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
                                 ],
@@ -156,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     borderRadius: BorderRadius.circular(58.0),
                                   )
                                 ),
-                                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                                backgroundColor: const MaterialStatePropertyAll(Colors.white),
                                 iconColor: MaterialStatePropertyAll(theme().primaryColor)
                               ))
                               ],)
@@ -195,7 +191,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     borderRadius: BorderRadius.circular(58.0),
                                   )
                                 ),
-                                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                                backgroundColor: const MaterialStatePropertyAll(Colors.white),
                                 iconColor: MaterialStatePropertyAll(theme().primaryColor)
                               ))
                               ],)
@@ -208,7 +204,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: 110,
                           width: double.infinity,
                           padding: const EdgeInsets.only(top: 20, bottom:0, left: 40, right: 25),
-                          decoration: BoxDecoration (
+                          decoration: const BoxDecoration (
                           color: Colors.orange,
                           borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                           ),
@@ -234,7 +230,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     borderRadius: BorderRadius.circular(58.0),
                                   )
                                 ),
-                                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                                backgroundColor: const MaterialStatePropertyAll(Colors.white),
                                 iconColor: MaterialStatePropertyAll(theme().primaryColor)
                               ))
                               ],)

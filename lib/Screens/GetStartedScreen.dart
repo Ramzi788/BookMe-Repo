@@ -1,36 +1,34 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
-import '/database.dart';
-import '../Cons/names.dart';
 import '../Cons/themes.dart';
-import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../Screens/Page1.dart';
 import '../Screens/Page 2.dart';
 import '../Screens/Page 3.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 
 
 class StartScreen extends StatefulWidget {
+  const StartScreen({super.key});
+
   @override
   State<StartScreen> createState() => _StartScreenState();
 }
 
 class _StartScreenState extends State<StartScreen> {
-  final _controller = PageController();
   
 
-Widget build(BuildContext context) {
+@override
+  Widget build(BuildContext context) {
   final _controller = PageController();
     return Scaffold(
       backgroundColor: Colors.black,
       body: ListView(
         
         children: [
-          SizedBox(height:30),
+          const SizedBox(height:30),
           // page view
           SizedBox(
             height: 500,
@@ -52,10 +50,10 @@ Widget build(BuildContext context) {
                   
                   Navigator.pushNamed(context, '/');
                 }, 
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 80, right: 80, top: 10, bottom: 10),
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 80, right: 80, top: 10, bottom: 10),
                   child: Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(5.0),
                     child: Text("Get Started"),
                   ),
                 ),
