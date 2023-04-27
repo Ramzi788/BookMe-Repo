@@ -63,6 +63,13 @@ class _ToDoScreenState extends State<ToDoScreen> {
     toDoDB.updateData();
   }
 
+  void deleteAll(){
+    setState(() {
+      toDoDB.toDoList.clear();
+    });
+    toDoDB.updateData();
+  }
+
   void editTask(int index) {}
 
   @override
@@ -108,7 +115,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                               )),
                           onPressed: () {
                             setState(() {
-                              toDoDB.toDoList.clear();
+                              deleteAll();
                             });
                           },
                           child: const Text("Delete All",

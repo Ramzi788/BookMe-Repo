@@ -22,41 +22,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   late TextEditingController _lastName;
   late TextEditingController _userName;
 
-  Widget bottomPopUp(){
-    return Container(
-        height: 100,
-        width: MediaQuery.of(context).size.width,
-        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-        child: Column(
-            children: [
-              const Text(
-                "Choose your profile picture",
-                style: TextStyle(
-                  fontSize: 20.0,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  TextButton.icon(onPressed: (){
-                    takePhoto(ImageSource.camera);
-                  },
-                      icon: const Icon(Icons.camera_alt), label: const Text("Camera", style: TextStyle(color: Colors.black))),
-                  TextButton.icon(onPressed: (){
-                    takePhoto(ImageSource.gallery);
-                  },
-                      icon: const Icon(Icons.photo), label: const Text("Gallery", style: TextStyle(color: Colors.black)))
-                ],
-              )
-
-            ]
-        )
-    );
-  }
-
 
   Future <void>  takePhoto(ImageSource source) async {
     final picked = await picker.pickImage(source: source, imageQuality: 100);
@@ -97,37 +62,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                   ),
                 ),
-                Positioned(
-                  bottom: 2,
-                  right: 10,
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                      border: Border.all(
-                        width: 0,
-                        color: Colors.white,
-
-                      ),
-
-                    ),
-                    child: InkWell(
-                      onTap: (){
-                        showModalBottomSheet(
-                            context: context,
-                            builder: ((builder) => bottomPopUp())
-
-                        );
-                      },
-                      child: Icon(
-                          Icons.edit,
-                          color: theme().primaryColorDark
-                      ),
-                    ),
-                  ),
-                )
               ],
             ),
           ),
@@ -250,8 +184,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
 
               )),
-
-
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 50, top:40),
             child: GestureDetector(
