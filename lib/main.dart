@@ -7,7 +7,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'Layouts/Splash_Page.dart';
 
-
 Future<void> main() async {
   AwesomeNotifications().initialize(null, [
     NotificationChannel(
@@ -19,20 +18,16 @@ Future<void> main() async {
         defaultColor: Colors.purple,
         ledColor: Colors.white,
         enableLights: true,
-        enableVibration: true
-        )
+        enableVibration: true)
   ]);
-  
-  
+
   await Hive.initFlutter();
   var box = await Hive.openBox('myBox');
   var box2 = await Hive.openBox('myBox2');
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  
-  
-  
+
   runApp(const BookMe());
 }
 
@@ -42,9 +37,10 @@ class BookMe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: theme(),
-        onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: SplashPage.routeName,
+      debugShowCheckedModeBanner: false,
+      theme: theme(),
+      onGenerateRoute: AppRouter.onGenerateRoute,
+      initialRoute: SplashPage.routeName,
     );
   }
 }

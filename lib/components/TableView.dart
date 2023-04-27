@@ -88,7 +88,7 @@ class _MapbottomSheetState extends State<MapbottomSheet> {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Text("Available",
+                  Text("Available",
                       style: TextStyle(color: Colors.white, fontSize: 20)),
                   const SizedBox(
                     width: 30,

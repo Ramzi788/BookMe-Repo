@@ -42,7 +42,7 @@ class _tableState extends State<table> {
                 registered[timeMap[regTime]! + tableMap[regTable]!] = false;
                 changeColor();
               });
-              Navigator.pop(context);
+              Navigator.pushNamed(context, '/homepage');
             },
             child: const Text("Cancel")),
       );
@@ -101,6 +101,7 @@ class _tableState extends State<table> {
                             true;
                         changeColor();
                       });
+                      Navigator.pushNamed(context, '/homepage');
                       Navigator.pop(context);
                     }
                   },
