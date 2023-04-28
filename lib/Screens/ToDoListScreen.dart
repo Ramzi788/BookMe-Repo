@@ -1,9 +1,7 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projects/database.dart';
-import '../Cons/names.dart';
 import '../Cons/themes.dart';
 import '../components/ToDoTiles.dart';
 import 'package:hive/hive.dart';
@@ -65,6 +63,13 @@ class _ToDoScreenState extends State<ToDoScreen> {
     toDoDB.updateData();
   }
 
+  void deleteAll(){
+    setState(() {
+      toDoDB.toDoList.clear();
+    });
+    toDoDB.updateData();
+  }
+
   void editTask(int index) {}
 
   @override
@@ -110,10 +115,10 @@ class _ToDoScreenState extends State<ToDoScreen> {
                               )),
                           onPressed: () {
                             setState(() {
-                              toDoDB.toDoList.clear();
+                              deleteAll();
                             });
                           },
-                          child: Text("Delete All",
+                          child: const Text("Delete All",
                               style: TextStyle(
                                   color: Colors.white, fontSize: 15))),
                     ),
@@ -137,16 +142,16 @@ class _ToDoScreenState extends State<ToDoScreen> {
                 ),
               ),
             ),
-            toDoDB.toDoList.length == 0
-                ? Container(
+            toDoDB.toDoList.isEmpty
+                ? SizedBox(
                     height: MediaQuery.of(context).size.height / 1.3,
-                    child: Center(
+                    child: const Center(
                         child: Text("No Task(s) Added Yet",
                             style:
                                 TextStyle(color: Colors.white, fontSize: 20))))
                 : ListView.builder(
                     shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
+                    physics: const ClampingScrollPhysics(),
                     itemCount: toDoDB.toDoList.length,
                     itemBuilder: (context, index) => ToDoTile(
                       myPanelController: _myPanelController,

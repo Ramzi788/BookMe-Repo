@@ -19,15 +19,15 @@ Widget profileView(BuildContext context) => Container(
                 Navigator.pushNamed(context, '/profile');
               },
               child: CircleAvatar(
-                radius: 45,
-                backgroundColor: theme().primaryColorLight,
+                radius: 40,
+                backgroundColor: Colors.white,
                 backgroundImage: defaultImage.image,
               ),
             ),
             const SizedBox(height: 25),
             SizedBox(
               child: Text(registeredUsername,
-                  style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+                  style: const TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
             ),
           ],
         ),

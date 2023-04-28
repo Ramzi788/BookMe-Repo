@@ -4,9 +4,9 @@ import 'package:projects/Cons/names.dart';
 class DatabaseService{
   final String uid;
   DatabaseService({required this.uid});
-  Future updateUserData(String email, String password, String fname, String lname, String username, String profileLabel)async{
+  Future updateUserData(String email, String password, String fname, String lname, String username)async{
       return await userData.doc(uid).set({'Email': email, 'password': password,
-                                              'fname': fname, 'lname': lname, 'username': username, 'ProfileLabel': profileLabel, 'regTable': 'none', 'regTime': 'none'});
+                                              'fname': fname, 'lname': lname, 'username': username, 'ProfileLabel': 'Student', 'regTable': 'none', 'regTime': 'none'});
   }
 }
 

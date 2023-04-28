@@ -1,7 +1,5 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '/database.dart';
 import '../Cons/names.dart';
@@ -17,7 +15,6 @@ class RegScreen extends StatefulWidget {
 }
 
 class _RegScreenState extends State<RegScreen> {
-  bool _isChecked = false;
   bool _isVisibile = true;
   final _eController = TextEditingController();
   final _pController = TextEditingController();
@@ -26,7 +23,7 @@ class _RegScreenState extends State<RegScreen> {
   @override
   Widget build(BuildContext Context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         body: ListView(scrollDirection: Axis.vertical, children: [
           
           Padding(
@@ -69,7 +66,7 @@ class _RegScreenState extends State<RegScreen> {
           
           Expanded(
               child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
@@ -310,6 +307,6 @@ class _RegScreenState extends State<RegScreen> {
       showAlertDialogReg(context);
     });
     DatabaseService(uid: registeredEmail).updateUserData(registeredEmail, finalPass,
-    registeredfName, registeredlName, registeredUsername, profileLabel);
+    registeredfName, registeredlName, registeredUsername);
   }
 }

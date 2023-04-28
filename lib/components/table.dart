@@ -14,17 +14,14 @@ class table extends StatefulWidget {
 class _tableState extends State<table> {
   @override
   Widget build(BuildContext context) {
-    
-    List<String> list = ["1 hour", "2 hours"];
-    String _selected = list[0];
     late String reservedTable;
     late String reservedTime;
     void changeColor() {
       setState(() {
         colors[timeMap[regTime]! + tableMap[regTable]!] =
-        registered[timeMap[regTime]! + tableMap[regTable]!]
-            ? Colors.orange
-            : theme().primaryColorLight;
+            registered[timeMap[regTime]! + tableMap[regTable]!]
+                ? Colors.orange
+                : theme().primaryColorLight;
       });
     }
 
@@ -33,19 +30,21 @@ class _tableState extends State<table> {
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: ElevatedButton(
             onPressed: () async {
+              notificationId--;
               await AwesomeNotifications().cancel(notificationId);
               cancelNotifiactionMessage();
-                await userData
-                    .doc(registeredEmail)
-                    .update({'regTable': 'none', 'regTime': 'none'});
-                tableData.doc(regTable).update({regTime: false});
-                setState(() {
-                  registered[timeMap[regTime]! + tableMap[regTable]!] = false;
-                  changeColor();
-                });
-                Navigator.pop(context);
-              },
-            child: const Text("Cancel")),
+              await userData
+                  .doc(registeredEmail)
+                  .update({'regTable': 'none', 'regTime': 'none'});
+              await tableData.doc(regTable).update({regTime: false});
+              setState(() {
+                registered[timeMap[regTime]! + tableMap[regTable]!] = false;
+                changeColor();
+              });
+              Navigator.pushNamed(context, '/homepage');
+              Navigator.pop(context);
+            },
+            child: const Text("Remove")),
       );
     }
 
@@ -56,27 +55,12 @@ class _tableState extends State<table> {
           borderRadius: BorderRadius.circular(20),
         ),
         children: [
-          ListTile(
-              title: const Text(
-                "Duration",
+          const ListTile(
+              title: Text(
+                "Duration:                                             1 Hour",
                 style: TextStyle(color: Colors.white),
               ),
-              trailing: DropdownButton(
-                dropdownColor: theme().primaryColor,
-                style: const TextStyle(color: Colors.white),
-                value: _selected,
-                onChanged: (val) {
-                  setState() {
-                    _selected = val as String;
-                  }
-                },
-                items: list
-                    .map((e) => DropdownMenuItem(
-                  child: Text(e),
-                  value: e,
-                ))
-                    .toList(),
-              )),
+              ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -99,14 +83,16 @@ class _tableState extends State<table> {
                       tableData.doc(regTable).update({regTime: true});
                       setState(() {
                         registered[timeMap[regTime]! + tableMap[regTable]!] =
-                        true;
+                            true;
                         changeColor();
                       });
+                      Navigator.pushNamed(context, '/homepage');
                       Navigator.pop(context);
                     }
                   },
                   child: const Text("Reserve Table")),
-              if (colors[timeMap[regTime]! + tableMap[regTable]!] == Colors.orange)
+              if (colors[timeMap[regTime]! + tableMap[regTable]!] ==
+                  Colors.orange)
                 show()
             ],
           ),
@@ -142,101 +128,101 @@ class _tableState extends State<table> {
                 columns: [
                   DataColumn(
                       label: Row(children: const [
-                        SizedBox(width: 3),
-                        Text("Table Number", style: TextStyle(color: Colors.white)),
-                        SizedBox(width: 3),
-                      ])),
+                    SizedBox(width: 3),
+                    Text("Table Number", style: TextStyle(color: Colors.white)),
+                    SizedBox(width: 3),
+                  ])),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "8:00 AM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "8:00 AM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "9:00 AM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "9:00 AM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "10:00 AM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "10:00 AM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "11:00 AM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "11:00 AM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "12:00 PM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "12:00 PM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "1:00 PM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "1:00 PM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "2:00 PM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "2:00 PM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "3:00 PM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "3:00 PM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "4:00 PM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "4:00 PM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "5:00 PM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "5:00 PM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "6:00 PM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "6:00 PM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "7:00 PM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "7:00 PM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                   const DataColumn(
                       label: Expanded(
                           child: Text(
-                            "8:00 PM",
-                            style: TextStyle(color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ))),
+                    "8:00 PM",
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ))),
                 ],
                 rows: [
                   DataRow(cells: [

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../Screens/TermsScreen.dart';
-import '/Screens/SplashScreen.dart';
 
 class TermsPage extends StatelessWidget {
   static const String routeName = '/t';
@@ -15,10 +14,10 @@ class TermsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(child: Column(
-        children:   [
+        children:   const [
           Flexible(
             fit: FlexFit.loose,
-            child: Container(
+            child: SizedBox(
               height: 500,
               width: double.infinity,
               child: TermsScreen()),

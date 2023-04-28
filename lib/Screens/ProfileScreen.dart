@@ -1,13 +1,9 @@
 // ignore_for_file: use_build_context_synchronously, sort_child_properties_last, deprecated_member_use
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:projects/database.dart';
 import '../Cons/themes.dart';
 import '../Cons/names.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:projects/database.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -35,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Container(
               decoration:  BoxDecoration(
                 color: theme().primaryColor,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50), )
+                borderRadius: const BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50), )
               ),
               child: Column(
                 children: [
@@ -47,14 +43,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Expanded(
                           child: ListTile(
                               leading:  CircleAvatar(
-                                  backgroundColor: theme().primaryColorDark,
+                                  backgroundColor: Colors.white,
                                   backgroundImage: defaultImage.image,
                                 ),
                               
                               title: Text(
                               registeredUsername,
                               style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),),
-                              subtitle: Text( "$registeredfName $registeredlName, $profileLabel", style: TextStyle(color: Colors.white),),
+                              subtitle: Text( "$registeredfName $registeredlName, $profileLabel", style: const TextStyle(color: Colors.white),),
                               ),
                         ),
                         Row(
@@ -69,59 +65,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
 
-                  const SizedBox(height: 50,),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal:10 ),
+               const SizedBox(height: 20),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, '/edit');
+                    },
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-
-                        Column(
-                          children:  [
-                            Text(
-                            "50",
-                            style: TextStyle(color:Colors.white),
-                          ),
-                            Text(
-                            "Reserved Seats",
-                            style: Theme.of(context).textTheme.bodyText1?.copyWith(color: theme().primaryColorDark),
-                          ),
-
-                          ]
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Padding(
+                          padding:  EdgeInsets.only(left:40),
+                          child: Text("Edit Profile", style: TextStyle (fontSize: 20, color: Colors.white),),
                         ),
-                        const SizedBox(width: 30,),
-                        Column(
-                          children:  [
-                            Text(
-                            "2",
-                            style: TextStyle(color:Colors.white),
-                          ),
-                            Text(
-                            "Lost Seat",
-                            style: Theme.of(context).textTheme.bodyText1?.copyWith(color: theme().primaryColorDark),
-                          ),
-
-                          ]
-                        ),
-                        const SizedBox(width: 30,),
-                        Column(
-                          children: [
-                            Text(
-                            "10",
-                            style: TextStyle(color:Colors.white),
-                            ),
-                            Text(
-                            "Hours Spent",
-                            style: Theme.of(context).textTheme.bodyText1?.copyWith(color: theme().primaryColorDark),
-                          ),
-
-                          ]
-                        ),
-
-                      ]),
+                        SizedBox(width: 190,),
+                        Icon(Icons.arrow_forward_ios, color: Colors.white,)
+                      ],
                     ),
+                  ),
 
-                    const SizedBox(height: 35,),
+                  const SizedBox(height: 30),
 
                     Stack(
                       children: [
@@ -140,7 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.schedule, color: Colors.white),
+                                  const Icon(Icons.schedule, color: Colors.white),
                                   const SizedBox(width: 10,),
                                   Text("Reserve", style: Theme.of(context).textTheme.headline5?.copyWith(color:Colors.white, fontWeight: FontWeight.bold),),
                                 ],
@@ -156,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     borderRadius: BorderRadius.circular(58.0),
                                   )
                                 ),
-                                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                                backgroundColor: const MaterialStatePropertyAll(Colors.white),
                                 iconColor: MaterialStatePropertyAll(theme().primaryColor)
                               ))
                               ],)
@@ -166,12 +128,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Padding(
                         padding: const EdgeInsets.only(top: 105, bottom:0),
                         child: Container(
-                          height: 110,
+                          height: 190,
                           width: double.infinity,
                           padding: const EdgeInsets.only(top: 20, bottom:0, left: 40, right: 25),
-                          decoration: BoxDecoration (
-                          color: theme().primaryColor,
-                          borderRadius: BorderRadius.circular(30.0),
+                          decoration: const BoxDecoration (
+                          color: Colors.orange,
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,7 +157,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     borderRadius: BorderRadius.circular(58.0),
                                   )
                                 ),
-                                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                                backgroundColor: const MaterialStatePropertyAll(Colors.white),
                                 iconColor: MaterialStatePropertyAll(theme().primaryColor)
                               ))
                               ],)
@@ -208,9 +170,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: 110,
                           width: double.infinity,
                           padding: const EdgeInsets.only(top: 20, bottom:0, left: 40, right: 25),
-                          decoration: BoxDecoration (
-                          color: Colors.orange,
-                          borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+                          decoration:  BoxDecoration (
+                          color: theme().primaryColor,
+                          borderRadius: const BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -234,7 +196,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     borderRadius: BorderRadius.circular(58.0),
                                   )
                                 ),
-                                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                                backgroundColor: const MaterialStatePropertyAll(Colors.white),
                                 iconColor: MaterialStatePropertyAll(theme().primaryColor)
                               ))
                               ],)

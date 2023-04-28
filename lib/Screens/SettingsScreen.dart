@@ -2,11 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projects/Layouts/Home_Page.dart';
 import '../Cons/themes.dart';
 import '../Cons/names.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -43,7 +40,7 @@ class SettingsScreen extends StatefulWidget {
   
 }
 
-bool _iconBool = false;
+
 
 
 class _SettingsState extends State<SettingsScreen> {
@@ -99,16 +96,16 @@ class _SettingsState extends State<SettingsScreen> {
                 ListTile(
                   onTap: (){Navigator.pushNamed(context, '/forgotpassnum2');},
                   leading: Text("Change Password", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontSize: 18),),
-                  trailing:  Icon(Icons.arrow_forward_ios, color: Colors.white,),
+                  trailing:  const Icon(Icons.arrow_forward_ios, color: Colors.white,),
                   ), 
                 ListTile(
                   onTap: (){Navigator.pushNamed(context, '/edit');},
                   leading: Text("Edit Profile", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontSize: 18),),
-                  trailing:  Icon(Icons.arrow_forward_ios, color: Colors.white,),
+                  trailing:  const Icon(Icons.arrow_forward_ios, color: Colors.white,),
                   ), 
                 
-                Padding(
-                  padding: const EdgeInsets.only(left: 10, right:10, bottom: 10),
+                const Padding(
+                  padding: EdgeInsets.only(left: 10, right:10, bottom: 10),
                   child: Divider(height: 20, thickness: 1, color: Color.fromARGB(255, 80, 78, 78)),
                 ),
                 
@@ -125,7 +122,7 @@ class _SettingsState extends State<SettingsScreen> {
                 ),
                 ListTile(
                 leading:
-                    CircleAvatar(child: Image.asset('assets/images/instagram.png', height: 35), radius: 15, backgroundColor:Colors.white),
+                    CircleAvatar(radius: 15, backgroundColor:Colors.white, child: Image.asset('assets/images/instagram.png', height: 35)),
                 title: const Text("Follow Us on Instagram",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
                 onTap: (){
@@ -135,7 +132,7 @@ class _SettingsState extends State<SettingsScreen> {
               ),
               ListTile(
                 leading:
-                    CircleAvatar(child: Image.asset('assets/images/twitter.png', height: 50), radius: 16, backgroundColor:Colors.white),
+                    CircleAvatar(radius: 16, backgroundColor:Colors.white, child: Image.asset('assets/images/twitter.png', height: 50)),
                 title: const Text("Follow Us on Twitter",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
                 onTap: (){
@@ -144,7 +141,7 @@ class _SettingsState extends State<SettingsScreen> {
               ),
               ListTile(
                 leading:
-                    CircleAvatar(child: Image.asset('assets/images/tiktok.png', height: 35), radius: 15, backgroundColor:Colors.white),
+                    CircleAvatar(radius: 15, backgroundColor:Colors.white, child: Image.asset('assets/images/tiktok.png', height: 35)),
                 title: const Text("Follow Us on TikTok",
                     style: TextStyle(color: Colors.white, fontSize: 15)),
                 onTap: (){
@@ -152,8 +149,8 @@ class _SettingsState extends State<SettingsScreen> {
                 }
               ),
               
-              Padding(
-                  padding: const EdgeInsets.only(left: 10, right:10, bottom: 10),
+              const Padding(
+                  padding: EdgeInsets.only(left: 10, right:10, bottom: 10),
                   child: Divider(height: 20, thickness: 1, color: Color.fromARGB(255, 80, 78, 78)),
                 ),
                 Padding(
@@ -174,11 +171,11 @@ class _SettingsState extends State<SettingsScreen> {
                 ListTile(
                   onTap: (){Navigator.pushNamed(context, '/t');},
                   leading: Text("Terms & Conditions", style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white, fontSize: 18),),
-                  trailing:  Icon(Icons.arrow_forward_ios, color: Colors.white,),
+                  trailing:  const Icon(Icons.arrow_forward_ios, color: Colors.white,),
                   ), 
               
-                   Padding(
-                  padding: const EdgeInsets.only(left: 10, right:10, bottom: 10),
+                   const Padding(
+                  padding: EdgeInsets.only(left: 10, right:10, bottom: 10),
                   child: Divider(height: 20, thickness: 1, color: Color.fromARGB(255, 80, 78, 78)),
                 ),
                 

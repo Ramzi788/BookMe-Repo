@@ -1,10 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:projects/Cons/names.dart';
-import 'package:projects/Screens/HomeScreen.dart';
-import '/Cons/themes.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import '../Screens/GetStartedScreen.dart';
 import 'package:lottie/lottie.dart';
@@ -29,17 +24,14 @@ class _SplashScreenState extends State<SplashScreen> {
     return AnimatedSplashScreen(
       splash: ListView(
         children: [
-          Icon(
-            Icons.desk_outlined,
-            color: theme().primaryColorDark,
-            size: 300,
-          ),
-          Lottie.network('https://assets3.lottiefiles.com/packages/lf20_a2JTJdKRJ5.json')
+          const SizedBox(height: 300),
+          Lottie.network(
+              'https://assets3.lottiefiles.com/packages/lf20_a2JTJdKRJ5.json')
         ],
       ),
       backgroundColor: Colors.black,
-      nextScreen: StartScreen() ,
-      // user != null ? const HomeScreen() : 
+      nextScreen: const StartScreen(),
+      // user != null ? const HomeScreen() :
       splashIconSize: 550,
       splashTransition: SplashTransition.fadeTransition,
       duration: 4000,

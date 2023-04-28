@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import '../Cons/names.dart';
 import '../Cons/themes.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 class ForgPassScreen extends StatefulWidget {
   const ForgPassScreen({super.key});
 
@@ -13,10 +11,7 @@ class ForgPassScreen extends StatefulWidget {
 }
 
 class _ForgPassScreenState extends State<ForgPassScreen> {
-  bool _isChecked = false;
-  bool _isVisibile = true;
   final _eController = TextEditingController();
-  final _pController = TextEditingController();
 
   @override
   Widget build(BuildContext Context) {
@@ -60,7 +55,7 @@ class _ForgPassScreenState extends State<ForgPassScreen> {
               child: Container(
                   decoration: BoxDecoration(
                       color: theme().primaryColor,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
                       )),
@@ -122,7 +117,7 @@ class _ForgPassScreenState extends State<ForgPassScreen> {
                               if (_eController.text ==''){
                                 showAlertDialogEmpty(context);
                               }
-                              else showAlertDialogForg(context);
+                              else {showAlertDialogForg(context);}
                             });},
                           child: const Text(
                             Continue,

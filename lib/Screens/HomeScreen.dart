@@ -1,15 +1,15 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:projects/Cons/names.dart';
+import 'package:projects/components/TableView.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../Cons/themes.dart';
 import '../Screens/SideBarScreen.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 import '../components/table.dart';
 import '../components/table2.dart';
 import '../components/InfoCard.dart';
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,107 +21,131 @@ class HomeScreen extends StatefulWidget {
 bool isVisible2 = true;
 bool isVisible3 = false;
 int counter = 1;
-class _HomeScreenState extends State<HomeScreen> {
-  final tableWidget =  table(isVisibile: isVisible2 ,);
-  final tableWidget2 =  Secondtable(isVisible: isVisible3 ,);
-  static DateTime current_date = DateTime.now();
-  static final DateFormat _date = DateFormat('mm-dd');
-  final String formatted = _date.format(current_date);
 
-  
+class _HomeScreenState extends State<HomeScreen> {
+  final tableWidget = table(
+    isVisibile: isVisible2,
+  );
+  final tableWidget2 = Secondtable(
+    isVisible: isVisible3,
+  );
+  final _myPanelController = PanelController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: theme().primaryColor,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
+      body: SlidingUpPanel(
+        color: Colors.black,
+        controller: _myPanelController,
+        minHeight: 0,
+        maxHeight: 800,
+        body: Scaffold(
+          backgroundColor: theme().primaryColor,
+          body: SingleChildScrollView(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                     child: Padding(
-                        padding: const EdgeInsets.only(left: 20, top: 10),
-                        child: InfoCard(),
-                      ),
+                InkWell(
+                  onTap: (){Navigator.pushNamed(context, '/profile');},
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text("Welcome Back, $registeredfName", style: TextStyle(color: Colors.white, fontSize: 25,fontWeight: FontWeight.bold),),
+                    ), 
+                    const SizedBox(width: 40,),
+                    CircleAvatar(radius: 40, backgroundColor: Colors.white, backgroundImage: defaultImage.image,)
+                  ],),
                 ),
-        
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 1, left : 20, top: 20),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        
-                        alignment: Alignment.center,  
-                        
-                        child: IconButton(onPressed: (){
-                          setState(() {
-                            isVisible2 = true;
-                            isVisible3 = false;
-                            counter=1;
-                            tableWidget.isVisibile = isVisible2;
-                            tableWidget2.isVisible = isVisible3;
-                          });
-                        }, icon: Icon(Icons.arrow_back_ios, color: theme().primaryColorDark, size: 20)),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(right: 10),
-                        
-                        child: IconButton(onPressed: (){
-                          setState(() {
-                            isVisible2 = false;
-                            isVisible3 = true;
-                            counter =2;
-                            tableWidget.isVisibile = isVisible2;
-                            tableWidget2.isVisible = isVisible3;
-                          });
-                        }, icon: Icon(Icons.arrow_forward_ios, color: theme().primaryColorDark, size: 20,)),
-                      ),
-                      Text ("Page $counter", style: TextStyle(color: Colors.white),),
-                    ],
+                Divider(height: 25, color: Color.fromARGB(255, 58, 57, 57),thickness: 8,),
+                const Padding(
+                  padding: EdgeInsets.only(left: 25, top: 10),
+                  child: Text(
+                    "More ways to use BookMe",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        wordSpacing: 2,
+                        letterSpacing: 0.1),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 28),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                    Container(color: theme().primaryColorLight, height: 20, width: 20), 
-                    const SizedBox(width: 10,), 
-                    const Text("Available", style: TextStyle(color: Colors.white)), 
-                    const SizedBox(width: 30,), 
-                    
-                    Container(color: Colors.red, height: 20, width: 20), 
-                    const SizedBox(width: 10,), 
-                    const Text("Unavailable", style: TextStyle(color: Colors.white)), 
-                  ]),
+                  padding: const EdgeInsets.only(left: 20, top: 0),
+                  child: Column(
+                    children: const [InfoCard()],
+                  ),
                 ),
-                Container(child: (isVisible2 == true)? 
-                table(isVisibile: isVisible2,): Secondtable(isVisible: isVisible3)),
-        
-                
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          "Book Your Table",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          _myPanelController.open();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 30, right: 20, top: 20),
+                          child: Container(
+                            height: 430,
+                            width: 400,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: theme().primaryColorLight),
+                            child: Column(children: [
+                              Lottie.network(
+                                  'https://assets3.lottiefiles.com/packages/lf20_ckNiUzrdtw.json'),
+                              const Text(
+                                "Reserve Now",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ]),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
+          ),
+          appBar: AppBar(
+            actions: [
+              Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/settings');
+                    },
+                    child: const Icon(
+                      Icons.settings,
+                      size: 26.0,
+                    ),
+                  )),
+            ],
+            elevation: 0,
+            backgroundColor: theme().primaryColor,
+          ),
+          drawer: const SideBarScreen(),
         ),
-       
+        panelBuilder: (controller) => MapbottomSheet(
+          myPanelController: _myPanelController,
+        ),
       ),
-      appBar: AppBar(
-        actions: [
-          Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, '/settings');
-                },
-                child: const Icon(Icons.settings, size: 26.0,),
-              )),
-        ],
-        elevation: 0,
-        backgroundColor: theme().primaryColor,
-      ),
-      drawer: const SideBarScreen(),
     );
   }
 }
