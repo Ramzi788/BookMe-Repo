@@ -28,14 +28,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
   @override
   void initState() {
-    //After opening app for the first time ever.
-    if (_myBox.get("ToDoList") == null) {
-      toDoDB.createInitialData();
-    } else {
-      //Not the first time the user opened the app
-      toDoDB.loadData();
-    }
-
+    toDoDB.loadData();
     super.initState();
   }
 

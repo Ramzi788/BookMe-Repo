@@ -17,7 +17,7 @@ class _ForgPassScreenState extends State<ForgPassScreen> {
   Widget build(BuildContext Context) {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        body: ListView(children: [
           const SizedBox(height: 250),
           Padding(
             padding: const EdgeInsets.only(left: 10),

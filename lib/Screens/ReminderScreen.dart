@@ -32,14 +32,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
   @override
 
   void initState() {
-    //After opening app for the first time ever.
-    if (_myBox.get("REMINDERS") == null) {
-      remDB.createInitialData();
-    } else {
-      //Not the first time the user opened the app
-      remDB.loadData();
-    }
-
+    remDB.loadData();
     super.initState();
   }
 

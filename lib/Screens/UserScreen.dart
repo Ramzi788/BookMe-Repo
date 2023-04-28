@@ -198,6 +198,9 @@ class _UserScreenState extends State<UserScreen> {
                             //Check if username already exists
                             else if(UserUsed){
                               showUsernameExists(context);
+                              setState(() {
+                                UserUsed = false;
+                              });
                             }
                             else {
                               setState(() {

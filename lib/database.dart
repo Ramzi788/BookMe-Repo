@@ -13,11 +13,7 @@ class DatabaseService{
 class ToDoData{
   List toDoList = [];
   final myBox = Hive.box('myBox');
-  
-  //used if the app is opened for the first time ever.
-  void createInitialData(){
-    toDoList = [["Example", false]];
-  }
+
 
   void loadData(){
     toDoList = myBox.get("ToDoList");
@@ -32,10 +28,6 @@ class remindersData{
   List reminderList = [];
   final myBox = Hive.box('myBox2');
  
-  //used if the app is opened for the first time ever.
-  void createInitialData(){
-    reminderList = [["Example", false]];
-  }
 
   void loadData(){
     reminderList = myBox.get("REMINDERS");
